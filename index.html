@@ -146,10 +146,10 @@
 </header>
 
 <div class="chord-bar">
-  <span class="chord-pill" onclick="showChord('G')">G</span>
-  <span class="chord-pill" onclick="showChord('Em')">Em</span>
-  <span class="chord-pill" onclick="showChord('C')">C</span>
-  <span class="chord-pill" onclick="showChord('D')">D</span>
+  <span class="chord-pill" data-chord="G">G</span>
+  <span class="chord-pill" data-chord="Em">Em</span>
+  <span class="chord-pill" data-chord="C">C</span>
+  <span class="chord-pill" data-chord="D">D</span>
 </div>
 
 <div class="lyrics-section">
@@ -158,36 +158,36 @@
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('G')">G</span>
+      <span class="chord-marker" data-chord="G">G</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('Em')">Em</span>
+      <span class="chord-marker" data-chord="Em">Em</span>
     </div>
     <div class="lyric-text">你在南方的艳阳里 大雪纷飞</div>
   </div>
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('C')">C</span>
+      <span class="chord-marker" data-chord="C">C</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('D')">D</span>
+      <span class="chord-marker" data-chord="D">D</span>
     </div>
     <div class="lyric-text">我在北方的寒夜里 四季如春</div>
   </div>
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('G')">G</span>
+      <span class="chord-marker" data-chord="G">G</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('Em')">Em</span>
+      <span class="chord-marker" data-chord="Em">Em</span>
     </div>
     <div class="lyric-text">如果天黑之前来得及</div>
   </div>
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('C')">C</span>
+      <span class="chord-marker" data-chord="C">C</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('D')">D</span>
+      <span class="chord-marker" data-chord="D">D</span>
     </div>
     <div class="lyric-text">我要忘了你的眼睛</div>
   </div>
@@ -196,36 +196,36 @@
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('G')">G</span>
+      <span class="chord-marker" data-chord="G">G</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('Em')">Em</span>
+      <span class="chord-marker" data-chord="Em">Em</span>
     </div>
     <div class="lyric-text">南山南 北秋悲 北海北 西城以西</div>
   </div>
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('C')">C</span>
+      <span class="chord-marker" data-chord="C">C</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('D')">D</span>
+      <span class="chord-marker" data-chord="D">D</span>
     </div>
     <div class="lyric-text">她在东北角的东北角 痛哭流涕</div>
   </div>
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('G')">G</span>
+      <span class="chord-marker" data-chord="G">G</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('Em')">Em</span>
+      <span class="chord-marker" data-chord="Em">Em</span>
     </div>
     <div class="lyric-text">南山南 北秋悲 北海北 西城以西</div>
   </div>
 
   <div class="line">
     <div class="chords-row">
-      <span class="chord-marker" onclick="showChord('C')">C</span>
+      <span class="chord-marker" data-chord="C">C</span>
       <span style="flex:1"></span>
-      <span class="chord-marker" onclick="showChord('D')">D</span>
+      <span class="chord-marker" data-chord="D">D</span>
     </div>
     <div class="lyric-text">她走了以后 我再没有遇见我</div>
   </div>
@@ -233,8 +233,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal" id="modal" onclick="hideChord()">
-  <div class="modal-card" onclick="event.stopPropagation()">
+<div class="modal" id="modal">
+  <div class="modal-card" id="modal-card">
     <h3 id="modal-name"></h3>
     <div id="modal-svg"></div>
     <p id="modal-desc"></p>
@@ -243,6 +243,13 @@
 </div>
 
 <script>
+// Event delegation — works without inline onclick
+document.addEventListener('click', function(e) {
+  const chord = e.target.dataset.chord;
+  if (chord) { showChord(chord); return; }
+  if (e.target.id === 'modal') { hideChord(); }
+});
+
 const chords = {
   G: {
     desc: 'G 大调',
@@ -273,51 +280,58 @@ const chords = {
 function drawChord(name) {
   const c = chords[name];
   const frets = c.frets; // [E, A, D, G, B, e]
-  const size = 160;
-  const left = 30, top = 20;
-  const nutH = 18, stringW = 22, fretH = 22;
+
+  const W = 180, H = 170;
+  const left = 36, top = 32;
+  const stringW = 22, fretH = 24;
   const strings = 6, fretCount = 4;
 
-  // find min fret (ignore open/muted)
+  // Only offset if NO open strings and min fret > 1
+  const hasOpen = frets.some(f => f === 0);
   const active = frets.filter(f => f > 0);
   const minFret = active.length ? Math.min(...active) : 1;
-  const offset = minFret > 1 ? minFret - 1 : 0;
+  const offset = (!hasOpen && minFret > 1) ? minFret - 1 : 0;
 
-  let svg = `<svg class="chord-diagram" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">`;
+  let svg = `<svg class="chord-diagram" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">`;
 
-  // Nut or fret number
+  // Nut or fret number label
   if (offset === 0) {
-    svg += `<rect x="${left}" y="${top + nutH - 4}" width="${(strings-1)*stringW}" height="5" fill="#ccc" rx="2"/>`;
+    svg += `<rect x="${left}" y="${top - 5}" width="${(strings-1)*stringW}" height="6" fill="#ccc" rx="2"/>`;
   } else {
-    svg += `<text x="${left - 8}" y="${top + nutH + fretH}" font-size="11" fill="#aaa" text-anchor="end">${offset+1}fr</text>`;
+    svg += `<text x="${left - 6}" y="${top + fretH * 0.7}" font-size="11" fill="#888" text-anchor="end">${offset + 1}fr</text>`;
   }
 
   // Fret lines
   for (let f = 0; f <= fretCount; f++) {
-    const y = top + nutH + f * fretH;
-    svg += `<line x1="${left}" y1="${y}" x2="${left+(strings-1)*stringW}" y2="${y}" stroke="#444" stroke-width="1"/>`;
+    const y = top + f * fretH;
+    svg += `<line x1="${left}" y1="${y}" x2="${left + (strings-1)*stringW}" y2="${y}" stroke="#3a3a5a" stroke-width="1.2"/>`;
   }
 
   // String lines
   for (let s = 0; s < strings; s++) {
     const x = left + s * stringW;
-    svg += `<line x1="${x}" y1="${top + nutH}" x2="${x}" y2="${top + nutH + fretCount * fretH}" stroke="#666" stroke-width="1.5"/>`;
+    svg += `<line x1="${x}" y1="${top}" x2="${x}" y2="${top + fretCount * fretH}" stroke="#555" stroke-width="1.5"/>`;
   }
 
-  // Markers
+  // String name labels (e A D G B e) at bottom
+  const labels = ['E','A','D','G','B','e'];
+  for (let s = 0; s < strings; s++) {
+    const x = left + s * stringW;
+    svg += `<text x="${x}" y="${top + fretCount * fretH + 16}" text-anchor="middle" font-size="10" fill="#555">${labels[s]}</text>`;
+  }
+
+  // Markers (open, muted, pressed)
   for (let s = 0; s < strings; s++) {
     const x = left + s * stringW;
     const f = frets[s];
     if (f === -1) {
-      // muted
-      svg += `<text x="${x}" y="${top + 14}" text-anchor="middle" font-size="13" fill="#e94560">×</text>`;
+      svg += `<text x="${x}" y="${top - 12}" text-anchor="middle" font-size="14" fill="#e94560">✕</text>`;
     } else if (f === 0) {
-      // open
-      svg += `<circle cx="${x}" cy="${top + 10}" r="5" fill="none" stroke="#aaa" stroke-width="1.5"/>`;
+      svg += `<circle cx="${x}" cy="${top - 12}" r="5" fill="none" stroke="#aaa" stroke-width="1.8"/>`;
     } else {
       const fretPos = f - offset;
-      const cy = top + nutH + (fretPos - 0.5) * fretH;
-      svg += `<circle cx="${x}" cy="${cy}" r="9" fill="#e94560"/>`;
+      const cy = top + (fretPos - 0.5) * fretH;
+      svg += `<circle cx="${x}" cy="${cy}" r="10" fill="#e94560"/>`;
     }
   }
 
@@ -327,9 +341,12 @@ function drawChord(name) {
 
 function showChord(name) {
   const c = chords[name];
-  document.getElementById('modal-name').textContent = name;
-  document.getElementById('modal-desc').textContent = c.desc;
-  document.getElementById('modal-svg').innerHTML = drawChord(name);
+  document.getElementById('modal-card').innerHTML = `
+    <h3>${name}</h3>
+    <div>${drawChord(name)}</div>
+    <p>${c.desc}</p>
+    <p style="margin-top:16px;font-size:12px;color:#444;">点击外部关闭</p>
+  `;
   document.getElementById('modal').classList.add('show');
 }
 
