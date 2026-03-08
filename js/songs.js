@@ -772,7 +772,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'fengchuimailang',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '风吹麦浪',
     artist: '李健',
     baseKey: 'A', playKey: 'C', capo: 3,
