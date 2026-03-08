@@ -202,6 +202,7 @@ function setupSelector() {
 // ── Chord modal ──
 function setupModal() {
   document.addEventListener('click', e => {
+    if (editModeSongId) return; // 编辑模式下不弹弦图
     const chord = e.target.dataset.chord;
     if (chord && getChord(chord)) { showChord(chord); return; }
     if (e.target.id === 'modal') hideChord();
@@ -219,76 +220,107 @@ function hideChord() {
 
 // ── Edit Mode ──
 const pendingEdits = [];
+let pickedChord = null;
+let editModeSongId = null; // 当前编辑中的歌曲 id
 
 function toggleEditMode(songId, btn) {
   const songEl = document.getElementById('song-' + songId);
   const active = songEl.classList.toggle('edit-mode');
   btn.classList.toggle('active', active);
+  editModeSongId = active ? songId : null;
+  if (!active) { pickedChord = null; clearPickHighlight(); }
   document.getElementById('diff-fab').classList.toggle('show', pendingEdits.length > 0);
 }
 
+function clearPickHighlight() {
+  document.querySelectorAll('.seg.picked').forEach(s => s.classList.remove('picked'));
+}
+
+function applyChordMove(fromCtx, toCtx) {
+  const song = SONGS.find(s => s.id === fromCtx.songId);
+  const fromSeg = song.sections[fromCtx.si].lines[fromCtx.li][fromCtx.gi];
+  const toSeg   = song.sections[toCtx.si].lines[toCtx.li][toCtx.gi];
+
+  const origFrom = { ...fromSeg };
+  const origTo   = { ...toSeg };
+
+  // 记录 diff（两个 seg 都变了）
+  const sectionTitle = song.sections[fromCtx.si].title;
+  pendingEdits.push({
+    song: song.title, section: sectionTitle,
+    line: fromCtx.li + 1, seg: fromCtx.gi + 1,
+    from: { chord: origFrom.chord || '', lyric: origFrom.lyric || '' },
+    to:   { chord: '',                   lyric: origFrom.lyric || '' }
+  });
+  pendingEdits.push({
+    song: song.title, section: song.sections[toCtx.si].title,
+    line: toCtx.li + 1, seg: toCtx.gi + 1,
+    from: { chord: origTo.chord || '', lyric: origTo.lyric || '' },
+    to:   { chord: fromCtx.chord,      lyric: origTo.lyric || '' }
+  });
+
+  // 移动：把和弦从 from 移到 to，lyric 各自保留
+  fromSeg.chord = '';
+  toSeg.chord   = fromCtx.chord;
+
+  refreshSong(song);
+  setTimeout(() => {
+    const songEl = document.getElementById('song-' + fromCtx.songId);
+    songEl.classList.add('edit-mode');
+    songEl.querySelector('.edit-btn')?.classList.add('active');
+  }, 50);
+  document.getElementById('diff-fab').classList.add('show');
+}
+
 function setupEditMode() {
-  // seg 点击 → 编辑表单（只在 edit-mode 时响应）
   document.addEventListener('click', e => {
-    const seg = e.target.closest('.seg[data-song]');
-    if (!seg) return;
-    const songEl = seg.closest('.song');
+    // 和弦标记点击（.c 里的和弦文字）
+    const cSpan = e.target.closest('.c[data-chord]');
+    const seg   = e.target.closest('.seg[data-song]');
+    const songEl = seg ? seg.closest('.song') : null;
     if (!songEl || !songEl.classList.contains('edit-mode')) return;
-    e.stopPropagation();
+    e.stopImmediatePropagation();
 
-    const { song: songId, si, li, gi } = seg.dataset;
-    const song = SONGS.find(s => s.id === songId);
-    const origSeg = song.sections[si].lines[li][gi];
+    if (cSpan && seg && cSpan.dataset.chord) {
+      // 第一步：拾取和弦
+      if (pickedChord) {
+        // 已有拾取 → 放到这个 seg
+        const { song: songId, si, li, gi } = seg.dataset;
+        applyChordMove(pickedChord, { songId, si: +si, li: +li, gi: +gi });
+        pickedChord = null;
+        clearPickHighlight();
+      } else {
+        // 选中这个和弦
+        clearPickHighlight();
+        seg.classList.add('picked');
+        const { song: songId, si, li, gi } = seg.dataset;
+        pickedChord = { songId, si: +si, li: +li, gi: +gi, chord: cSpan.dataset.chord };
+      }
+      return;
+    }
 
-    document.getElementById('edit-title').textContent =
-      `${song.title} · ${song.sections[si].title} · 行${+li+1} · 第${+gi+1}段`;
-    document.getElementById('edit-chord').value = origSeg.chord || '';
-    document.getElementById('edit-lyric').value = origSeg.lyric || '';
+    // 无和弦 seg 点击 → 放下已拾取的和弦
+    if (seg && pickedChord) {
+      const { song: songId, si, li, gi } = seg.dataset;
+      if (songId !== pickedChord.songId) return;
+      applyChordMove(pickedChord, { songId, si: +si, li: +li, gi: +gi });
+      pickedChord = null;
+      clearPickHighlight();
+      return;
+    }
 
-    const modal = document.getElementById('edit-modal');
-    modal.classList.add('show');
-    modal._ctx = { songId, si: +si, li: +li, gi: +gi, orig: { chord: origSeg.chord, lyric: origSeg.lyric } };
+    // 点其他地方取消拾取
+    if (pickedChord) {
+      pickedChord = null;
+      clearPickHighlight();
+    }
   });
 
   document.getElementById('edit-cancel').onclick = () => {
     document.getElementById('edit-modal').classList.remove('show');
   };
-
-  document.getElementById('edit-apply').onclick = () => {
-    const modal = document.getElementById('edit-modal');
-    const { songId, si, li, gi, orig } = modal._ctx;
-    const newChord = document.getElementById('edit-chord').value.trim();
-    const newLyric = document.getElementById('edit-lyric').value;
-
-    if (newChord === (orig.chord || '') && newLyric === (orig.lyric || '')) {
-      modal.classList.remove('show');
-      return;
-    }
-
-    const song = SONGS.find(s => s.id === songId);
-    // 记录 diff
-    pendingEdits.push({
-      song: song.title,
-      section: song.sections[si].title,
-      line: li + 1,
-      seg: gi + 1,
-      from: { chord: orig.chord || '', lyric: orig.lyric || '' },
-      to:   { chord: newChord, lyric: newLyric }
-    });
-
-    // 应用到数据（临时预览）
-    song.sections[si].lines[li][gi] = { chord: newChord, lyric: newLyric };
-    refreshSong(song);
-
-    // 重新进入编辑模式（refreshSong 会重渲染）
-    setTimeout(() => {
-      const songEl = document.getElementById('song-' + songId);
-      songEl.classList.add('edit-mode');
-      songEl.querySelector('.edit-btn')?.classList.add('active');
-    }, 50);
-
-    document.getElementById('diff-fab').classList.add('show');
-    modal.classList.remove('show');
+  document.getElementById('edit-apply').onclick  = () => {
+    document.getElementById('edit-modal').classList.remove('show');
   };
 
   document.getElementById('diff-fab').onclick = () => {
@@ -298,12 +330,10 @@ function setupEditMode() {
       `    原: chord="${e.from.chord}" lyric="${e.from.lyric}"\n` +
       `    改: chord="${e.to.chord}" lyric="${e.to.lyric}"`
     );
-    const text = `=== 和弦歌词 diff ===\n` + lines.join('\n\n');
+    const text = '=== 和弦歌词 diff ===\n' + lines.join('\n\n');
     navigator.clipboard.writeText(text).then(() => {
       document.getElementById('diff-fab').textContent = '✅ 已复制';
-      setTimeout(() => {
-        document.getElementById('diff-fab').textContent = '📋 复制 diff';
-      }, 2000);
+      setTimeout(() => { document.getElementById('diff-fab').textContent = '📋 复制 diff'; }, 2000);
     });
   };
 }
@@ -312,6 +342,6 @@ function setupEditMode() {
 document.addEventListener('DOMContentLoaded', () => {
   renderAll();
   setupSelector();
+  setupEditMode(); // 必须在 setupModal 前，stopImmediatePropagation 才生效
   setupModal();
-  setupEditMode();
 });
