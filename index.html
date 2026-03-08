@@ -27,42 +27,43 @@
       font-size: 14px; font-weight: 600; color: #e94560; cursor: pointer;
     }
 
-    .lyrics-section { max-width: 500px; margin: 0 auto; }
-
+    .lyrics-section { max-width: 520px; margin: 0 auto; }
     .section-title {
       font-size: 11px; color: #555;
       text-transform: uppercase; letter-spacing: 1px;
       margin: 24px 0 10px;
     }
 
-    .block {
-      margin-bottom: 16px;
+    .lyric-line {
+      margin-bottom: 14px;
+      /* Allow segments to wrap naturally between lines */
     }
 
-    .chord-row {
-      font-family: 'Courier New', 'SF Mono', monospace;
-      font-size: 13px;
+    /* Each segment: chord on top, lyric below, stays together */
+    .seg {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: bottom;
+      white-space: nowrap;
+    }
+
+    /* Chord label floating above lyric */
+    .c {
+      font-size: 12px;
       font-weight: 700;
       color: #e94560;
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .chord-row span[data-chord] {
+      line-height: 1.6;
+      min-height: 1.6em;
       cursor: pointer;
-      margin-right: 12px;
-    }
-    .chord-row span[data-chord]:last-child {
-      margin-right: 0;
+      padding-right: 4px;
     }
 
-    .lyric-row {
+    /* Lyric text part */
+    .w {
       font-size: 17px;
       line-height: 1.7;
       color: #ddd;
+      white-space: nowrap;
     }
 
     /* Modal */
@@ -101,172 +102,137 @@
 
 <div class="lyrics-section">
 
-  <div class="section-title">主歌</div>
+<div class="section-title">主歌</div>
+<!-- C         D      Bm   Em -->
+<!-- 你在南方的艳阳里  大雪纷飞  -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="C">C</span><span class="w">你在南方的</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">艳阳里  </span></span><span class="seg"><span class="c" data-chord="Bm">Bm</span><span class="w">大雪</span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">纷飞</span></span>
+</div>
+<!-- Am             D       G -->
+<!-- 我在北方的寒夜里四季如春  -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">我在北方的寒夜里</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">四季</span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">如春</span></span>
+</div>
+<!-- Am G    C        D        Bm       Em -->
+<!--    如果天黑之前来的及 我要忘了你的眼睛 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">如果</span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">天黑之前</span></span><span class="seg"><span class="c" data-chord="C">C</span><span class="w">来的及 </span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">我要</span></span><span class="seg"><span class="c" data-chord="Bm">Bm</span><span class="w">忘了</span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">你的眼睛</span></span>
+</div>
+<!--        Am    D      G -->
+<!-- 穷极一生 做不完 一场梦 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">穷极一生 </span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">做不完 </span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">一场梦</span></span>
+</div>
 
-  <div class="block">
-    <div class="chord-row"><span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
-    <div class="lyric-row">你在南方的艳阳里 大雪纷飞</div>
-  </div>
+<div class="section-title">副歌</div>
+<!--    G      D         Em         Am     D     G -->
+<!-- 她不再和谁谈论相逢的孤岛  因为心里早已荒无人烟 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="G">G</span><span class="w">她不再和</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">谁谈论</span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">相逢的孤岛  </span></span><span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">因为</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">心里</span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">早已荒无人烟</span></span>
+</div>
+<!--     G         D     Em     Am       D        G -->
+<!-- 他的心再也装不下一个家  做一个 只对自己说谎的哑巴 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="G">G</span><span class="w">他的心再也</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">装不下</span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">一个家  </span></span><span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">做一个 </span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">只对</span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">自己说谎的哑巴</span></span>
+</div>
+<!-- G      C            D            Bm       Em -->
+<!-- 他说你 任何为人称道的美丽  不及他第一次遇见你 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="G">G</span><span class="w">他说你 </span></span><span class="seg"><span class="c" data-chord="C">C</span><span class="w">任何为人称道的</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">美丽  </span></span><span class="seg"><span class="c" data-chord="Bm">Bm</span><span class="w">不及他</span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">第一次遇见你</span></span>
+</div>
+<!-- Am      D           G -->
+<!-- 时光苟延残喘  无可奈何 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">时光苟延残喘  </span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">无可奈何</span></span>
+</div>
+<!-- Am  G    C          D            Bm     Em -->
+<!--     如果所有土地连在一起 走上一生只为拥抱你 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">如果所有</span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">土地</span></span><span class="seg"><span class="c" data-chord="C">C</span><span class="w">连在一起 </span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">走上一生</span></span><span class="seg"><span class="c" data-chord="Bm">Bm</span><span class="w">只为</span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">拥抱你</span></span>
+</div>
+<!--   Am   D       G -->
+<!-- 喝醉了他的梦 晚安 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">喝醉了</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">他的梦 </span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">晚安</span></span>
+</div>
 
-  <div class="block">
-    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">我在北方的寒夜里 四季如春</div>
-  </div>
+<div class="section-title">间奏</div>
+<!--    G      D         Em      Am       D     G -->
+<!-- 他听见有人唱着古老的歌  唱着今天还在远方发生的 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="G">G</span><span class="w">他听见有人</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">唱着古老的歌  </span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">唱着今天</span></span><span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">还在</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">远方</span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">发生的</span></span>
+</div>
+<!--   G         D     Em        Am     D    G -->
+<!-- 像在她眼睛里看到的孤岛  没有悲伤但也没有花朵 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="G">G</span><span class="w">像在她</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">眼睛里看到的孤岛  </span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">没有悲伤</span></span><span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">但也</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">没有</span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">花朵</span></span>
+</div>
 
-  <div class="block">
-    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="G">G</span> <span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
-    <div class="lyric-row">如果天黑之前来得及 我要忘了你的眼睛</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">穷极一生 做不完 一场梦</div>
-  </div>
-
-  <div class="section-title">副歌</div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">她不再和谁谈论相逢的孤岛 因为心里早已荒无人烟</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">他的心再也装不下一个家 做一个只对自己说谎的哑巴</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
-    <div class="lyric-row">他说你 任何为人称道的美丽 不及他第一次遇见你</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">时光苟延残喘 无可奈何</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="G">G</span> <span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
-    <div class="lyric-row">如果所有土地连在一起 走上一生只为拥抱你</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data="G">G</span></div>
-    <div class="lyric-row">喝醉了他的梦 晚安</div>
-  </div>
-
-  <div class="section-title">间奏</div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">他听见有人唱着古老的歌 唱着今天还在远方发生的</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">像在她眼睛里看到的孤岛 没有悲伤但也没有花朵</div>
-  </div>
-
-  <div class="section-title">尾声</div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">大梦初醒荒唐了 一生</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="C">C</span></div>
-    <div class="lyric-row">南山南 北秋悲 南山有谷堆</div>
-  </div>
-
-  <div class="block">
-    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="C">C</span> <span data-chord="G">G</span></div>
-    <div class="lyric-row">南风喃 北海北 北海有墓碑</div>
-  </div>
+<div class="section-title">尾声</div>
+<!--      Am    D      G -->
+<!-- 大梦初醒荒唐了  一生 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="Am">Am</span><span class="w">大梦初醒</span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">荒唐了  </span></span><span class="seg"><span class="c" data-chord="G">G</span><span class="w">一生</span></span>
+</div>
+<!-- G9   D   Em  C  G9 Bm   C -->
+<!-- 南山南  北秋悲 南山有谷堆 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="G">G</span><span class="w">南山南  </span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">北秋悲 </span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">南山</span></span><span class="seg"><span class="c" data-chord="C">C</span><span class="w">有谷堆</span></span>
+</div>
+<!-- G9   D   Em  C  G9 D   G9 -->
+<!-- 南风喃  北海北 北海有墓碑 -->
+<div class="lyric-line">
+  <span class="seg"><span class="c" data-chord="G">G</span><span class="w">南风喃  </span></span><span class="seg"><span class="c" data-chord="D">D</span><span class="w">北海北 </span></span><span class="seg"><span class="c" data-chord="Em">Em</span><span class="w">北海</span></span><span class="seg"><span class="c" data-chord="C">C</span><span class="w">有墓碑</span></span>
+</div>
 
 </div>
 
-<!-- Modal -->
 <div class="modal" id="modal">
   <div class="modal-card" id="modal-card"></div>
 </div>
 
 <script>
-document.addEventListener('click', function(e) {
+document.addEventListener('click', e => {
   const chord = e.target.dataset.chord;
-  if (chord) { showChord(chord); return; }
-  if (e.target.id === 'modal') { hideChord(); }
+  if (chord && CHORDS[chord]) { showChord(chord); return; }
+  if (e.target.id === 'modal') hideChord();
 });
 
-const chords = {
-  G:  { desc: 'G 大调',          frets: [3,2,0,0,3,3] },
-  D:  { desc: 'D 大调',          frets: [-1,-1,0,2,3,2] },
-  Em: { desc: 'E 小调（开放）',    frets: [0,2,2,0,0,0] },
-  Am: { desc: 'A 小调（开放）',    frets: [-1,0,2,2,1,0] },
-  C:  { desc: 'C 大调',          frets: [-1,3,2,0,1,0] },
-  Bm: { desc: 'B 小调（横按2品）', frets: [-1,2,4,4,3,2], barre: 2 }
+const CHORDS = {
+  G:  { desc:'G 大调',           frets:[3,2,0,0,3,3] },
+  D:  { desc:'D 大调',           frets:[-1,-1,0,2,3,2] },
+  Em: { desc:'E 小调（开放）',    frets:[0,2,2,0,0,0] },
+  Am: { desc:'A 小调（开放）',    frets:[-1,0,2,2,1,0] },
+  C:  { desc:'C 大调',           frets:[-1,3,2,0,1,0] },
+  Bm: { desc:'B 小调（横按2品）', frets:[-1,2,4,4,3,2], barre:2 }
 };
 
 function drawChord(name) {
-  const c = chords[name];
-  const frets = c.frets;
-  const W=180, H=170, left=36, top=32, stringW=22, fretH=24, strings=6, fretCount=4;
-  const hasOpen = frets.some(f => f===0);
-  const active = frets.filter(f => f>0);
-  const minFret = active.length ? Math.min(...active) : 1;
-  const offset = (!hasOpen && minFret>1) ? minFret-1 : 0;
-  let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block;margin:0 auto">`;
-  if (offset===0) {
-    svg += `<rect x="${left}" y="${top-5}" width="${(strings-1)*stringW}" height="6" fill="#ccc" rx="2"/>`;
-  } else {
-    svg += `<text x="${left-6}" y="${top+fretH*0.7}" font-size="11" fill="#888" text-anchor="end">${offset+1}fr</text>`;
-  }
-  if (c.barre) {
-    const by = top+(c.barre-offset-0.5)*fretH;
-    svg += `<rect x="${left}" y="${by-9}" width="${(strings-1)*stringW}" height="18" fill="#c0384f" rx="9" opacity="0.7"/>`;
-  }
-  for (let f=0; f<=fretCount; f++) {
-    const y=top+f*fretH;
-    svg += `<line x1="${left}" y1="${y}" x2="${left+(strings-1)*stringW}" y2="${y}" stroke="#3a3a5a" stroke-width="1.2"/>`;
-  }
-  for (let s=0; s<strings; s++) {
-    const x=left+s*stringW;
-    svg += `<line x1="${x}" y1="${top}" x2="${x}" y2="${top+fretCount*fretH}" stroke="#555" stroke-width="1.5"/>`;
-  }
-  const labels=['E','A','D','G','B','e'];
-  for (let s=0; s<strings; s++) {
-    const x=left+s*stringW;
-    svg += `<text x="${x}" y="${top+fretCount*fretH+16}" text-anchor="middle" font-size="10" fill="#555">${labels[s]}</text>`;
-  }
-  for (let s=0; s<strings; s++) {
-    const x=left+s*stringW;
-    const f=frets[s];
-    if (f===-1) {
-      svg += `<text x="${x}" y="${top-12}" text-anchor="middle" font-size="14" fill="#e94560">✕</text>`;
-    } else if (f===0) {
-      svg += `<circle cx="${x}" cy="${top-12}" r="5" fill="none" stroke="#aaa" stroke-width="1.8"/>`;
-    } else {
-      const cy=top+(f-offset-0.5)*fretH;
-      svg += `<circle cx="${x}" cy="${cy}" r="10" fill="#e94560"/>`;
-    }
-  }
-  svg += `</svg>`;
-  return svg;
+  const c=CHORDS[name],f=c.frets;
+  const W=180,H=170,L=36,T=32,SW=22,FH=24,S=6,FC=4;
+  const hasOpen=f.some(x=>x===0),active=f.filter(x=>x>0);
+  const min=active.length?Math.min(...active):1,off=(!hasOpen&&min>1)?min-1:0;
+  let s=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block;margin:0 auto">`;
+  if(off===0)s+=`<rect x="${L}" y="${T-5}" width="${(S-1)*SW}" height="6" fill="#ccc" rx="2"/>`;
+  else s+=`<text x="${L-6}" y="${T+FH*.7}" font-size="11" fill="#888" text-anchor="end">${off+1}fr</text>`;
+  if(c.barre){const by=T+(c.barre-off-.5)*FH;s+=`<rect x="${L}" y="${by-9}" width="${(S-1)*SW}" height="18" fill="#c0384f" rx="9" opacity=".7"/>`;}
+  for(let i=0;i<=FC;i++){const y=T+i*FH;s+=`<line x1="${L}" y1="${y}" x2="${L+(S-1)*SW}" y2="${y}" stroke="#3a3a5a" stroke-width="1.2"/>`;}
+  for(let i=0;i<S;i++){const x=L+i*SW;s+=`<line x1="${x}" y1="${T}" x2="${x}" y2="${T+FC*FH}" stroke="#555" stroke-width="1.5"/>`;}
+  ['E','A','D','G','B','e'].forEach((lb,i)=>{const x=L+i*SW;s+=`<text x="${x}" y="${T+FC*FH+16}" text-anchor="middle" font-size="10" fill="#555">${lb}</text>`;});
+  f.forEach((fret,i)=>{
+    const x=L+i*SW;
+    if(fret===-1)s+=`<text x="${x}" y="${T-12}" text-anchor="middle" font-size="14" fill="#e94560">✕</text>`;
+    else if(fret===0)s+=`<circle cx="${x}" cy="${T-12}" r="5" fill="none" stroke="#aaa" stroke-width="1.8"/>`;
+    else{const cy=T+(fret-off-.5)*FH;s+=`<circle cx="${x}" cy="${cy}" r="10" fill="#e94560"/>`;}
+  });
+  return s+'</svg>';
 }
-
-function showChord(name) {
-  if (!chords[name]) return;
-  const c = chords[name];
-  document.getElementById('modal-card').innerHTML = `
-    <h3>${name}</h3>${drawChord(name)}
-    <div class="desc">${c.desc}</div>
-    <div class="hint">点击外部关闭</div>
-  `;
+function showChord(name){
+  document.getElementById('modal-card').innerHTML=
+    `<h3>${name}</h3>${drawChord(name)}<div class="desc">${CHORDS[name].desc}</div><div class="hint">点击外部关闭</div>`;
   document.getElementById('modal').classList.add('show');
 }
-function hideChord() {
-  document.getElementById('modal').classList.remove('show');
-}
+function hideChord(){document.getElementById('modal').classList.remove('show');}
 </script>
 </body>
 </html>
