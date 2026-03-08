@@ -927,7 +927,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'tongnian',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '童年',
     artist: '罗大佑',
     baseKey: 'G', playKey: 'G', capo: 0,
