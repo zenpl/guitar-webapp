@@ -497,4 +497,41 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'banma',
+    importVer: 2, locked: false,
+    title: '斑马斑马',
+    artist: '宋冬野',
+    baseKey: 'G', playKey: 'C', capo: 7,
+    chords: ['Fmaj7','G','Em7','Am','Cadd9'],
+    sections: [
+      { title: '主歌A', lines: [
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你' }, { chord:'Em7', lyric:'不' }, { chord:'', lyric:'要睡着啦' }, { chord:'Am', lyric:'' }],
+        [{ chord:'', lyric:'再' }, { chord:'Fmaj7', lyric:'给' }, { chord:'', lyric:'我看看你' }, { chord:'G', lyric:'' }, { chord:'', lyric:'受伤的' }, { chord:'Cadd9', lyric:'尾' }, { chord:'', lyric:'巴' }],
+        [{ chord:'', lyric:'我' }, { chord:'Fmaj7', lyric:'不' }, { chord:'', lyric:'想去触碰' }, { chord:'G', lyric:'' }, { chord:'', lyric:'你' }, { chord:'Em7', lyric:'伤' }, { chord:'', lyric:'口的' }, { chord:'Am', lyric:'疤' }],
+        [{ chord:'', lyric:'我' }, { chord:'Fmaj7', lyric:'只' }, { chord:'', lyric:'想掀起你' }, { chord:'G', lyric:'' }, { chord:'', lyric:'的头' }, { chord:'Am', lyric:'发' }],
+      ]},
+      { title: '主歌B', lines: [
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你' }, { chord:'Em7', lyric:'回' }, { chord:'', lyric:'到了你的家' }, { chord:'Am', lyric:'' }],
+        [{ chord:'', lyric:'可我' }, { chord:'Fmaj7', lyric:'浪' }, { chord:'', lyric:'费着我' }, { chord:'G', lyric:'寒' }, { chord:'', lyric:'冷的年华' }, { chord:'Cadd9', lyric:'' }],
+        [{ chord:'', lyric:'你的' }, { chord:'Fmaj7', lyric:'城' }, { chord:'', lyric:'市没有一' }, { chord:'G', lyric:'' }, { chord:'', lyric:'扇门' }, { chord:'Em7', lyric:'为' }, { chord:'', lyric:'我打开' }, { chord:'Am', lyric:'啊' }],
+        [{ chord:'', lyric:'我' }, { chord:'Fmaj7', lyric:'终' }, { chord:'', lyric:'究还要回' }, { chord:'G', lyric:'' }, { chord:'', lyric:'到路' }, { chord:'Am', lyric:'上' }],
+      ]},
+      { title: '主歌C', lines: [
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你来自' }, { chord:'Em7', lyric:'南' }, { chord:'', lyric:'方的红色' }, { chord:'Am', lyric:'啊' }],
+        [{ chord:'', lyric:'是否' }, { chord:'Fmaj7', lyric:'也' }, { chord:'', lyric:'是个动' }, { chord:'G', lyric:'人' }, { chord:'', lyric:'的故事' }, { chord:'Cadd9', lyric:'啊' }],
+        [{ chord:'', lyric:'你' }, { chord:'Fmaj7', lyric:'隔' }, { chord:'', lyric:'壁的' }, { chord:'G', lyric:'戏' }, { chord:'', lyric:'子如果' }, { chord:'Em7', lyric:'不' }, { chord:'', lyric:'能留' }, { chord:'Am', lyric:'下' }],
+        [{ chord:'', lyric:'谁' }, { chord:'Fmaj7', lyric:'会' }, { chord:'', lyric:'和你' }, { chord:'G', lyric:'睡' }, { chord:'', lyric:'到天' }, { chord:'Am', lyric:'亮' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你还' }, { chord:'Em7', lyric:'记' }, { chord:'', lyric:'得我' }, { chord:'Am', lyric:'吗' }, { chord:'', lyric:'？我是' }, { chord:'Fmaj7', lyric:'只' }, { chord:'', lyric:'会歌唱' }, { chord:'G', lyric:'的' }, { chord:'', lyric:'傻' }, { chord:'Cadd9', lyric:'瓜' }],
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你' }, { chord:'Em7', lyric:'睡' }, { chord:'', lyric:'吧睡' }, { chord:'Am', lyric:'吧' }, { chord:'', lyric:'我会' }, { chord:'Fmaj7', lyric:'背' }, { chord:'', lyric:'上吉他' }, { chord:'G', lyric:'离' }, { chord:'', lyric:'开北' }, { chord:'Cadd9', lyric:'方' }],
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你还' }, { chord:'Em7', lyric:'记' }, { chord:'', lyric:'得我' }, { chord:'Am', lyric:'吗' }, { chord:'', lyric:'？我是' }, { chord:'Fmaj7', lyric:'强' }, { chord:'', lyric:'说着忧' }, { chord:'G', lyric:'愁' }, { chord:'', lyric:'的孩子' }, { chord:'Cadd9', lyric:'啊' }],
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你' }, { chord:'Em7', lyric:'睡' }, { chord:'', lyric:'吧睡' }, { chord:'Am', lyric:'吧' }, { chord:'', lyric:'我把' }, { chord:'Fmaj7', lyric:'你' }, { chord:'', lyric:'的青草' }, { chord:'G', lyric:'带' }, { chord:'', lyric:'回故' }, { chord:'Cadd9', lyric:'乡' }],
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你' }, { chord:'Em7', lyric:'不' }, { chord:'', lyric:'要睡着啦' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'我只' }, { chord:'Fmaj7', lyric:'是' }, { chord:'', lyric:'个匆忙的' }, { chord:'G', lyric:'' }, { chord:'', lyric:'旅人' }, { chord:'Cadd9', lyric:'啊' }],
+        [{ chord:'Fmaj7', lyric:'斑' }, { chord:'', lyric:'马斑' }, { chord:'G', lyric:'马' }, { chord:'', lyric:'你' }, { chord:'Em7', lyric:'睡' }, { chord:'', lyric:'吧睡' }, { chord:'Am', lyric:'吧' }, { chord:'', lyric:'我要' }, { chord:'Fmaj7', lyric:'卖' }, { chord:'', lyric:'掉我的' }, { chord:'G', lyric:'房' }, { chord:'', lyric:'子浪迹天' }, { chord:'Fmaj7', lyric:'涯' }],
+      ]},
+    ],
+  },
 ];
