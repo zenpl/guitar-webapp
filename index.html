@@ -112,6 +112,23 @@
     .song.edit-mode .seg:hover { outline-color: #facc15; background: rgba(250,204,21,0.07); }
     .song.edit-mode .seg.picked { outline: 2px solid #facc15; background: rgba(250,204,21,0.15); }
     .song.edit-mode .seg.picked .c { color: #facc15; }
+    /* 移动栏 */
+    .move-bar {
+      display: none; position: fixed; bottom: 72px; left: 50%; transform: translateX(-50%);
+      z-index: 200; background: #16213e; border: 1px solid #facc15;
+      border-radius: 12px; padding: 8px 16px; gap: 12px;
+      align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .move-bar.show { display: flex; }
+    .move-bar button {
+      background: #0f3460; border: 1px solid #333; border-radius: 8px;
+      color: #fff; font-size: 18px; padding: 4px 14px; cursor: pointer;
+    }
+    .move-bar button:disabled { opacity: 0.3; }
+    .move-bar button:hover:not(:disabled) { border-color: #facc15; }
+    #move-bar-chord { color: #facc15; font-weight: 700; font-size: 16px; min-width: 40px; text-align: center; }
+    #move-done { font-size: 16px; color: #4ade80; border-color: #166534; }
+
     .diff-fab {
       position: fixed; bottom: 24px; right: 24px; z-index: 200;
       background: #facc15; color: #000; font-weight: 700;
@@ -187,6 +204,14 @@
       <button class="btn-apply"  id="edit-apply">应用</button>
     </div>
   </div>
+</div>
+
+<!-- Move Bar -->
+<div class="move-bar" id="move-bar">
+  <button id="move-left">◀</button>
+  <span id="move-bar-chord"></span>
+  <button id="move-right">▶</button>
+  <button id="move-done">✓</button>
 </div>
 
 <!-- Diff FAB -->
