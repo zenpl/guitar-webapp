@@ -26,6 +26,8 @@ const CHORDS = {
   Gsus4: { desc:'Gsus4',                 frets:[3,2,0,0,1,3] },
   F7:    { desc:'F7（横按1品）',          frets:[1,3,3,2,1,1], barre:1 },  // same as F but with b7
   Em7:   { desc:'Em7',                   frets:[0,2,2,0,3,0] },
+  Cadd9: { desc:'Cadd9',                 frets:[-1,3,2,0,3,3] },
+  Cmaj7: { desc:'Cmaj7',                 frets:[-1,3,2,0,0,0] },
   D7:    { desc:'D7',                    frets:[-1,-1,0,2,1,2] },
   'E/B': { desc:'E/B（低音B）',          frets:[-1,2,2,1,0,0] },
   G7:    { desc:'G7',                    frets:[3,2,0,0,0,1] },

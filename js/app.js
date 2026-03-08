@@ -114,10 +114,10 @@ function renderSong(song) {
   const playKey = transposeNote(song.playKey.replace(/m$/, ''), s) + (song.playKey.endsWith('m') ? 'm' : '');
   const capo = ((noteIndex(baseKey.replace(/m$/,'')) - noteIndex(playKey.replace(/m$/,'')) + 12) % 12);
   const ver = song.importVer || 1;
-  const locked = song.locked || false;
+  const locked = getLocked(song.id);
 
   return `
-<div class="song hidden${locked ? ' is-locked' : ''}" id="song-${song.id}">
+<div class="song hidden" id="song-${song.id}">
   <div class="song-header">
     <h2>${song.title}<span class="ver-badge">v${ver}</span><button class="lock-btn${locked ? ' locked' : ''}" onclick="toggleLock('${song.id}')">${locked ? '🔒' : '🔓'}</button></h2>
     <div class="artist">${song.artist}</div>
@@ -156,10 +156,29 @@ function doTranspose(songId, delta) {
   refreshSong(song);
 }
 
+// ── Lock persistence (localStorage) ──
+const LOCK_KEY = 'guitar_locked_songs';
+
+function getLocked(songId) {
+  try {
+    const data = JSON.parse(localStorage.getItem(LOCK_KEY) || '{}');
+    return !!data[songId];
+  } catch { return false; }
+}
+
+function setLocked(songId, val) {
+  try {
+    const data = JSON.parse(localStorage.getItem(LOCK_KEY) || '{}');
+    if (val) data[songId] = true;
+    else delete data[songId];
+    localStorage.setItem(LOCK_KEY, JSON.stringify(data));
+  } catch {}
+}
+
 function toggleLock(songId) {
   const song = SONGS.find(s => s.id === songId);
   if (!song) return;
-  song.locked = !song.locked;
+  setLocked(songId, !getLocked(songId));
   refreshSong(song);
 }
 
