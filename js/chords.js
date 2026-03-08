@@ -30,6 +30,8 @@ const CHORDS = {
   Cmaj7: { desc:'Cmaj7',                 frets:[-1,3,2,0,0,0] },
   C7:    { desc:'C7',                    frets:[-1,3,2,3,1,0] },
   B:     { desc:'B 大调（横按2品）',     frets:[-1,2,4,4,4,2], barre:2 },
+  B7:    { desc:'B7',                    frets:[-1,2,4,2,4,2], barre:2 },
+  'A/C#':{ desc:'A/C#（低音C#）',       frets:[4,4,2,2,2,0] },
   D7:    { desc:'D7',                    frets:[-1,-1,0,2,1,2] },
   'E/B': { desc:'E/B（低音B）',          frets:[-1,2,2,1,0,0] },
   G7:    { desc:'G7',                    frets:[3,2,0,0,0,1] },
