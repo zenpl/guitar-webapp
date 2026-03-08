@@ -17,7 +17,12 @@ const CHORDS = {
   G7:  { desc:'G7',                     frets:[3,2,0,0,0,1] },
   'G/B': { desc:'G/B（低音B）',          frets:[-1,2,0,0,3,3] },
   'C/G': { desc:'C/G（低音G）',          frets:[3,3,2,0,1,0] },
+  'C/E': { desc:'C/E（低音E）',          frets:[0,3,2,0,1,0] },
   Am7:   { desc:'Am7',                   frets:[-1,0,2,0,1,0] },
+  'Am7/G': { desc:'Am7/G（低音G）',      frets:[3,0,2,0,1,0] },
+  Fmaj9: { desc:'Fmaj9',                 frets:[-1,3,3,0,1,0] },
+  Dm7:   { desc:'Dm7',                   frets:[-1,-1,0,2,1,1] },
+  'D/F#': { desc:'D/F#（低音F#）',       frets:[2,-1,0,2,3,2] },
   Gm:  { desc:'G 小调（横按3品）',       frets:[3,5,5,3,3,3], barre:3 },
 
   // ── Barre ──
