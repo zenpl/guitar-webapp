@@ -97,9 +97,18 @@ function renderSong(song) {
         const cSpan = hasChord
           ? `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`
           : `<span class="c"> </span>`;
-        const lyric = hasChord && seg.lyric.length > 0
-          ? `<span class="w-mark">${seg.lyric[0]}</span>${seg.lyric.slice(1)}`
-          : seg.lyric;
+        const isEditMode = editModeSongId === song.id;
+        let lyric;
+        if (isEditMode && seg.lyric) {
+          lyric = [...seg.lyric].map((ch, ci) => {
+            const cls = (hasChord && ci === 0) ? 'w-mark wc' : 'wc';
+            return `<span class="${cls}" data-ci="${ci}">${ch}</span>`;
+          }).join('');
+        } else {
+          lyric = hasChord && seg.lyric.length > 0
+            ? `<span class="w-mark">${seg.lyric[0]}</span>${seg.lyric.slice(1)}`
+            : seg.lyric;
+        }
         return `<span class="seg${hasChord?' has-chord':''}" ${editAttrs}>${cSpan}<span class="w">${lyric}</span></span>`;
       }).join(' ');
       return `<div class="lyric-line">${segs}</div>`;
@@ -242,12 +251,36 @@ function showMoveBar(ctx) {
   const song = SONGS.find(s => s.id === ctx.songId);
   const line = song.sections[ctx.si].lines[ctx.li];
   bar.querySelector('#move-bar-chord').textContent = ctx.chord;
-  bar.querySelector('#move-left').disabled  = ctx.gi <= 0;
-  bar.querySelector('#move-right').disabled = ctx.gi >= line.length - 1;
+  bar.querySelector('#move-left').disabled  = false; // 行首也可左移（插入空位）
+  bar.querySelector('#move-right').disabled = false; // 行尾也可右移（插入空位）
   bar.classList.add('show');
 }
 function hideMoveBar() {
   document.getElementById('move-bar').classList.remove('show');
+}
+
+function recordAndRefresh(song, si, li) {
+  // 简化：记录整行变化（diff 粒度按行）
+  const title = `${song.sections[si].title} 行${li+1}`;
+  pendingEdits.push({ song: song.title, section: title, line: li+1, seg: 0,
+    from: { chord: '(多处)', lyric: '(多处)' },
+    to:   { chord: '(见预览)', lyric: '(见预览)' }
+  });
+  refreshSong(song);
+}
+
+function reenterEditMode(songId, si, li, gi) {
+  setTimeout(() => {
+    const songEl = document.getElementById('song-' + songId);
+    songEl.classList.add('edit-mode');
+    songEl.querySelector('.edit-btn')?.classList.add('active');
+    if (gi != null) {
+      const newSeg = songEl.querySelector(`.seg[data-si="${si}"][data-li="${li}"][data-gi="${gi}"]`);
+      if (newSeg) { newSeg.classList.add('picked'); }
+    }
+    showMoveBar(pickedChord);
+    document.getElementById('diff-fab').classList.add('show');
+  }, 50);
 }
 
 function doMove(dir) {
@@ -256,44 +289,53 @@ function doMove(dir) {
   const song = SONGS.find(s => s.id === songId);
   const line = song.sections[si].lines[li];
   const toGi = gi + dir;
-  if (toGi < 0 || toGi >= line.length) return;
 
-  const fromSeg = line[gi];
-  const toSeg   = line[toGi];
+  if (toGi < 0) {
+    // 行首左移 → 在最前面插入空 seg
+    line.unshift({ chord, lyric: '' });
+    pickedChord = { ...pickedChord, gi: 0 };
+    line[1].chord = ''; // 原来位置清空
+  } else if (toGi >= line.length) {
+    // 行尾右移 → 在末尾插入空 seg
+    line.push({ chord, lyric: '' });
+    pickedChord = { ...pickedChord, gi: line.length - 1 };
+    line[gi].chord = '';
+  } else {
+    // 常规移动：把和弦移到目标，原位清空
+    const fromSeg = line[gi];
+    const toSeg   = line[toGi];
+    const movedChord = fromSeg.chord;
+    fromSeg.chord = '';
+    // 如果目标有和弦，把它也清掉（和弦只能有一个落点）
+    toSeg.chord = movedChord;
+    pickedChord = { ...pickedChord, gi: toGi };
+  }
 
-  // 记录 diff
-  pendingEdits.push({
-    song: song.title, section: song.sections[si].title,
-    line: li + 1, seg: gi + 1,
-    from: { chord: fromSeg.chord || '', lyric: fromSeg.lyric || '' },
-    to:   { chord: '',                  lyric: fromSeg.lyric || '' }
-  });
-  pendingEdits.push({
-    song: song.title, section: song.sections[si].title,
-    line: li + 1, seg: toGi + 1,
-    from: { chord: toSeg.chord || '', lyric: toSeg.lyric || '' },
-    to:   { chord, lyric: toSeg.lyric || '' }
-  });
+  recordAndRefresh(song, si, li);
+  reenterEditMode(songId, si, li, pickedChord.gi);
+}
 
-  // 执行移动
-  const movedChord = fromSeg.chord;
-  fromSeg.chord = toSeg.chord;   // 如目标有和弦则互换，否则清空
-  toSeg.chord   = movedChord;
+// 点字符把和弦精确落到该字
+function doMoveToChar(ci) {
+  if (!pickedChord) return;
+  const { songId, si, li, gi, chord } = pickedChord;
+  const song = SONGS.find(s => s.id === songId);
+  const line = song.sections[si].lines[li];
+  const seg  = line[gi];
 
-  // 更新 pickedChord 位置跟踪
-  pickedChord = { ...pickedChord, gi: toGi };
+  if (ci === 0) return; // 已经在第一个字，不动
 
-  refreshSong(song);
-  // 重新选中移动后的 seg
-  setTimeout(() => {
-    const songEl = document.getElementById('song-' + songId);
-    songEl.classList.add('edit-mode');
-    songEl.querySelector('.edit-btn')?.classList.add('active');
-    const newSeg = songEl.querySelector(`.seg[data-si="${si}"][data-li="${li}"][data-gi="${toGi}"]`);
-    if (newSeg) newSeg.classList.add('picked');
-    showMoveBar(pickedChord);
-    document.getElementById('diff-fab').classList.add('show');
-  }, 50);
+  // 把歌词从 ci 处切分：前半段保留原和弦，后半段新增 seg 带和弦
+  const before = seg.lyric.slice(0, ci);
+  const after  = seg.lyric.slice(ci);
+
+  seg.lyric  = before;
+  seg.chord  = '';
+  line.splice(gi + 1, 0, { chord, lyric: after });
+  pickedChord = { ...pickedChord, gi: gi + 1 };
+
+  recordAndRefresh(song, si, li);
+  reenterEditMode(songId, si, li, pickedChord.gi);
 }
 
 function setupEditMode() {
@@ -302,6 +344,14 @@ function setupEditMode() {
     const seg   = e.target.closest('.seg[data-song]');
     const songEl = seg ? seg.closest('.song') : null;
     if (!songEl || !songEl.classList.contains('edit-mode')) return;
+
+    // 点字符 → 精确落点
+    const wcSpan = e.target.closest('.wc');
+    if (wcSpan && pickedChord) {
+      const ci = +wcSpan.dataset.ci;
+      doMoveToChar(ci);
+      return;
+    }
 
     if (cSpan && cSpan.dataset.chord && seg) {
       clearPickHighlight();
