@@ -463,4 +463,38 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'dongxiaojie',
+    importVer: 2, locked: false,
+    title: '董小姐',
+    artist: '宋冬野',
+    baseKey: 'E', playKey: 'C', capo: 4,
+    chords: ['C','F','G7','Am','Em','Dm','Csus4'],
+    sections: [
+      { title: '主歌A', lines: [
+        [{ chord:'C', lyric:'董小' }, { chord:'F', lyric:'姐' }, { chord:'', lyric:'你从没' }, { chord:'G7', lyric:'忘' }, { chord:'', lyric:'记你的' }, { chord:'Am', lyric:'微' }, { chord:'', lyric:'笑就算你' }, { chord:'F', lyric:'和' }, { chord:'', lyric:'我一样' }, { chord:'G7', lyric:'渴' }, { chord:'', lyric:'望着' }, { chord:'Csus4', lyric:'衰' }, { chord:'', lyric:'老' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'董小' }, { chord:'F', lyric:'姐' }, { chord:'', lyric:'你嘴角' }, { chord:'C', lyric:'向' }, { chord:'', lyric:'下的' }, { chord:'G7', lyric:'时' }, { chord:'', lyric:'候' }, { chord:'Am', lyric:'很' }, { chord:'', lyric:'美就像' }, { chord:'F', lyric:'安' }, { chord:'', lyric:'和桥下' }, { chord:'G7', lyric:'清' }, { chord:'', lyric:'澈的水' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'董小' }, { chord:'F', lyric:'姐' }, { chord:'', lyric:'我也' }, { chord:'Em', lyric:'是' }, { chord:'', lyric:'个' }, { chord:'G7', lyric:'复' }, { chord:'', lyric:'杂的' }, { chord:'Am', lyric:'动' }, { chord:'', lyric:'物嘴上' }, { chord:'F', lyric:'一' }, { chord:'', lyric:'句' }, { chord:'C', lyric:'带' }, { chord:'', lyric:'过' }, { chord:'F', lyric:'心' }, { chord:'', lyric:'里却' }, { chord:'G7', lyric:'一' }, { chord:'', lyric:'直重' }, { chord:'Csus4', lyric:'复' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'董小' }, { chord:'F', lyric:'姐' }, { chord:'', lyric:'鼓楼的' }, { chord:'G7', lyric:'夜' }, { chord:'', lyric:'晚时间' }, { chord:'Am', lyric:'匆' }, { chord:'', lyric:'匆陌生的' }, { chord:'F', lyric:'人' }, { chord:'C', lyric:'' }, { chord:'', lyric:'请给我' }, { chord:'G7', lyric:'一' }, { chord:'', lyric:'支' }, { chord:'F', lyric:'兰' }, { chord:'Csus4', lyric:'州' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '副歌A', lines: [
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'所以' }, { chord:'G7', lyric:'那' }, { chord:'', lyric:'些' }, { chord:'Dm', lyric:'可' }, { chord:'', lyric:'能都不是' }, { chord:'Em', lyric:'真' }, { chord:'', lyric:'的董小' }, { chord:'Am', lyric:'姐' }],
+        [{ chord:'', lyric:'你' }, { chord:'F', lyric:'才' }, { chord:'', lyric:'不是' }, { chord:'Dm', lyric:'一' }, { chord:'', lyric:'个没有故事的' }, { chord:'Csus4', lyric:'女' }, { chord:'', lyric:'同学' }, { chord:'C', lyric:'' }],
+        [{ chord:'F', lyric:'爱' }, { chord:'', lyric:'上' }, { chord:'C', lyric:'一' }, { chord:'', lyric:'匹' }, { chord:'Dm', lyric:'野' }, { chord:'', lyric:'马' }, { chord:'G7', lyric:'' }, { chord:'', lyric:'可我的家里没有草' }, { chord:'Am', lyric:'原' }],
+        [{ chord:'', lyric:'这让我' }, { chord:'C', lyric:'感' }, { chord:'', lyric:'到' }, { chord:'F', lyric:'绝' }, { chord:'', lyric:'望' }, { chord:'Dm', lyric:'董' }, { chord:'', lyric:'小' }, { chord:'Csus4', lyric:'姐' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '主歌B', lines: [
+        [{ chord:'C', lyric:'董小' }, { chord:'F', lyric:'姐' }, { chord:'', lyric:'你熄灭' }, { chord:'Em', lyric:'了' }, { chord:'', lyric:'烟' }, { chord:'G7', lyric:'说' }, { chord:'', lyric:'起' }, { chord:'Am', lyric:'从' }, { chord:'', lyric:'前你说' }, { chord:'F', lyric:'前' }, { chord:'', lyric:'半生就这样吧' }, { chord:'Em', lyric:'还' }, { chord:'', lyric:'有明' }, { chord:'Csus4', lyric:'天' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'董小' }, { chord:'F', lyric:'姐' }, { chord:'', lyric:'你可' }, { chord:'Em', lyric:'知' }, { chord:'', lyric:'道我' }, { chord:'G7', lyric:'说' }, { chord:'', lyric:'够了' }, { chord:'Am', lyric:'再' }, { chord:'', lyric:'见在' }, { chord:'F', lyric:'五' }, { chord:'', lyric:'月的早晨' }, { chord:'G7', lyric:'终' }, { chord:'', lyric:'于丢失了' }, { chord:'Csus4', lyric:'睡' }, { chord:'', lyric:'眠' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '副歌B', lines: [
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'所以' }, { chord:'C', lyric:'那' }, { chord:'', lyric:'些' }, { chord:'Dm', lyric:'可' }, { chord:'', lyric:'能都' }, { chord:'Em', lyric:'会' }, { chord:'', lyric:'是真的董小' }, { chord:'Am', lyric:'姐' }],
+        [{ chord:'', lyric:'谁会' }, { chord:'F', lyric:'不' }, { chord:'', lyric:'厌' }, { chord:'C', lyric:'其' }, { chord:'', lyric:'烦地' }, { chord:'F', lyric:'安' }, { chord:'', lyric:'慰那' }, { chord:'G7', lyric:'无' }, { chord:'', lyric:'知的' }, { chord:'Csus4', lyric:'少' }, { chord:'', lyric:'年' }, { chord:'C', lyric:'' }],
+        [{ chord:'F', lyric:'我' }, { chord:'', lyric:'想' }, { chord:'C', lyric:'和' }, { chord:'', lyric:'你' }, { chord:'Dm', lyric:'一' }, { chord:'', lyric:'样' }, { chord:'F', lyric:'' }, { chord:'', lyric:'不顾' }, { chord:'G7', lyric:'那' }, { chord:'', lyric:'些所' }, { chord:'Am', lyric:'以' }],
+        [{ chord:'F', lyric:'跟' }, { chord:'', lyric:'我走吧' }, { chord:'C', lyric:'' }, { chord:'Dm', lyric:'' }, { chord:'G7', lyric:'' }, { chord:'', lyric:'董小' }, { chord:'C', lyric:'姐' }],
+        [{ chord:'', lyric:'躁起' }, { chord:'F', lyric:'来' }, { chord:'', lyric:'吧' }, { chord:'G7', lyric:'董' }, { chord:'', lyric:'小' }, { chord:'C', lyric:'姐' }],
+      ]},
+    ],
+  },
 ];
