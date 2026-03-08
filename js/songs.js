@@ -210,4 +210,46 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'chengdu',
+    title: '成都',
+    artist: '赵雷',
+    baseKey: 'D', playKey: 'C', capo: 2,
+    chords: ['C','Em','F','G','Am','Dm'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'C', lyric:'让我掉下眼泪的' }, { chord:'Em', lyric:'不止昨夜的酒' }],
+        [{ chord:'F', lyric:'让我依依不舍的' }, { chord:'G', lyric:'不止你的温柔' }],
+        [{ chord:'Em', lyric:'余路还要走多久' }, { chord:'Am', lyric:'你攥着我的手' }],
+        [{ chord:'F', lyric:'让我感到为难的' }, { chord:'G', lyric:'是挣扎的' }, { chord:'C', lyric:'自由' }],
+        [{ chord:'C', lyric:'分别总是在九月' }, { chord:'Em', lyric:'回忆是思念的愁' }],
+        [{ chord:'F', lyric:'深秋嫩绿的垂柳' }, { chord:'G', lyric:'亲吻着我额头' }],
+        [{ chord:'Em', lyric:'在那座阴雨的小城里' }, { chord:'Am', lyric:'我从未忘记你' }],
+        [{ chord:'Em', lyric:'成都  ' }, { chord:'F', lyric:'带不走的' }, { chord:'C', lyric:'只有你' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Em', lyric:'和我在成都的街头走一走' }, { chord:'Am', lyric:'哦哦' }],
+        [{ chord:'F', lyric:'直到所有的灯都熄灭了' }, { chord:'G', lyric:'也不停' }, { chord:'C', lyric:'留' }],
+        [{ chord:'F', lyric:'你会挽着我的衣袖' }, { chord:'G', lyric:'我会把手揣进' }, { chord:'C', lyric:'裤兜' }],
+        [{ chord:'Dm', lyric:'走到玉林路的尽头' }, { chord:'G', lyric:'坐在小酒馆的门' }, { chord:'C', lyric:'口' }],
+      ]},
+      { title: '主歌', lines: [
+        [{ chord:'C', lyric:'分别总是在九月' }, { chord:'Em', lyric:'回忆是思念的愁' }],
+        [{ chord:'F', lyric:'深秋嫩绿的垂柳' }, { chord:'G', lyric:'亲吻着我额头' }],
+        [{ chord:'Em', lyric:'在那座阴雨的小城里' }, { chord:'Am', lyric:'我从未忘记你' }],
+        [{ chord:'Em', lyric:'成都  ' }, { chord:'F', lyric:'带不走的' }, { chord:'C', lyric:'只有你' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Em', lyric:'和我在成都的街头走一走' }, { chord:'Am', lyric:'哦哦' }],
+        [{ chord:'F', lyric:'直到所有的灯都熄灭了' }, { chord:'G', lyric:'也不停' }, { chord:'C', lyric:'留' }],
+        [{ chord:'F', lyric:'你会挽着我的衣袖' }, { chord:'G', lyric:'我会把手揣进' }, { chord:'C', lyric:'裤兜' }],
+        [{ chord:'Dm', lyric:'走到玉林路的尽头' }, { chord:'G', lyric:'坐在小酒馆的门' }, { chord:'C', lyric:'口' }],
+        [{ chord:'Em', lyric:'和我在成都的街头走一走' }, { chord:'Am', lyric:'哦哦' }],
+        [{ chord:'F', lyric:'直到所有的灯都熄灭了' }, { chord:'G', lyric:'也不停' }, { chord:'C', lyric:'留' }],
+        [{ chord:'F', lyric:'你会挽着我的衣袖' }, { chord:'G', lyric:'我会把手揣进' }, { chord:'C', lyric:'裤兜' }],
+        [{ chord:'Dm', lyric:'走到玉林路的尽头' }, { chord:'G', lyric:'坐在小酒馆的门' }, { chord:'C', lyric:'口' }],
+      ]},
+    ],
+  },
 ];
