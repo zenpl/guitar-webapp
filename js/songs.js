@@ -661,4 +661,33 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'xiaochou',
+    importVer: 2, locked: false,
+    title: '消愁',
+    artist: '毛不易',
+    baseKey: 'C', playKey: 'G', capo: 5,
+    chords: ['Em','A7','C','B7','Am','G','D','E'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'Em', lyric:'当' }, { chord:'', lyric:'你走进这' }, { chord:'A7', lyric:'欢' }, { chord:'', lyric:'乐场，' }, { chord:'C', lyric:'背' }, { chord:'', lyric:'上' }, { chord:'Em', lyric:'所' }, { chord:'', lyric:'有的' }, { chord:'B7', lyric:'梦' }, { chord:'', lyric:'与想。' }],
+        [{ chord:'Am', lyric:'各' }, { chord:'', lyric:'色的脸上' }, { chord:'G', lyric:'各' }, { chord:'', lyric:'色的' }, { chord:'B7', lyric:'妆，' }, { chord:'Em', lyric:'没' }, { chord:'', lyric:'人记得' }, { chord:'B7', lyric:'你' }, { chord:'', lyric:'的模样。' }],
+        [{ chord:'Em', lyric:'三' }, { chord:'', lyric:'巡酒过你' }, { chord:'C', lyric:'在' }, { chord:'', lyric:'角落，' }, { chord:'D', lyric:'固' }, { chord:'', lyric:'执的唱着' }, { chord:'G', lyric:'苦' }, { chord:'', lyric:'涩的歌。' }],
+        [{ chord:'Am', lyric:'听' }, { chord:'', lyric:'他在' }, { chord:'C', lyric:'喧' }, { chord:'', lyric:'嚣里' }, { chord:'Em', lyric:'被' }, { chord:'', lyric:'淹' }, { chord:'E', lyric:'没，' }, { chord:'Am', lyric:'你' }, { chord:'', lyric:'拿起酒杯对' }, { chord:'B7', lyric:'自' }, { chord:'', lyric:'己说。' }],
+      ]},
+      { title: '副歌A', lines: [
+        [{ chord:'Em', lyric:'一' }, { chord:'', lyric:'杯敬朝阳' }, { chord:'G', lyric:'一' }, { chord:'', lyric:'杯敬月光，' }, { chord:'C', lyric:'唤' }, { chord:'', lyric:'醒我的' }, { chord:'Em', lyric:'向' }, { chord:'', lyric:'往' }, { chord:'B7', lyric:'温' }, { chord:'', lyric:'柔了寒窗，于是' }],
+        [{ chord:'Am', lyric:'可' }, { chord:'', lyric:'以不回头地逆' }, { chord:'Em', lyric:'风' }, { chord:'', lyric:'飞翔' }, { chord:'E', lyric:'，' }, { chord:'Am', lyric:'不' }, { chord:'', lyric:'怕心头有雨' }, { chord:'B7', lyric:'眼' }, { chord:'', lyric:'底有霜。' }],
+        [{ chord:'Em', lyric:'一' }, { chord:'', lyric:'杯敬故乡' }, { chord:'D', lyric:'一' }, { chord:'', lyric:'杯敬远方，' }, { chord:'C', lyric:'守' }, { chord:'', lyric:'着我的善良' }, { chord:'B7', lyric:'催' }, { chord:'', lyric:'着我成长，所以' }],
+        [{ chord:'Am', lyric:'南' }, { chord:'', lyric:'北的路从此' }, { chord:'Em', lyric:'不' }, { chord:'', lyric:'再漫长' }, { chord:'E', lyric:'，' }, { chord:'Am', lyric:'灵' }, { chord:'', lyric:'魂不再' }, { chord:'B7', lyric:'无' }, { chord:'', lyric:'处安' }, { chord:'Em', lyric:'放' }],
+      ]},
+      { title: '副歌B', lines: [
+        [{ chord:'Em', lyric:'一' }, { chord:'', lyric:'杯敬明天' }, { chord:'G', lyric:'一' }, { chord:'', lyric:'杯敬过往，' }, { chord:'C', lyric:'支' }, { chord:'', lyric:'撑我的' }, { chord:'Em', lyric:'身' }, { chord:'', lyric:'体' }, { chord:'B7', lyric:'厚' }, { chord:'', lyric:'重了肩膀，虽然' }],
+        [{ chord:'Am', lyric:'从' }, { chord:'', lyric:'不相信所谓山' }, { chord:'Em', lyric:'高' }, { chord:'', lyric:'水长' }, { chord:'E', lyric:'，' }, { chord:'Am', lyric:'人' }, { chord:'', lyric:'生苦短何必' }, { chord:'B7', lyric:'念' }, { chord:'', lyric:'念不忘？' }],
+        [{ chord:'Em', lyric:'一' }, { chord:'', lyric:'杯敬自由' }, { chord:'D', lyric:'一' }, { chord:'', lyric:'杯敬死亡，' }, { chord:'C', lyric:'宽' }, { chord:'', lyric:'恕我的平凡' }, { chord:'B7', lyric:'驱' }, { chord:'', lyric:'散了迷惘，好吧' }],
+        [{ chord:'Am', lyric:'天' }, { chord:'', lyric:'亮之后总是潦' }, { chord:'Em', lyric:'草' }, { chord:'', lyric:'离场' }, { chord:'E', lyric:'，' }, { chord:'Am', lyric:'清' }, { chord:'', lyric:'醒的人' }, { chord:'B7', lyric:'最' }, { chord:'', lyric:'荒' }, { chord:'Em', lyric:'唐。' }],
+      ]},
+    ],
+  },
 ];
