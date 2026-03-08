@@ -466,7 +466,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'dongxiaojie',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '董小姐',
     artist: '宋冬野',
     baseKey: 'E', playKey: 'C', capo: 4,
