@@ -429,4 +429,39 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'hongsegjx',
+    title: '红色高跟鞋',
+    artist: '蔡健雅',
+    baseKey: 'D', playKey: 'D', capo: 0,
+    chords: ['G','A','Bm','D','E7','Gm'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'G', lyric:'该怎么去形容你最贴切' }, { chord:'A', lyric:'' }, { chord:'Bm', lyric:'拿什么跟你作比较才算特别' }],
+        [{ chord:'G', lyric:'对你的感觉　强烈' }, { chord:'A', lyric:'' }, { chord:'D', lyric:'却又不太了解' }, { chord:'Bm', lyric:'' }, { chord:'G', lyric:'只凭' }, { chord:'A', lyric:'直觉' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'G', lyric:'你像窝在　被子里的' }, { chord:'A', lyric:'舒服' }, { chord:'Bm', lyric:'却又像风　捉摸不住' }],
+        [{ chord:'G', lyric:'像手腕上散发的' }, { chord:'A', lyric:'香水味　像爱不释手的' }, { chord:'Bm', lyric:'' }],
+        [{ chord:'A', lyric:'红色高跟鞋' }],
+      ]},
+      { title: '主歌', lines: [
+        [{ chord:'G', lyric:'该怎么去形容你最贴切' }, { chord:'A', lyric:'' }, { chord:'Bm', lyric:'拿什么跟你作比较才算特别' }],
+        [{ chord:'G', lyric:'对你的感觉　强烈' }, { chord:'A', lyric:'' }, { chord:'D', lyric:'却又不太了解' }, { chord:'Bm', lyric:'' }, { chord:'G', lyric:'只凭' }, { chord:'A', lyric:'直觉' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'G', lyric:'你像窝在　被子里的' }, { chord:'A', lyric:'舒服' }, { chord:'Bm', lyric:'却又像风　捉摸不住' }],
+        [{ chord:'G', lyric:'像手腕上散发的' }, { chord:'A', lyric:'香水味　像爱不释手的' }],
+        [{ chord:'A', lyric:'红色高跟鞋' }, { chord:'E7', lyric:'' }, { chord:'Gm', lyric:'' }],
+      ]},
+      { title: '副歌（完整版）', lines: [
+        [{ chord:'G', lyric:'你像窝在　被子里的' }, { chord:'A', lyric:'舒服' }, { chord:'Bm', lyric:'却又像风　捉摸不住' }],
+        [{ chord:'G', lyric:'像手腕上散发的' }, { chord:'A', lyric:'香水味　像爱不释手的' }],
+        [{ chord:'A', lyric:'我爱你有种左灯右行的冲突' }, { chord:'G', lyric:'' }, { chord:'A', lyric:'' }, { chord:'Bm', lyric:'疯狂却怕没有退路' }],
+        [{ chord:'G', lyric:'你能否让我停止这种追逐' }, { chord:'A', lyric:'就这么双　最后唯一的' }],
+        [{ chord:'A', lyric:'红色高跟鞋' }],
+      ]},
+    ],
+  },
 ];
