@@ -442,4 +442,53 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'tearsinheaven',
+    title: 'Tears in Heaven',
+    artist: 'Eric Clapton',
+    baseKey: 'A', playKey: 'A', capo: 0,
+    chords: ['A','E','F#m','D','C#','Bm','E7'],
+    sections: [
+      { title: 'Chorus', lines: [
+        [{ chord:'A', lyric:'Would you know my ' }, { chord:'E', lyric:'name' }, { chord:'F#m', lyric:'' }, { chord:'A', lyric:'' }],
+        [{ chord:'D', lyric:'If I saw you in ' }, { chord:'A', lyric:'heaven' }, { chord:'E', lyric:'' }, { chord:'E7', lyric:'' }],
+        [{ chord:'A', lyric:"Would it be the " }, { chord:'E', lyric:'same' }, { chord:'F#m', lyric:'' }, { chord:'A', lyric:'' }],
+        [{ chord:'D', lyric:'If I saw you in ' }, { chord:'A', lyric:'heaven' }, { chord:'E', lyric:'' }, { chord:'E7', lyric:'' }],
+      ]},
+      { title: 'Verse', lines: [
+        [{ chord:'F#m', lyric:"I must be " }, { chord:'C#', lyric:'strong' }],
+        [{ chord:'A', lyric:'and carry ' }, { chord:'E7', lyric:'on' }],
+        [{ chord:'F#m', lyric:"'Cause I know " }, { chord:'Bm', lyric:"I just can't stay" }],
+        [{ chord:'E', lyric:'' }, { chord:'E7', lyric:'here in heaven' }, { chord:'A', lyric:'' }],
+      ]},
+      { title: 'Chorus', lines: [
+        [{ chord:'A', lyric:'Would you hold my ' }, { chord:'E', lyric:'hand' }, { chord:'F#m', lyric:'' }, { chord:'A', lyric:'' }],
+        [{ chord:'D', lyric:'If I saw you in ' }, { chord:'A', lyric:'heaven' }, { chord:'E', lyric:'' }, { chord:'E7', lyric:'' }],
+        [{ chord:'A', lyric:'Would you help me ' }, { chord:'E', lyric:'stand' }, { chord:'F#m', lyric:'' }, { chord:'A', lyric:'' }],
+        [{ chord:'D', lyric:'If I saw you in ' }, { chord:'A', lyric:'heaven' }, { chord:'E', lyric:'' }, { chord:'E7', lyric:'' }],
+      ]},
+      { title: 'Verse', lines: [
+        [{ chord:'F#m', lyric:"I'll find my " }, { chord:'C#', lyric:'way' }],
+        [{ chord:'A', lyric:'through night and ' }, { chord:'E7', lyric:'day' }],
+        [{ chord:'F#m', lyric:"'Cause I know " }, { chord:'Bm', lyric:"I just can't stay" }],
+        [{ chord:'E', lyric:'' }, { chord:'E7', lyric:'here in heaven' }, { chord:'A', lyric:'' }],
+      ]},
+      { title: 'Bridge', lines: [
+        [{ chord:'A', lyric:'Time can bring you down, ' }, { chord:'D', lyric:'time can bend your knees' }],
+        [{ chord:'A', lyric:'Time can break your heart, ' }, { chord:'D', lyric:'have you begging please' }, { chord:'E', lyric:'' }],
+      ]},
+      { title: 'Chorus', lines: [
+        [{ chord:'A', lyric:'Would you know my ' }, { chord:'E', lyric:'name' }, { chord:'F#m', lyric:'' }, { chord:'A', lyric:'' }],
+        [{ chord:'D', lyric:'If I saw you in ' }, { chord:'A', lyric:'heaven' }, { chord:'E', lyric:'' }, { chord:'E7', lyric:'' }],
+        [{ chord:'A', lyric:"Would it be the " }, { chord:'E', lyric:'same' }, { chord:'F#m', lyric:'' }, { chord:'A', lyric:'' }],
+        [{ chord:'D', lyric:'If I saw you in ' }, { chord:'A', lyric:'heaven' }, { chord:'E', lyric:'' }, { chord:'E7', lyric:'' }],
+      ]},
+      { title: 'Outro', lines: [
+        [{ chord:'F#m', lyric:"Beyond the door " }, { chord:'C#', lyric:"there's peace I'm sure" }],
+        [{ chord:'A', lyric:"And I know " }, { chord:'E7', lyric:"there'll be no more" }],
+        [{ chord:'F#m', lyric:'' }, { chord:'Bm', lyric:'tears in heaven' }, { chord:'E', lyric:'' }, { chord:'A', lyric:'' }],
+      ]},
+    ],
+  },
 ];
