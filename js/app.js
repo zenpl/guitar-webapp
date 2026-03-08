@@ -435,7 +435,7 @@ function setupEditMode() {
     btn.textContent = '发送中…';
     try {
       // 通过本地 server.js 中转，调用 openclaw agent 注入消息
-      const res = await fetch('http://localhost:7788/send-diff', {
+      const res = await fetch('/send-diff', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ diff: text })
