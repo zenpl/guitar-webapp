@@ -626,4 +626,39 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'xiangwozheyang',
+    importVer: 2, locked: false,
+    title: '像我这样的人',
+    artist: '毛不易',
+    baseKey: 'C#', playKey: 'C', capo: 1,
+    chords: ['C','Em','F','G','G/B','Am','Dm7','E','Em7'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'G/B', lyric:'像' }, { chord:'', lyric:'我这样优秀的人，本该灿烂过一' }, { chord:'C', lyric:'生。' }],
+        [{ chord:'', lyric:'怎么二十多年到头来，还在人海里浮' }, { chord:'Em', lyric:'沉？' }],
+        [{ chord:'', lyric:'像' }, { chord:'F', lyric:'我' }, { chord:'', lyric:'这样聪明的人，早就告别了单' }, { chord:'G', lyric:'纯。' }],
+        [{ chord:'', lyric:'怎么还是用了一段情，去换一身伤' }, { chord:'Em', lyric:'痕。' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Em', lyric:'像' }, { chord:'', lyric:'我这样迷茫的人，' }, { chord:'F', lyric:'像' }, { chord:'', lyric:'我这样寻找的人，' }],
+        [{ chord:'G', lyric:'像' }, { chord:'', lyric:'我这样碌碌无为的人，' }, { chord:'C', lyric:'你' }, { chord:'', lyric:'还见过多少人。' }],
+        [{ chord:'G/B', lyric:'怎' }, { chord:'', lyric:'么曾经也会为了谁，想过奋不顾' }, { chord:'Am', lyric:'身。' }],
+      ]},
+      { title: '主歌', lines: [
+        [{ chord:'G/B', lyric:'像' }, { chord:'', lyric:'我这样庸俗的人，从不喜欢装深' }, { chord:'C', lyric:'沉。' }],
+        [{ chord:'', lyric:'怎么偶尔听到老歌时，忽然也晃了' }, { chord:'Em', lyric:'神？' }],
+        [{ chord:'', lyric:'像' }, { chord:'F', lyric:'我' }, { chord:'', lyric:'这样懦弱的人，凡事都要留几' }, { chord:'G', lyric:'分。' }],
+        [{ chord:'Dm7', lyric:'怎' }, { chord:'', lyric:'么曾经也会为了谁，想过奋不顾' }, { chord:'E', lyric:'身。' }],
+      ]},
+      { title: '副歌（扩展）', lines: [
+        [{ chord:'Em', lyric:'像' }, { chord:'', lyric:'我这样迷茫的人，' }, { chord:'F', lyric:'像' }, { chord:'', lyric:'我这样寻找的人，' }],
+        [{ chord:'G', lyric:'像' }, { chord:'', lyric:'我这样碌碌无为的人，' }, { chord:'C', lyric:'你' }, { chord:'', lyric:'还见过多少人？' }],
+        [{ chord:'G/B', lyric:'像' }, { chord:'', lyric:'我这样孤单的人，' }, { chord:'Am', lyric:'像' }, { chord:'', lyric:'我这样傻的人，' }],
+        [{ chord:'Em7', lyric:'像' }, { chord:'', lyric:'我这样不甘平凡的人，' }, { chord:'F', lyric:'世' }, { chord:'', lyric:'界上有多少人？' }, { chord:'G', lyric:'' }],
+        [{ chord:'C', lyric:'像' }, { chord:'', lyric:'我这样莫名其妙的人，会不会有人心' }, { chord:'C', lyric:'疼？' }],
+      ]},
+    ],
+  },
 ];
