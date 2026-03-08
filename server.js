@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
         // 立即返回，后台异步执行
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end('{"ok":true}');
-        exec(`/opt/homebrew/bin/openclaw agent --agent zeta --message '📋 曲谱diff:\n${safe}'`, {
+        exec(`/opt/homebrew/bin/openclaw agent --agent zeta --message '📋 曲谱diff:\n${safe}' --deliver`, {
           env: { ...process.env }
         }, (err) => { if (err) console.error('agent err:', err.message); });
       } catch (e) {
