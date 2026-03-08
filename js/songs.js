@@ -8,7 +8,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'nanshan',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '南山南',
     artist: '马頔',
     baseKey: 'C', playKey: 'C', capo: 0,
