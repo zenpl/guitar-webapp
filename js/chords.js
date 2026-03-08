@@ -24,9 +24,61 @@ const CHORDS = {
   'F#m': { desc:'F# 小调（横按2品）',    frets:[2,4,4,2,2,2], barre:2 },
 };
 
+// ─── Dynamic Chord Lookup ────────────────────────────────────
+// NOTES / NOTE_ALIAS 在 app.js 也有定义，这里单独 copy 供 chords.js 独立使用
+const _NOTES     = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+const _ALIAS     = { Db:'C#', Eb:'D#', Gb:'F#', Ab:'G#', Bb:'A#' };
+
+function _noteIdx(n) { return _NOTES.indexOf(_ALIAS[n] || n); }
+
+// 根据根音 + 品质动态生成横按指法
+// 优先检查 CHORDS 字典；找不到则用 E型 / A型 barre 自动生成
+function getChord(name) {
+  if (CHORDS[name]) return CHORDS[name];
+
+  const m = name.match(/^([A-G][#b]?)(.*)/);
+  if (!m) return null;
+  const [, root, quality] = m;
+
+  const ri = _noteIdx(root);
+  if (ri === -1) return null;
+
+  const isMinor = /^m(?!aj)/.test(quality);
+  const is7     = quality === '7';
+
+  // E弦(开放=E=4) / A弦(开放=A=9) 品位
+  const eFret = (ri - 4  + 12) % 12;
+  const aFret = (ri - 9  + 12) % 12;
+
+  // 选择品位更低的型，且不选 0（开放弦已在字典里）
+  let shape, fret;
+  if (eFret !== 0 && (aFret === 0 || eFret <= aFret)) {
+    shape = 'E'; fret = eFret;
+  } else {
+    shape = 'A'; fret = aFret;
+  }
+
+  let frets;
+  if (shape === 'E') {
+    frets = isMinor
+      ? [fret, fret+2, fret+2, fret,   fret,   fret]   // Em型
+      : is7
+      ? [fret, fret+2, fret,   fret+1, fret,   fret]   // E7型
+      : [fret, fret+2, fret+2, fret+1, fret,   fret]; // E型
+  } else {
+    frets = isMinor
+      ? [-1, fret, fret+2, fret+2, fret+1, fret]   // Am型
+      : is7
+      ? [-1, fret, fret+2, fret,   fret+2, fret]   // A7型
+      : [-1, fret, fret+2, fret+2, fret+2, fret]; // A型
+  }
+
+  return { desc: `${name}（横按${fret}品·${shape}型）`, frets, barre: fret };
+}
+
 // ─── SVG Chord Diagram ───────────────────────────────────────
 function drawChord(name) {
-  const c = CHORDS[name];
+  const c = getChord(name);
   if (!c) return `<div style="color:#888;padding:20px">No diagram for ${name}</div>`;
   const f = c.frets;
   const W=180, H=170, L=36, T=32, SW=22, FH=24, S=6, FC=4;

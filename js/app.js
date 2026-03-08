@@ -19,7 +19,7 @@ function transposeChord(chord, semis) {
   return transposeNote(m[1], semis) + m[2];
 }
 function isBarreChord(chord) {
-  if (CHORDS[chord]?.barre) return true;
+  if (getChord(chord)?.barre) return true;
   const root = (chord.match(/^[A-G][#b]?/) || [])[0];
   return BARRE_ROOTS.has(root);
 }
@@ -181,14 +181,14 @@ function setupSelector() {
 function setupModal() {
   document.addEventListener('click', e => {
     const chord = e.target.dataset.chord;
-    if (chord && CHORDS[chord]) { showChord(chord); return; }
+    if (chord && getChord(chord)) { showChord(chord); return; }
     if (e.target.id === 'modal') hideChord();
   });
 }
 
 function showChord(name) {
   document.getElementById('modal-card').innerHTML =
-    `<h3>${name}</h3>${drawChord(name)}<div class="desc">${CHORDS[name].desc}</div><div class="hint">点击外部关闭</div>`;
+    `<h3>${name}</h3>${drawChord(name)}<div class="desc">${getChord(name)?.desc || name}</div><div class="hint">点击外部关闭</div>`;
   document.getElementById('modal').classList.add('show');
 }
 function hideChord() {
