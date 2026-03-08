@@ -690,4 +690,47 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'fuqinsanwenshi',
+    importVer: 2, locked: false,
+    title: '父亲写的散文诗',
+    artist: '许飞',
+    baseKey: 'C', playKey: 'C', capo: 0,
+    chords: ['Am7','F','C','G','Em'],
+    sections: [
+      { title: '主歌一', lines: [
+        [{ chord:'Am7', lyric:'一' }, { chord:'', lyric:'九八四年庄稼还没收割完，女儿' }],
+        [{ chord:'F', lyric:'躺' }, { chord:'', lyric:'在我怀里睡得那么' }, { chord:'C', lyric:'甜。' }],
+        [{ chord:'', lyric:'今晚的露天电影没时间去' }, { chord:'G', lyric:'看，' }, { chord:'C', lyric:'妻' }, { chord:'', lyric:'子提醒我修修缝纫' }],
+        [{ chord:'Am7', lyric:'机' }, { chord:'', lyric:'的踏' }, { chord:'Em', lyric:'板。' }],
+        [{ chord:'F', lyric:'明' }, { chord:'', lyric:'天我要去邻居家再借点' }, { chord:'C', lyric:'钱，' }, { chord:'G', lyric:'' }],
+        [{ chord:'C', lyric:'孩' }, { chord:'', lyric:'子哭了一整天哪闹着要吃饼干。' }],
+        [{ chord:'Am7', lyric:'蓝' }, { chord:'', lyric:'色的涤卡上衣' }, { chord:'Em', lyric:'痛' }, { chord:'', lyric:'往心里钻，' }],
+        [{ chord:'F', lyric:'蹲' }, { chord:'', lyric:'在池塘边上给了自己两' }, { chord:'C', lyric:'拳。' }, { chord:'G', lyric:'' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Am7', lyric:'这' }, { chord:'', lyric:'是我父亲日记里的' }, { chord:'F', lyric:'文' }, { chord:'', lyric:'字，' }],
+        [{ chord:'C', lyric:'这' }, { chord:'', lyric:'是他的青春留下，留下来的' }, { chord:'G', lyric:'散' }, { chord:'C', lyric:'文' }, { chord:'', lyric:'诗。' }],
+        [{ chord:'Am7', lyric:'几' }, { chord:'', lyric:'十年后我看着泪流不' }, { chord:'F', lyric:'止，' }],
+        [{ chord:'', lyric:'可我的' }, { chord:'G', lyric:'父' }, { chord:'', lyric:'亲已经老得像一个影' }, { chord:'C', lyric:'子。' }],
+      ]},
+      { title: '主歌二', lines: [
+        [{ chord:'Am7', lyric:'一' }, { chord:'', lyric:'九九四年庄稼早已收割完，我的老母亲去年' }],
+        [{ chord:'F', lyric:'离' }, { chord:'', lyric:'开了人间。女儿扎着马尾辫跑进了' }, { chord:'C', lyric:'校' }, { chord:'G', lyric:'园，' }, { chord:'C', lyric:'' }],
+        [{ chord:'Am7', lyric:'可' }, { chord:'', lyric:'是她最近有点孤单瘦了一大圈。' }],
+        [{ chord:'F', lyric:'想' }, { chord:'', lyric:'一想未来我老成了一堆旧纸' }, { chord:'C', lyric:'钱，' }],
+        [{ chord:'Am7', lyric:'那' }, { chord:'', lyric:'时的女儿一定会美得很' }, { chord:'Em', lyric:'惊' }, { chord:'', lyric:'艳。' }],
+        [{ chord:'F', lyric:'有' }, { chord:'', lyric:'个爱她的男人要娶她回' }, { chord:'G', lyric:'家，' }, { chord:'C', lyric:'' }],
+        [{ chord:'', lyric:'可想到这些我却不忍看她一' }, { chord:'G', lyric:'眼。' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Am7', lyric:'这' }, { chord:'', lyric:'是我父亲日记里的' }, { chord:'F', lyric:'文' }, { chord:'', lyric:'字，' }],
+        [{ chord:'C', lyric:'这' }, { chord:'', lyric:'是他的生命留下，留下来的' }, { chord:'G', lyric:'散' }, { chord:'C', lyric:'文' }, { chord:'', lyric:'诗。' }],
+        [{ chord:'Am7', lyric:'几' }, { chord:'', lyric:'十年后我看着泪流不' }, { chord:'F', lyric:'止，' }],
+        [{ chord:'', lyric:'可我的' }, { chord:'G', lyric:'父' }, { chord:'', lyric:'亲已经老得像一张旧报' }, { chord:'C', lyric:'纸，' }],
+        [{ chord:'Am7', lyric:'旧' }, { chord:'', lyric:'报纸那上面的故事' }, { chord:'Em', lyric:'就' }, { chord:'', lyric:'是一辈' }, { chord:'F', lyric:'子。' }, { chord:'G', lyric:'' }, { chord:'C', lyric:'' }],
+      ]},
+    ],
+  },
 ];
