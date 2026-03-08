@@ -1,77 +1,91 @@
-# 如何添加新曲谱
+# 如何新增一首歌
 
-## 工作流
+## 需要改的文件
 
-1. **找谱**
-   - 搜索：`web_search("歌名 艺术家 chord4 site:chord4.com")`
-   - 直接抓取：`browser → chord4.com/tabs/XXXX`
-   - 用 JS 读原始文本：`document.querySelector('pre').innerText`
-   - ⚠️ 必须读原始 `<pre>` 内容，readability 提取会丢失空格对位信息
+| 文件 | 做什么 |
+|------|--------|
+| `js/songs.js` | 加歌曲数据（必须） |
+| `js/chords.js` | 加新和弦指法（如有新和弦） |
 
-2. **解析和弦对位**
-   - 原谱格式：和弦行在上，歌词行在下，用空格对齐
-   - 数字符位置：数和弦名下面对应的是哪个字/词
-   - 示例：
-     ```
-     C         D      Bm   Em
-     你在南方的艳阳里  大雪纷飞
-     ```
-     → C=你，D=艳，Bm=大，Em=纷
+`index.html` 和 `js/app.js` **不需要动**。
 
-3. **写 HTML**
-   - 每个「和弦+歌词段」用 `.seg` 包裹：
-     ```html
-     <span class="seg">
-       <span class="c" data-chord="C">C</span>
-       <span class="w">你在南方的</span>
-     </span>
-     ```
-   - `.seg` = `inline-flex` 竖排，和弦在上歌词在下
-   - 段落间自然换行，不用横向滚动
+---
 
-4. **本地预览**
-   ```bash
-   # 启动本地服务器
-   cd /Users/jill/.openclaw/workspace-zeta/guitar-app
-   python3 -m http.server 8765 &
+## Step 1 · 获取歌词和弦
 
-   # 启动 Cloudflare tunnel（临时公网地址）
-   cloudflared tunnel --url http://localhost:8765
-   ```
-   - 等 tunnel 输出 `trycloudflare.com` 地址，发给用户在 iOS 上测试
-   - **先 tunnel 预览，确认 OK 后再 push**
-
-5. **发版**
-   ```bash
-   cd /Users/jill/.openclaw/workspace-zeta/guitar-app
-   git add . && git commit -m "添加：歌名 - 艺术家" && git push
-   ```
-   - GitHub Pages 地址：https://zenpl.github.io/guitar-webapp/
-   - Pages 更新需 1-2 分钟
-
-## 和弦指法数据（已内置）
+在 chord4.com 搜索歌曲，用浏览器开发者工具读原始文本：
 
 ```js
-G:  frets:[3,2,0,0,3,3]
-D:  frets:[-1,-1,0,2,3,2]
-Em: frets:[0,2,2,0,0,0]
-Am: frets:[-1,0,2,2,1,0]
-C:  frets:[-1,3,2,0,1,0]
-Bm: frets:[-1,2,4,4,3,2], barre:2
+document.querySelector('pre').innerText
 ```
 
-新和弦需要添加到 `index.html` 的 `CHORDS` 对象中。
+注意：和弦行在上，歌词行在下，按字符位置对应。
 
-## 多首歌的扩展方向
+---
 
-目前 `index.html` 是单曲。后续要支持多首歌，方案：
-- 方案 A：每首歌一个独立 HTML 文件（简单，每首自包含）
-- 方案 B：用 JSON 数据 + 单页路由（扩展性好，需要改架构）
+## Step 2 · 在 `js/songs.js` 末尾添加
 
-用户目前偏好：**逐一添加，告知歌名即可**
+```js
+{
+  id: 'my_song',           // 唯一 ID，英文小写
+  title: '歌曲名',
+  artist: '艺术家',
+  baseKey: 'G',            // 原曲实际调
+  playKey: 'G',            // 弹奏用调（有 capo 时填开放和弦调）
+  capo: 0,                 // 几品 capo
+  chords: ['G','D','Em','C'],  // 本歌用到的和弦（用于顶部和弦栏）
+  sections: [
+    { title: '主歌', lines: [
+      // 每行是一个数组，每个元素是一个「和弦+歌词」段
+      [{ chord:'G', lyric:'第一句歌词' }, { chord:'D', lyric:'继续' }],
+      [{ chord:'Em', lyric:'第二句' }, { chord:'C', lyric:'结尾' }],
+      // 没有和弦标注的段落，chord 填空字符串：
+      [{ chord:'', lyric:'纯歌词部分' }, { chord:'G', lyric:'有和弦' }],
+    ]},
+    { title: '副歌', lines: [
+      // ...
+    ]},
+  ],
+},
+```
 
-## 注意事项
+---
 
-- iOS 不接受横向滚动（弹琴时手不碰手机）
-- `.seg` 的 `white-space: nowrap` 确保和弦不与歌词分离换行
-- 和弦对位必须对照原谱空格位置，不能靠感觉猜
+## Step 3 · 如有新和弦，在 `js/chords.js` 的 `CHORDS` 对象里添加
+
+```js
+Xx: { desc:'描述文字', frets:[-1, 0, 2, 2, 1, 0] },
+// 横按和弦加 barre 字段：
+Xx: { desc:'...（横按N品）', frets:[...], barre: N },
+```
+
+`frets` 六个数字对应 E A D G B e 弦，`-1` 不弹，`0` 开放。
+
+---
+
+## Step 4 · 本地预览
+
+```bash
+cd guitar-app
+python3 -m http.server 8765
+# 另一个终端：
+cloudflared tunnel --url http://localhost:8765
+```
+
+确认 OK 后：
+
+```bash
+git add js/ && git commit -m "add: 歌名" && git push
+```
+
+---
+
+## baseKey / playKey / capo 关系
+
+| 情况 | baseKey | playKey | capo |
+|------|---------|---------|------|
+| 原调直接弹 | G | G | 0 |
+| 原调 Bb，用 G 指法 Capo 3 | Bb | G | 3 |
+| 原调 A，直接弹 | A | A | 0 |
+
+变调按键会根据这三个值自动计算新的 Key/Play/Capo 显示。
