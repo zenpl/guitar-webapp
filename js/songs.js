@@ -591,4 +591,39 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'pingfanzhilu',
+    importVer: 2, locked: false,
+    title: '平凡之路',
+    artist: '朴树',
+    baseKey: 'C', playKey: 'G', capo: 5,
+    chords: ['Em','C','G','D'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'Em', lyric:'徘' }, { chord:'', lyric:'徊着的' }, { chord:'C', lyric:'在' }, { chord:'', lyric:'路上' }, { chord:'G', lyric:'的' }, { chord:'Em', lyric:'你' }, { chord:'', lyric:'要走吗Via Via' }, { chord:'G', lyric:'' }],
+        [{ chord:'Em', lyric:'易' }, { chord:'', lyric:'碎的' }, { chord:'C', lyric:'骄' }, { chord:'', lyric:'傲' }, { chord:'G', lyric:'着' }, { chord:'Em', lyric:'那' }, { chord:'', lyric:'也曾是' }, { chord:'C', lyric:'我' }, { chord:'', lyric:'的模' }, { chord:'G', lyric:'样' }],
+        [{ chord:'Em', lyric:'沸' }, { chord:'', lyric:'腾着的' }, { chord:'C', lyric:'不' }, { chord:'', lyric:'安着' }, { chord:'G', lyric:'的' }, { chord:'Em', lyric:'你' }, { chord:'', lyric:'要去哪Via Via' }, { chord:'G', lyric:'' }],
+        [{ chord:'Em', lyric:'谜' }, { chord:'', lyric:'一样的' }, { chord:'C', lyric:'沉' }, { chord:'', lyric:'默着' }, { chord:'G', lyric:'的' }, { chord:'Em', lyric:'故' }, { chord:'', lyric:'事你' }, { chord:'C', lyric:'真' }, { chord:'', lyric:'的在听' }, { chord:'G', lyric:'吗' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'', lyric:'我曾经' }, { chord:'Em', lyric:'跨' }, { chord:'', lyric:'过山和大' }, { chord:'C', lyric:'海' }, { chord:'', lyric:'也穿过' }, { chord:'G', lyric:'' }, { chord:'', lyric:'人山人' }, { chord:'D', lyric:'海' }],
+        [{ chord:'', lyric:'我曾经' }, { chord:'Em', lyric:'拥' }, { chord:'', lyric:'有着一' }, { chord:'C', lyric:'切' }, { chord:'', lyric:'转眼都' }, { chord:'G', lyric:'飘' }, { chord:'', lyric:'散如' }, { chord:'D', lyric:'烟' }],
+        [{ chord:'', lyric:'我曾经' }, { chord:'Em', lyric:'失' }, { chord:'', lyric:'落失望' }, { chord:'C', lyric:'失' }, { chord:'', lyric:'掉所' }, { chord:'G', lyric:'有' }, { chord:'', lyric:'方向' }, { chord:'D', lyric:'' }],
+        [{ chord:'', lyric:'直到' }, { chord:'Em', lyric:'看' }, { chord:'', lyric:'见平凡' }, { chord:'C', lyric:'才' }, { chord:'', lyric:'是唯一' }, { chord:'D', lyric:'' }, { chord:'', lyric:'的答' }, { chord:'G', lyric:'案' }],
+      ]},
+      { title: '桥段', lines: [
+        [{ chord:'Em', lyric:'向' }, { chord:'', lyric:'前走' }, { chord:'C', lyric:'就' }, { chord:'', lyric:'这么走' }, { chord:'G', lyric:'就' }, { chord:'', lyric:'算你被给' }, { chord:'D', lyric:'过' }, { chord:'', lyric:'什么' }],
+        [{ chord:'Em', lyric:'向' }, { chord:'', lyric:'前走' }, { chord:'C', lyric:'就' }, { chord:'', lyric:'这么走' }, { chord:'G', lyric:'就' }, { chord:'', lyric:'算你被夺' }, { chord:'D', lyric:'走' }, { chord:'', lyric:'什么' }],
+        [{ chord:'Em', lyric:'向' }, { chord:'', lyric:'前走' }, { chord:'C', lyric:'就' }, { chord:'', lyric:'这么走' }, { chord:'G', lyric:'就' }, { chord:'', lyric:'算你会错' }, { chord:'D', lyric:'过' }, { chord:'', lyric:'什么' }],
+        [{ chord:'Em', lyric:'向' }, { chord:'', lyric:'前走' }, { chord:'C', lyric:'就' }, { chord:'', lyric:'这么走' }, { chord:'G', lyric:'就' }, { chord:'', lyric:'算你会' }, { chord:'D', lyric:'' }],
+      ]},
+      { title: '副歌（尾）', lines: [
+        [{ chord:'', lyric:'我曾经' }, { chord:'Em', lyric:'毁' }, { chord:'', lyric:'了我的一' }, { chord:'C', lyric:'切' }, { chord:'', lyric:'只想永' }, { chord:'G', lyric:'' }, { chord:'', lyric:'远地离' }, { chord:'D', lyric:'开' }],
+        [{ chord:'', lyric:'我曾经' }, { chord:'Em', lyric:'堕' }, { chord:'', lyric:'入无边黑' }, { chord:'C', lyric:'暗' }, { chord:'', lyric:'想挣扎' }, { chord:'G', lyric:'无' }, { chord:'', lyric:'法自' }, { chord:'D', lyric:'拔' }],
+        [{ chord:'', lyric:'我曾经' }, { chord:'Em', lyric:'像' }, { chord:'', lyric:'你像他' }, { chord:'C', lyric:'像' }, { chord:'', lyric:'那野' }, { chord:'G', lyric:'草' }, { chord:'', lyric:'野花' }, { chord:'D', lyric:'' }],
+        [{ chord:'', lyric:'绝望' }, { chord:'Em', lyric:'着' }, { chord:'', lyric:'渴望着' }, { chord:'C', lyric:'也' }, { chord:'', lyric:'哭也笑' }, { chord:'D', lyric:'也' }, { chord:'', lyric:'平凡' }, { chord:'G', lyric:'着' }],
+      ]},
+    ],
+  },
 ];
