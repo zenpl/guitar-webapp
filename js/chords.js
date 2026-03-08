@@ -34,6 +34,13 @@ const CHORDS = {
   'A/E':  { desc:'A/E（低音E）',         frets:[0,0,2,2,2,0] },
   Gm:  { desc:'G 小调（横按3品）',       frets:[3,5,5,3,3,3], barre:3 },
 
+  // ── Tears in Heaven ──
+  'C#/E#': { desc:'C#/E#（低音E#=F）',  frets:[1,4,6,6,6,4], barre:4 },
+  Em6:     { desc:'Em6',               frets:[0,2,2,0,2,0] },
+  'F#7':   { desc:'F#7（横按2品）',     frets:[2,4,2,3,2,2], barre:2 },
+  Bm7:     { desc:'Bm7（横按2品）',     frets:[-1,2,4,2,3,2], barre:2 },
+  'Bm7/E': { desc:'Bm7/E（低音E）',     frets:[0,2,4,2,3,2] },
+
   // ── Barre ──
   Bm:  { desc:'B 小调（横按2品）',       frets:[-1,2,4,4,3,2], barre:2 },
   'C#m': { desc:'C# 小调（横按4品）',    frets:[-1,4,6,6,5,4], barre:4 },
