@@ -769,4 +769,31 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'fengchuimailang',
+    importVer: 2, locked: false,
+    title: '风吹麦浪',
+    artist: '李健',
+    baseKey: 'A', playKey: 'C', capo: 3,
+    chords: ['C','Am','Dm','G'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'', lyric:'远处' }, { chord:'C', lyric:'蔚' }, { chord:'', lyric:'蓝天空下涌动着' }, { chord:'Am', lyric:'金' }, { chord:'', lyric:'色的麦浪' }],
+        [{ chord:'', lyric:'就' }, { chord:'Dm', lyric:'在' }, { chord:'', lyric:'那里曾是你和我' }, { chord:'G', lyric:'爱' }, { chord:'', lyric:'过的地方' }],
+        [{ chord:'', lyric:'当微' }, { chord:'C', lyric:'风' }, { chord:'', lyric:'带着收获的味道' }, { chord:'Am', lyric:'吹' }, { chord:'', lyric:'向我脸庞' }],
+        [{ chord:'', lyric:'想' }, { chord:'Dm', lyric:'起' }, { chord:'', lyric:'你轻柔的话语曾' }, { chord:'G', lyric:'打' }, { chord:'', lyric:'湿我眼眶' }],
+      ]},
+      { title: '哼鸣', lines: [
+        [{ chord:'C', lyric:'嗯…' }, { chord:'Am', lyric:'嗯…' }, { chord:'Dm', lyric:'啦…' }, { chord:'G', lyric:'啦…' }],
+        [{ chord:'C', lyric:'嗯…' }, { chord:'Am', lyric:'嗯…' }, { chord:'Dm', lyric:'啦…' }, { chord:'G', lyric:'啦…' }],
+      ]},
+      { title: '主歌B', lines: [
+        [{ chord:'', lyric:'我们' }, { chord:'C', lyric:'曾' }, { chord:'', lyric:'在田野里歌唱' }, { chord:'Am', lyric:'在' }, { chord:'', lyric:'冬季盼望' }],
+        [{ chord:'', lyric:'却' }, { chord:'Dm', lyric:'没' }, { chord:'', lyric:'能等到阳光下这' }, { chord:'G', lyric:'秋' }, { chord:'', lyric:'天的景象' }],
+        [{ chord:'', lyric:'就让' }, { chord:'C', lyric:'失' }, { chord:'', lyric:'散的誓言飞舞吧' }, { chord:'Am', lyric:'随' }, { chord:'', lyric:'西风飘荡' }],
+        [{ chord:'', lyric:'就' }, { chord:'Dm', lyric:'像' }, { chord:'', lyric:'你柔软的长发曾' }, { chord:'G', lyric:'芬' }, { chord:'', lyric:'芳我梦乡' }],
+      ]},
+    ],
+  },
 ];
