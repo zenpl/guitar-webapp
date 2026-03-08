@@ -94,7 +94,7 @@ function renderSong(song) {
           ? `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`
           : `<span class="c"> </span>`;
         return `<span class="seg">${cSpan}<span class="w">${seg.lyric}</span></span>`;
-      }).join('');
+      }).join(' ');
       return `<div class="lyric-line">${segs}</div>`;
     }).join('');
     return `<div class="section-title">${sec.title}</div>${linesHtml}`;
