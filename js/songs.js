@@ -840,4 +840,32 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'xinbuliaoqing',
+    importVer: 2, locked: false,
+    title: '新不了情',
+    artist: '万芳',
+    baseKey: 'G', playKey: 'G', capo: 0,
+    chords: ['Cmaj7','Bm7','Am7','G','Em','D7','Am'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'Cmaj7', lyric:'心' }, { chord:'', lyric:'若' }, { chord:'Bm7', lyric:'倦' }, { chord:'', lyric:'了' }, { chord:'G', lyric:'泪' }, { chord:'', lyric:'也干了' }],
+        [{ chord:'Bm7', lyric:'这' }, { chord:'', lyric:'份深情' }, { chord:'Cmaj7', lyric:'难' }, { chord:'', lyric:'舍难了' }, { chord:'Bm7', lyric:'' }],
+        [{ chord:'Am7', lyric:'曾' }, { chord:'', lyric:'经拥有' }, { chord:'D7', lyric:'天' }, { chord:'', lyric:'荒地老' }],
+        [{ chord:'Bm7', lyric:'已' }, { chord:'', lyric:'不见你' }, { chord:'Em', lyric:'暮' }, { chord:'', lyric:'暮与朝朝' }],
+        [{ chord:'Cmaj7', lyric:'这' }, { chord:'', lyric:'一份情' }, { chord:'D7', lyric:'' }, { chord:'G', lyric:'永' }, { chord:'', lyric:'远难了' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Bm7', lyric:'愿' }, { chord:'', lyric:'来生还能' }, { chord:'Cmaj7', lyric:'再' }, { chord:'', lyric:'度拥抱' }, { chord:'Bm7', lyric:'' }],
+        [{ chord:'Am7', lyric:'爱' }, { chord:'', lyric:'一个人' }, { chord:'D7', lyric:'如' }, { chord:'', lyric:'何厮守到老' }],
+        [{ chord:'Bm7', lyric:'怎' }, { chord:'', lyric:'样面对' }, { chord:'Em', lyric:'一' }, { chord:'', lyric:'切我不知道' }],
+        [{ chord:'Cmaj7', lyric:'回' }, { chord:'', lyric:'忆过去' }, { chord:'Am7', lyric:'痛' }, { chord:'', lyric:'苦的相思忘不了' }],
+        [{ chord:'Bm7', lyric:'为' }, { chord:'', lyric:'何你还来' }, { chord:'Em', lyric:'拨' }, { chord:'', lyric:'动我心跳' }],
+        [{ chord:'Am7', lyric:'爱' }, { chord:'', lyric:'你怎么能了' }, { chord:'D7', lyric:'' }],
+        [{ chord:'Cmaj7', lyric:'今' }, { chord:'', lyric:'夜的你' }, { chord:'Bm7', lyric:'应' }, { chord:'', lyric:'该明了' }, { chord:'Em', lyric:'' }],
+        [{ chord:'Am', lyric:'缘' }, { chord:'', lyric:'难了' }, { chord:'D7', lyric:'情' }, { chord:'', lyric:'难了' }, { chord:'G', lyric:'' }],
+      ]},
+    ],
+  },
 ];
