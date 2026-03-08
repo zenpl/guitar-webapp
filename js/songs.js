@@ -900,7 +900,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'nideyangzi',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '你的样子',
     artist: '罗大佑',
     baseKey: 'C', playKey: 'C', capo: 0,
