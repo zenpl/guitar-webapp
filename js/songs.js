@@ -733,4 +733,40 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'beijiaerhupan',
+    importVer: 2, locked: false,
+    title: '贝加尔湖畔',
+    artist: '李健',
+    baseKey: 'F', playKey: 'C', capo: 5,
+    chords: ['Dm','G','Cmaj7','A7','Am','F','E'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'', lyric:'在我的怀' }, { chord:'Dm', lyric:'里，' }, { chord:'G', lyric:'' }, { chord:'', lyric:'在你的眼' }, { chord:'Cmaj7', lyric:'里' }, { chord:'A7', lyric:'' }],
+        [{ chord:'', lyric:'那里春风' }, { chord:'Dm', lyric:'沉' }, { chord:'', lyric:'醉，那' }, { chord:'G', lyric:'里' }, { chord:'', lyric:'绿草如' }, { chord:'Cmaj7', lyric:'茵' }, { chord:'Am', lyric:'' }],
+        [{ chord:'', lyric:'月光把爱' }, { chord:'Dm', lyric:'恋，' }, { chord:'G', lyric:'' }, { chord:'', lyric:'洒满了湖' }, { chord:'Cmaj7', lyric:'面' }, { chord:'A7', lyric:'' }],
+        [{ chord:'', lyric:'两个人的' }, { chord:'Dm', lyric:'篝' }, { chord:'', lyric:'火，照' }, { chord:'E', lyric:'亮' }, { chord:'', lyric:'整个夜' }, { chord:'Am', lyric:'晚' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'', lyric:'多少年以' }, { chord:'F', lyric:'后，' }, { chord:'F', lyric:'' }, { chord:'', lyric:'如云般游' }, { chord:'Cmaj7', lyric:'走' }, { chord:'Cmaj7', lyric:'' }],
+        [{ chord:'', lyric:'那变换的' }, { chord:'Dm', lyric:'脚' }, { chord:'', lyric:'步，让' }, { chord:'G', lyric:'我' }, { chord:'', lyric:'们难牵' }, { chord:'Cmaj7', lyric:'手' }, { chord:'A7', lyric:'' }],
+        [{ chord:'', lyric:'这一生一' }, { chord:'F', lyric:'世，' }, { chord:'F', lyric:'' }, { chord:'', lyric:'有多少你' }, { chord:'Cmaj7', lyric:'我' }, { chord:'Cmaj7', lyric:'' }],
+        [{ chord:'', lyric:'被吞没在' }, { chord:'Dm', lyric:'月' }, { chord:'', lyric:'光如' }, { chord:'G', lyric:'水' }, { chord:'', lyric:'的夜' }, { chord:'Cmaj7', lyric:'里' }, { chord:'E', lyric:'' }],
+      ]},
+      { title: '副歌二', lines: [
+        [{ chord:'Am', lyric:'' }, { chord:'', lyric:'多想某一' }, { chord:'Dm', lyric:'天，' }, { chord:'G', lyric:'' }, { chord:'', lyric:'往日又重' }, { chord:'Cmaj7', lyric:'现' }, { chord:'A7', lyric:'' }],
+        [{ chord:'', lyric:'我们流连忘' }, { chord:'Dm', lyric:'' }, { chord:'', lyric:'返，在' }, { chord:'E', lyric:'贝' }, { chord:'', lyric:'加尔湖' }, { chord:'Am', lyric:'畔' }],
+        [{ chord:'', lyric:'多少年以' }, { chord:'F', lyric:'后，' }, { chord:'F', lyric:'' }, { chord:'', lyric:'往事随云' }, { chord:'Cmaj7', lyric:'走' }, { chord:'Cmaj7', lyric:'' }],
+        [{ chord:'', lyric:'那纷飞的' }, { chord:'Dm', lyric:'冰' }, { chord:'', lyric:'雪，容' }, { chord:'G', lyric:'不' }, { chord:'', lyric:'下那温' }, { chord:'Cmaj7', lyric:'柔' }, { chord:'A7', lyric:'' }],
+        [{ chord:'', lyric:'这一生一' }, { chord:'F', lyric:'世，' }, { chord:'F', lyric:'' }, { chord:'', lyric:'这时间太' }, { chord:'Cmaj7', lyric:'少' }, { chord:'Cmaj7', lyric:'' }],
+        [{ chord:'', lyric:'不够证明' }, { chord:'Dm', lyric:'融' }, { chord:'', lyric:'化冰' }, { chord:'G', lyric:'雪' }, { chord:'', lyric:'的深' }, { chord:'Cmaj7', lyric:'情' }, { chord:'E', lyric:'' }],
+      ]},
+      { title: '结尾', lines: [
+        [{ chord:'Am', lyric:'' }, { chord:'', lyric:'就在某一' }, { chord:'Dm', lyric:'天，' }, { chord:'G', lyric:'' }, { chord:'', lyric:'你忽然出' }, { chord:'Cmaj7', lyric:'现' }, { chord:'A7', lyric:'' }],
+        [{ chord:'', lyric:'你清澈又' }, { chord:'Dm', lyric:'神' }, { chord:'', lyric:'秘，在' }, { chord:'E', lyric:'贝' }, { chord:'', lyric:'加尔湖' }, { chord:'Am', lyric:'畔' }],
+        [{ chord:'A7', lyric:'' }, { chord:'', lyric:'你清澈又' }, { chord:'Dm', lyric:'神' }, { chord:'', lyric:'秘，像' }, { chord:'E', lyric:'贝' }, { chord:'', lyric:'加尔湖' }, { chord:'Am', lyric:'畔' }],
+      ]},
+    ],
+  },
 ];
