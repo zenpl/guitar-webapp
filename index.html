@@ -36,6 +36,22 @@
     .song-header .artist { font-size: 13px; color: #888; margin-top: 3px; }
     .song-header .meta { font-size: 11px; color: #555; margin-top: 4px; }
 
+    /* Transpose */
+    .transpose-ctrl {
+      display: flex; align-items: center; gap: 14px;
+      justify-content: center; margin-top: 10px;
+    }
+    .trans-btn {
+      background: #16213e; border: 1px solid #0f3460;
+      border-radius: 6px; width: 32px; height: 32px;
+      font-size: 20px; color: #e94560; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-family: inherit; line-height: 1; padding: 0;
+    }
+    .trans-btn:active { background: #0f3460; }
+    .trans-label { font-size: 13px; color: #888; min-width: 52px; text-align: center; }
+    .no-chord-hint { font-size: 36px; margin: 12px 0 4px; }
+
     /* Chord bar */
     .chord-bar {
       display: flex; flex-wrap: wrap; gap: 8px;
@@ -98,7 +114,12 @@
   <div class="song-header">
     <h2>南山南</h2>
     <div class="artist">马頔</div>
-    <div class="meta">Key=Bb · Play=G · Capo=3</div>
+    <div class="meta" id="meta-nanshan">Key=Bb · Play=G · Capo=3</div>
+    <div class="transpose-ctrl">
+      <button class="trans-btn" onclick="transpose('nanshan',-1)">－</button>
+      <span class="trans-label" id="trans-nanshan">原调</span>
+      <button class="trans-btn" onclick="transpose('nanshan',+1)">＋</button>
+    </div>
   </div>
   <div class="chord-bar">
     <span class="chord-pill" data-chord="G">G</span>
@@ -166,7 +187,12 @@
   <div class="song-header">
     <h2>安和桥</h2>
     <div class="artist">宋冬野</div>
-    <div class="meta">Key=G · Capo=0</div>
+    <div class="meta" id="meta-anhq">Key=G · Capo=0</div>
+    <div class="transpose-ctrl">
+      <button class="trans-btn" onclick="transpose('anhq',-1)">－</button>
+      <span class="trans-label" id="trans-anhq">原调</span>
+      <button class="trans-btn" onclick="transpose('anhq',+1)">＋</button>
+    </div>
   </div>
   <div class="chord-bar">
     <span class="chord-pill" data-chord="G">G</span>
@@ -312,7 +338,12 @@
   <div class="song-header">
     <h2>千千阙歌</h2>
     <div class="artist">张国荣 / 陈慧娴</div>
-    <div class="meta">Key=A · Capo=0</div>
+    <div class="meta" id="meta-qqqg">Key=A · Capo=0</div>
+    <div class="transpose-ctrl">
+      <button class="trans-btn" onclick="transpose('qqqg',-1)">－</button>
+      <span class="trans-label" id="trans-qqqg">原调</span>
+      <button class="trans-btn" onclick="transpose('qqqg',+1)">＋</button>
+    </div>
   </div>
   <div class="chord-bar">
     <span class="chord-pill" data-chord="A">A</span>
@@ -437,9 +468,88 @@ document.querySelectorAll('.song-btn').forEach(btn => {
 // Chord modal
 document.addEventListener('click', e => {
   const chord = e.target.dataset.chord;
-  if (chord && CHORDS[chord]) { showChord(chord); return; }
+  if (chord && (CHORDS[chord] || e.target.classList.contains('c'))) {
+    if (chord) { showChord(chord); return; }
+  }
   if (e.target.id === 'modal') hideChord();
 });
+
+// ─── Transpose ───────────────────────────────────────────────
+const NOTES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+const NOTE_ALIAS = {'Db':'C#','Eb':'D#','Gb':'F#','Ab':'G#','Bb':'A#'};
+
+// Song configs: baseKey (concert), playKey (open chord key), capo
+const SONG_CONFIG = {
+  nanshan: { baseKey:'Bb', playKey:'G',  capo:3 },
+  anhq:    { baseKey:'G',  playKey:'G',  capo:0 },
+  qqqg:    { baseKey:'A',  playKey:'A',  capo:0 },
+};
+
+const songTranspose = { nanshan:0, anhq:0, qqqg:0 };
+
+function noteIndex(n) {
+  const norm = NOTE_ALIAS[n] || n;
+  return NOTES.indexOf(norm);
+}
+function transposeNote(n, semis) {
+  const idx = noteIndex(n);
+  if (idx === -1) return n;
+  return NOTES[(idx + semis + 120) % 12];
+}
+function chordRoot(chord) {
+  // extract root like C#, Bb, F#m -> root only
+  return chord.match(/^[A-G][#b]?/)?.[0] || chord;
+}
+function transposeChord(chord, semis) {
+  if (semis === 0) return chord;
+  const rootMatch = chord.match(/^([A-G][#b]?)(.*)/);
+  if (!rootMatch) return chord;
+  const newRoot = transposeNote(rootMatch[1], semis);
+  return newRoot + rootMatch[2];
+}
+
+// Find capo that gives simplest open-position key
+function bestCapo(targetPlayKey) {
+  // simplest: capo 0-7, prefer lower capo
+  const openKeys = ['C','G','D','A','E','F','Am','Em','Dm'];
+  for (let c = 0; c <= 7; c++) {
+    const openKey = transposeNote(targetPlayKey, -c);
+    if (openKeys.includes(openKey) || openKeys.includes(openKey+'m')) return c;
+  }
+  return 0;
+}
+
+function transpose(songId, delta) {
+  songTranspose[songId] = (songTranspose[songId] + delta + 12) % 12;
+  const semis = songTranspose[songId];
+  const cfg = SONG_CONFIG[songId];
+
+  // Update all chord labels in this song
+  const songEl = document.getElementById('song-' + songId);
+  songEl.querySelectorAll('[data-chord]').forEach(el => {
+    const orig = el.dataset.origChord || el.dataset.chord;
+    el.dataset.origChord = orig;
+    const newChord = transposeChord(orig, semis);
+    el.dataset.chord = newChord;
+    if (el.classList.contains('c') || el.classList.contains('chord-pill')) {
+      el.textContent = newChord;
+    }
+  });
+
+  // Update meta line
+  const baseIdx = noteIndex(cfg.baseKey);
+  const newBaseKey = NOTES[(baseIdx + semis + 12) % 12];
+  const playIdx = noteIndex(cfg.playKey);
+  const newPlayKey = NOTES[(playIdx + semis + 12) % 12];
+  // find new capo: how many semis up from newPlayKey to newBaseKey?
+  const newCapo = ((noteIndex(newBaseKey) - noteIndex(newPlayKey) + 12) % 12);
+  const metaEl = document.getElementById('meta-' + songId);
+  if (metaEl) metaEl.textContent = `Key=${newBaseKey} · Play=${newPlayKey} · Capo=${newCapo}`;
+
+  // Update label
+  const labelEl = document.getElementById('trans-' + songId);
+  if (labelEl) labelEl.textContent = semis === 0 ? '原调' : (semis > 6 ? `−${12-semis}` : `+${semis}`);
+}
 
 const CHORDS = {
   G:   { desc:'G 大调',            frets:[3,2,0,0,3,3] },
