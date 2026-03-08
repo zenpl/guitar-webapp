@@ -897,4 +897,31 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'nideyangzi',
+    importVer: 2, locked: false,
+    title: '你的样子',
+    artist: '罗大佑',
+    baseKey: 'C', playKey: 'C', capo: 0,
+    chords: ['Am','Em','Dm','Bbm','C#','F'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'', lyric:'我' }, { chord:'Am', lyric:'听' }, { chord:'', lyric:'到传来的谁的声音像那' }, { chord:'Em', lyric:'梦' }, { chord:'', lyric:'里呜咽中的小河' }],
+        [{ chord:'', lyric:'我' }, { chord:'Am', lyric:'看' }, { chord:'', lyric:'到远去的谁的步伐遮住' }, { chord:'Em', lyric:'告' }, { chord:'', lyric:'别时哀伤的眼神' }],
+        [{ chord:'', lyric:'不明' }, { chord:'Dm', lyric:'白' }, { chord:'', lyric:'的是为何你' }, { chord:'Em', lyric:'情' }, { chord:'', lyric:'愿让' }, { chord:'Am', lyric:'风' }, { chord:'', lyric:'尘刻划你的样子' }, { chord:'Em', lyric:'' }],
+        [{ chord:'', lyric:'就像' }, { chord:'Dm', lyric:'早' }, { chord:'', lyric:'已忘情的' }, { chord:'Em', lyric:'世' }, { chord:'', lyric:'界曾经拥有' }, { chord:'Am', lyric:'你' }, { chord:'', lyric:'的名字我的声音' }],
+        [{ chord:'Am', lyric:'那' }, { chord:'', lyric:'悲歌总会在梦中清醒诉说' }, { chord:'Em', lyric:'一' }, { chord:'', lyric:'点哀伤过的往事' }],
+        [{ chord:'Am', lyric:'那' }, { chord:'', lyric:'看似漫不在乎转过身的是风干' }, { chord:'Em', lyric:'泪' }, { chord:'', lyric:'眼后萧瑟的影子' }],
+        [{ chord:'', lyric:'不明' }, { chord:'Dm', lyric:'白' }, { chord:'', lyric:'的是为何人' }, { chord:'Em', lyric:'世' }, { chord:'', lyric:'间总' }, { chord:'Am', lyric:'不' }, { chord:'', lyric:'能溶解你的样' }, { chord:'Em', lyric:'子' }],
+        [{ chord:'', lyric:'是否' }, { chord:'Dm', lyric:'来' }, { chord:'', lyric:'迟了明日的' }, { chord:'Em', lyric:'渊' }, { chord:'', lyric:'源早谢了' }, { chord:'Am', lyric:'你' }, { chord:'', lyric:'的笑容我的心情' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Bbm', lyric:'不' }, { chord:'', lyric:'变的你伫立在' }, { chord:'C#', lyric:'茫' }, { chord:'', lyric:'茫的尘世中' }],
+        [{ chord:'Bbm', lyric:'聪' }, { chord:'', lyric:'明的孩子提着' }, { chord:'C#', lyric:'易' }, { chord:'', lyric:'碎的灯' }, { chord:'F', lyric:'笼' }],
+        [{ chord:'Bbm', lyric:'潇' }, { chord:'', lyric:'洒的你将心事' }, { chord:'C#', lyric:'化' }, { chord:'', lyric:'尽尘缘中' }],
+        [{ chord:'Bbm', lyric:'孤' }, { chord:'', lyric:'独的孩子你是' }, { chord:'C#', lyric:'造' }, { chord:'', lyric:'物的恩' }, { chord:'F', lyric:'宠' }],
+      ]},
+    ],
+  },
 ];

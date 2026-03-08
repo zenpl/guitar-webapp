@@ -52,6 +52,8 @@ const CHORDS = {
 
   // ── Barre ──
   Bm:  { desc:'B 小调（横按2品）',       frets:[-1,2,4,4,3,2], barre:2 },
+  Bbm: { desc:'Bb 小调（横按1品）',      frets:[-1,1,3,3,2,1], barre:1 },
+  'C#':{ desc:'C# 大调（横按4品）',      frets:[-1,4,6,6,6,4], barre:4 },
   'C#m': { desc:'C# 小调（横按4品）',    frets:[-1,4,6,6,5,4], barre:4 },
   'F#m': { desc:'F# 小调（横按2品）',    frets:[2,4,4,2,2,2], barre:2 },
 };
