@@ -336,4 +336,38 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'hongdou',
+    title: '红豆',
+    artist: '王菲',
+    baseKey: 'C', playKey: 'C', capo: 0,
+    chords: ['C','G/B','Am','Em','F','Dm','G'],
+    sections: [
+      { title: '主歌一', lines: [
+        [{ chord:'C', lyric:'还没好好的感受' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'雪花绽放的气候' }, { chord:'Em', lyric:'' }],
+        [{ chord:'F', lyric:'我们一起颤抖 会更明白' }, { chord:'C', lyric:'' }, { chord:'Dm', lyric:'什么是' }, { chord:'G', lyric:'温柔' }],
+        [{ chord:'C', lyric:'还没跟你牵着手' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'走过荒芜的沙丘' }, { chord:'Em', lyric:'' }],
+        [{ chord:'F', lyric:'可能从此以后 学会珍惜' }, { chord:'C', lyric:'' }, { chord:'Dm', lyric:'天长和' }, { chord:'G', lyric:'地久' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'C', lyric:'有时候 有时候 我会相信一切有尽头' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'' }, { chord:'Em', lyric:'' }],
+        [{ chord:'F', lyric:'相聚离开 都有时候' }, { chord:'C', lyric:'' }, { chord:'Dm', lyric:'没有什么会' }, { chord:'G', lyric:'永垂不朽' }],
+        [{ chord:'C', lyric:'可是我 有时候 宁愿选择留恋不放手' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'' }, { chord:'F', lyric:'' }],
+        [{ chord:'Em', lyric:'等到风景都看透' }, { chord:'Am', lyric:'' }, { chord:'Dm', lyric:'也许你会陪我' }, { chord:'G', lyric:'看细水长' }, { chord:'C', lyric:'流' }],
+      ]},
+      { title: '主歌二', lines: [
+        [{ chord:'C', lyric:'还没有你把红豆' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'熬成缠绵的伤口' }, { chord:'Em', lyric:'' }],
+        [{ chord:'F', lyric:'然后一起分享 会更明白' }, { chord:'C', lyric:'' }, { chord:'Dm', lyric:'相思的' }, { chord:'G', lyric:'哀愁' }],
+        [{ chord:'C', lyric:'还没有好的感受' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'醒着亲吻的温柔' }, { chord:'Em', lyric:'' }],
+        [{ chord:'F', lyric:'可能在我左右 你才追求' }, { chord:'C', lyric:'' }, { chord:'Dm', lyric:'孤独的' }, { chord:'G', lyric:'自由' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'C', lyric:'有时候 有时候 我会相信一切有尽头' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'' }, { chord:'Em', lyric:'' }],
+        [{ chord:'F', lyric:'相聚离开 都有时候' }, { chord:'C', lyric:'' }, { chord:'Dm', lyric:'没有什么会' }, { chord:'G', lyric:'永垂不朽' }],
+        [{ chord:'C', lyric:'可是我 有时候 宁愿选择留恋不放手' }, { chord:'G/B', lyric:'' }, { chord:'Am', lyric:'' }, { chord:'F', lyric:'' }],
+        [{ chord:'Em', lyric:'等到风景都看透' }, { chord:'Am', lyric:'' }, { chord:'Dm', lyric:'也许你会陪我' }, { chord:'G', lyric:'看细水长' }, { chord:'C', lyric:'流' }],
+      ]},
+    ],
+  },
 ];
