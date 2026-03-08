@@ -385,8 +385,15 @@ function setupEditMode() {
     const changedSongs = [...new Set(pendingEdits.map(e => e.song))];
     const out = changedSongs.map(title => {
       const song = SONGS.find(s => s.title === title);
-      const sectionsJson = JSON.stringify(song.sections, null, 2);
-      return `=== ${title} (id: ${song.id}) sections ===\n${sectionsJson}`;
+      // 紧凑格式：每个 seg 一行，sections 结构清晰但不展开
+      const sections = song.sections.map(sec => {
+        const lines = sec.lines.map(line => {
+          const segs = line.map(s => `{c:${JSON.stringify(s.chord)},l:${JSON.stringify(s.lyric)}}`).join(',');
+          return `    [${segs}]`;
+        }).join(',\n');
+        return `  {title:${JSON.stringify(sec.title)},lines:[\n${lines}]}`;
+      }).join(',\n');
+      return `=== ${title} (id: ${song.id}) ===\n[\n${sections}\n]`;
     }).join('\n\n');
     navigator.clipboard.writeText(out).then(() => {
       document.getElementById('diff-fab').textContent = '✅ 已复制';
