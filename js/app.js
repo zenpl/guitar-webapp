@@ -166,11 +166,26 @@ function doTranspose(songId, delta) {
 
 function getLocked(songId) {
   const song = SONGS.find(s => s.id === songId);
+  // 内存中的 locked 字段（可被 toggleLock 临时修改）
   return !!(song && song.locked);
 }
 
 function toggleLock(songId) {
-  // 锁定状态由 songs.js 的 locked 字段管理，告知 AI 修改
+  // 记录 lock 操作到 pendingEdits，等待发送给 AI
+  const song = SONGS.find(s => s.id === songId);
+  if (!song) return;
+  const newLocked = !getLocked(songId);
+  pendingEdits.push({
+    type: 'lock',
+    song: song.title,
+    songId,
+    locked: newLocked
+  });
+  // 临时更新显示（内存中）
+  song.locked = newLocked;
+  refreshSong(song);
+  document.getElementById('diff-fab').classList.add('show');
+  document.getElementById('send-fab').classList.add('show');
 }
 
 function toggleEasy(songId) {
@@ -379,26 +394,59 @@ function setupEditMode() {
     document.getElementById('edit-modal').classList.remove('show');
   };
 
-  document.getElementById('diff-fab').onclick = () => {
-    if (!pendingEdits.length) return;
-    // 导出受影响歌曲的完整 sections 数据
-    const changedSongs = [...new Set(pendingEdits.map(e => e.song))];
-    const out = changedSongs.map(title => {
-      const song = SONGS.find(s => s.title === title);
-      // 紧凑格式：每个 seg 一行，sections 结构清晰但不展开
-      const sections = song.sections.map(sec => {
-        const lines = sec.lines.map(line => {
+  function buildDiffText() {
+    if (!pendingEdits.length) return '';
+    const lines = pendingEdits.map((e, i) => {
+      if (e.type === 'lock') return `[${i+1}] LOCK ${e.songId} locked=${e.locked}`;
+      return `[${i+1}] ${e.song} · ${e.section} · 行${e.line} · 第${e.seg}段\n` +
+        `    原: c=${JSON.stringify(e.from.chord)} l=${JSON.stringify(e.from.lyric)}\n` +
+        `    改: c=${JSON.stringify(e.to.chord)} l=${JSON.stringify(e.to.lyric)}`;
+    });
+    const changedIds = [...new Set(pendingEdits.filter(e => e.type !== 'lock').map(e => {
+      const s = SONGS.find(s => s.title === e.song); return s ? s.id : null;
+    }).filter(Boolean))];
+    const sectionsOut = changedIds.map(id => {
+      const song = SONGS.find(s => s.id === id);
+      const secs = song.sections.map(sec => {
+        const ls = sec.lines.map(line => {
           const segs = line.map(s => `{c:${JSON.stringify(s.chord)},l:${JSON.stringify(s.lyric)}}`).join(',');
-          return `    [${segs}]`;
+          return `  [${segs}]`;
         }).join(',\n');
-        return `  {title:${JSON.stringify(sec.title)},lines:[\n${lines}]}`;
+        return `{title:${JSON.stringify(sec.title)},lines:[\n${ls}]}`;
       }).join(',\n');
-      return `=== ${title} (id: ${song.id}) ===\n[\n${sections}\n]`;
-    }).join('\n\n');
-    navigator.clipboard.writeText(out).then(() => {
+      return `=== SECTIONS ${song.title} (${id}) ===\n[${secs}]`;
+    });
+    return ['=== DIFF ===', ...lines, ...sectionsOut].join('\n\n');
+  }
+
+  document.getElementById('diff-fab').onclick = () => {
+    const text = buildDiffText();
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
       document.getElementById('diff-fab').textContent = '✅ 已复制';
       setTimeout(() => { document.getElementById('diff-fab').textContent = '📋 复制 diff'; }, 2000);
     });
+  };
+
+  document.getElementById('send-fab').onclick = async () => {
+    const text = buildDiffText();
+    if (!text) return;
+    const btn = document.getElementById('send-fab');
+    btn.textContent = '发送中…';
+    try {
+      const res = await fetch('https://api.telegram.org/bot8648957461:AAFSkYeP9ynAX8qs2-DmCdly9MKNAJnhnqM/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: '8554431445', text: '📋 曲谱 diff:\n\n' + text })
+      });
+      if (res.ok) {
+        btn.textContent = '✅ 已发送';
+        pendingEdits.length = 0;
+        document.getElementById('diff-fab').classList.remove('show');
+        document.getElementById('send-fab').classList.remove('show');
+      } else { btn.textContent = '❌ 失败'; }
+    } catch { btn.textContent = '❌ 失败'; }
+    setTimeout(() => { btn.textContent = '📤 发给AI'; }, 3000);
   };
 }
 

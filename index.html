@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>吉他谱</title>
+  <title>Zen的曲谱本子</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -19,6 +19,8 @@
     .song-selector {
       display: flex; flex-wrap: wrap; gap: 8px;
       justify-content: center; margin: 0 0 16px;
+      max-height: 88px; overflow-y: auto;
+      padding: 4px 0;
     }
     .song-btn {
       background: #16213e; border: 1px solid #0f3460;
@@ -139,6 +141,7 @@
       display: none;
     }
     .diff-fab.show { display: block; }
+    .send-fab { bottom: 70px; background: #4ade80; color: #000; }
     /* 编辑弹窗 */
     .edit-modal {
       display: none; position: fixed; inset: 0;
@@ -183,7 +186,7 @@
 </head>
 <body>
 
-<header><h1>🎸 吉他谱</h1></header>
+<header><h1>📒 Zen的曲谱本子</h1></header>
 
 <div class="song-selector" id="song-selector"></div>
 <div id="songs-container"></div>
@@ -218,6 +221,7 @@
 
 <!-- Diff FAB -->
 <button class="diff-fab" id="diff-fab">📋 复制 diff</button>
+<button class="diff-fab send-fab" id="send-fab">📤 发给AI</button>
 
 <script src="js/chords.js?v=3"></script>
 <script src="js/songs.js?v=3"></script>
