@@ -843,7 +843,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'xinbuliaoqing',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '新不了情',
     artist: '万芳',
     baseKey: 'G', playKey: 'G', capo: 0,
