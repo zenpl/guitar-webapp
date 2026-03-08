@@ -13,7 +13,10 @@
 
 ## Step 1 · 获取歌词和弦
 
-在 chord4.com 搜索歌曲，用浏览器开发者工具读原始文本：
+**优先**：搜 `yopu 歌名` 或直接访问 yopu.co，用 browser 工具读 `document.body.innerText`。
+yopu 的格式是和弦标注在歌词内联显示，容易解析，质量更好。
+
+备用：chord4.com，用浏览器开发者工具读原始文本：
 
 ```js
 document.querySelector('pre').innerText
