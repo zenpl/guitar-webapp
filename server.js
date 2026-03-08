@@ -1,6 +1,6 @@
 // Guitar app local server + diff relay
 const http = require('http');
-const { execSync } = require('child_process');
+const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -34,12 +34,12 @@ const server = http.createServer((req, res) => {
         if (!diff) { res.writeHead(400); res.end('{"ok":false}'); return; }
         // Inject message into zeta agent session
         const safe = diff.replace(/'/g, "'\\''");
-        execSync(`/opt/homebrew/bin/openclaw agent --agent zeta --message '📋 曲谱diff:\n${safe}'`, {
-          timeout: 15000,
-          env: { ...process.env }
-        });
+        // 立即返回，后台异步执行
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end('{"ok":true}');
+        exec(`/opt/homebrew/bin/openclaw agent --agent zeta --message '📋 曲谱diff:\n${safe}'`, {
+          env: { ...process.env }
+        }, (err) => { if (err) console.error('agent err:', err.message); });
       } catch (e) {
         console.error('send-diff error:', e.message);
         res.writeHead(500, { 'Content-Type': 'application/json' });
