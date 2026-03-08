@@ -434,10 +434,11 @@ function setupEditMode() {
     const btn = document.getElementById('send-fab');
     btn.textContent = '发送中…';
     try {
-      const res = await fetch('https://api.telegram.org/bot8648957461:AAFSkYeP9ynAX8qs2-DmCdly9MKNAJnhnqM/sendMessage', {
+      // 通过本地 server.js 中转，调用 openclaw agent 注入消息
+      const res = await fetch('http://localhost:7788/send-diff', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: '8554431445', text: '📋 曲谱 diff:\n\n' + text })
+        body: JSON.stringify({ diff: text })
       });
       if (res.ok) {
         btn.textContent = '✅ 已发送';
@@ -445,7 +446,7 @@ function setupEditMode() {
         document.getElementById('diff-fab').classList.remove('show');
         document.getElementById('send-fab').classList.remove('show');
       } else { btn.textContent = '❌ 失败'; }
-    } catch { btn.textContent = '❌ 失败'; }
+    } catch(e) { btn.textContent = '❌ 网络错误'; }
     setTimeout(() => { btn.textContent = '📤 发给AI'; }, 3000);
   };
 }
