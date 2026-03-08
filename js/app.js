@@ -113,11 +113,13 @@ function renderSong(song) {
   const baseKey = transposeNote(song.baseKey.replace(/m$/, ''), s) + (song.baseKey.endsWith('m') ? 'm' : '');
   const playKey = transposeNote(song.playKey.replace(/m$/, ''), s) + (song.playKey.endsWith('m') ? 'm' : '');
   const capo = ((noteIndex(baseKey.replace(/m$/,'')) - noteIndex(playKey.replace(/m$/,'')) + 12) % 12);
+  const ver = song.importVer || 1;
+  const locked = song.locked || false;
 
   return `
-<div class="song hidden" id="song-${song.id}">
+<div class="song hidden${locked ? ' is-locked' : ''}" id="song-${song.id}">
   <div class="song-header">
-    <h2>${song.title}</h2>
+    <h2>${song.title}<span class="ver-badge">v${ver}</span><button class="lock-btn${locked ? ' locked' : ''}" onclick="toggleLock('${song.id}')">${locked ? '🔒' : '🔓'}</button></h2>
     <div class="artist">${song.artist}</div>
     <div class="meta" id="meta-${song.id}">Key=${baseKey} · Play=${playKey} · Capo=${capo}</div>
     <div class="transpose-ctrl">
@@ -151,6 +153,13 @@ function renderAll() {
 function doTranspose(songId, delta) {
   const song = SONGS.find(s => s.id === songId);
   state[songId].semis = (state[songId].semis + delta + 12) % 12;
+  refreshSong(song);
+}
+
+function toggleLock(songId) {
+  const song = SONGS.find(s => s.id === songId);
+  if (!song) return;
+  song.locked = !song.locked;
   refreshSong(song);
 }
 

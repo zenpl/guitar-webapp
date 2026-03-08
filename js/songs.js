@@ -8,6 +8,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'nanshan',
+    importVer: 1, locked: false,
     title: '南山南',
     artist: '马頔',
     baseKey: 'Bb', playKey: 'G', capo: 3,
@@ -42,6 +43,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'anhq',
+    importVer: 1, locked: false,
     title: '安和桥',
     artist: '宋冬野',
     baseKey: 'G', playKey: 'G', capo: 0,
@@ -103,6 +105,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'qqqg',
+    importVer: 1, locked: false,
     title: '千千阙歌',
     artist: '张国荣 / 陈慧娴',
     baseKey: 'A', playKey: 'A', capo: 0,
@@ -156,6 +159,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'hotelca',
+    importVer: 1, locked: false,
     title: 'Hotel California',
     artist: 'Eagles',
     baseKey: 'Am', playKey: 'Am', capo: 0,
@@ -213,6 +217,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'chengdu',
+    importVer: 1, locked: false,
     title: '成都',
     artist: '赵雷',
     baseKey: 'D', playKey: 'C', capo: 2,
@@ -255,6 +260,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'qinaioxiaohai',
+    importVer: 1, locked: false,
     title: '亲爱的小孩',
     artist: '苏芮',
     baseKey: 'Ab', playKey: 'G', capo: 1,
@@ -285,6 +291,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'lianfengchen',
+    importVer: 1, locked: false,
     title: '恋恋风尘',
     artist: '老狼',
     baseKey: 'E', playKey: 'C', capo: 4,
@@ -306,6 +313,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'hongdou',
+    importVer: 1, locked: false,
     title: '红豆',
     artist: '王菲',
     baseKey: 'C', playKey: 'C', capo: 0,
@@ -344,6 +352,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'qiufeng',
+    importVer: 1, locked: false,
     title: '秋风',
     artist: '四熹丸子',
     baseKey: 'C#', playKey: 'C', capo: 1,
@@ -373,6 +382,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'yuebanyequ',
+    importVer: 1, locked: false,
     title: '月半小夜曲',
     artist: '李克勤',
     baseKey: 'Am', playKey: 'Am', capo: 0,
@@ -400,6 +410,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'hongsegjx',
+    importVer: 2, locked: false,
     title: '红色高跟鞋',
     artist: '蔡健雅',
     baseKey: 'D', playKey: 'C', capo: 2,
@@ -434,6 +445,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'tearsinheaven',
+    importVer: 2, locked: false,
     title: 'Tears in Heaven',
     artist: 'Eric Clapton',
     baseKey: 'A', playKey: 'A', capo: 0,
