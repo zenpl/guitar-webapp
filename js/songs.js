@@ -191,7 +191,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'chengdu',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '成都',
     artist: '赵雷',
     baseKey: 'D', playKey: 'C', capo: 2,
@@ -278,7 +278,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'hongdou',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '红豆',
     artist: '王菲',
     baseKey: 'C', playKey: 'C', capo: 0,
