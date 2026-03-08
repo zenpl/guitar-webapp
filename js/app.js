@@ -86,6 +86,10 @@ function renderSong(song) {
     const linesHtml = sec.lines.map(line => {
       const segs = line.map(seg => {
         const tc = seg.chord ? transposeChord(seg.chord, s) : '';
+        // 空歌词：只显示一个小和弦标签，不撑空间
+        if (!seg.lyric || !seg.lyric.trim()) {
+          return tc ? `<span class="chord-inline" data-chord="${tc}">${tc}</span>` : '';
+        }
         const cSpan = tc
           ? `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`
           : `<span class="c"> </span>`;
