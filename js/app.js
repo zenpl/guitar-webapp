@@ -120,7 +120,8 @@ function renderSong(song) {
   const shiftLabel = s === 0 ? '原调' : (s > 6 ? `−${12-s}` : `+${s}`);
   const baseKey = transposeNote(song.baseKey.replace(/m$/, ''), s) + (song.baseKey.endsWith('m') ? 'm' : '');
   const playKey = transposeNote(song.playKey.replace(/m$/, ''), s) + (song.playKey.endsWith('m') ? 'm' : '');
-  const capo = ((noteIndex(baseKey.replace(/m$/,'')) - noteIndex(playKey.replace(/m$/,'')) + 12) % 12);
+  // Capo 直接用原始值，不动态计算（转调只改 Key 显示）
+  const capo = song.capo || 0;
   const ver = song.importVer || 1;
   const locked = getLocked(song.id);
 
