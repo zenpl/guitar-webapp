@@ -323,9 +323,9 @@ const SONGS = [
     chords: ['C','Am','G','F7','C/E','Dm','Em7','Dm7','Gsus4','Am7','C/G','D7','E/B','D/F#','G7'],
     sections: [
       { title: '主歌', lines: [
-        [{ chord:'C', lyric:'还没好好的感受　雪花' }, { chord:'Am', lyric:'绽放的气候' }],
+        [{ chord:'', lyric:'还没' }, { chord:'C', lyric:'好好的感受　雪花' }, { chord:'Am', lyric:'绽放的气候' }],
         [{ chord:'G', lyric:'我们' }, { chord:'F7', lyric:'一起颤抖　会更明白' }, { chord:'C/E', lyric:'' }, { chord:'Dm', lyric:'甚么是温柔' }, { chord:'G', lyric:'' }],
-        [{ chord:'C', lyric:'还没跟你牵着手　走过' }, { chord:'Am', lyric:'荒芜的沙丘' }],
+        [{ chord:'', lyric:'还没跟' }, { chord:'C', lyric:'牵着手　走过' }, { chord:'Am', lyric:'荒芜的沙丘' }],
         [{ chord:'G', lyric:'可能' }, { chord:'F7', lyric:'从此以后　学会珍惜' }, { chord:'Em7', lyric:'' }, { chord:'Dm7', lyric:'天长和地' }, { chord:'Gsus4', lyric:'久' }, { chord:'G', lyric:'' }],
       ]},
       { title: '副歌', lines: [
@@ -337,9 +337,9 @@ const SONGS = [
         [{ chord:'Em7', lyric:'等到风景都看' }, { chord:'Am', lyric:'透' }, { chord:'Dm7', lyric:'也许你会陪我看' }, { chord:'G7', lyric:'细水长' }, { chord:'C', lyric:'流' }],
       ]},
       { title: '主歌', lines: [
-        [{ chord:'C', lyric:'还没为你把红豆　熬成' }, { chord:'Am', lyric:'缠绵的伤口' }],
+        [{ chord:'', lyric:'还没为你把' }, { chord:'C', lyric:'红豆　熬成' }, { chord:'Am', lyric:'缠绵的伤口' }],
         [{ chord:'G', lyric:'然后' }, { chord:'F7', lyric:'一起分享　会更明白' }, { chord:'C/E', lyric:'' }, { chord:'Dm', lyric:'相思的哀愁' }, { chord:'G', lyric:'' }],
-        [{ chord:'C', lyric:'还没好好的感受　醒着' }, { chord:'Am', lyric:'亲吻的温柔' }],
+        [{ chord:'', lyric:'还没' }, { chord:'C', lyric:'好好的感受　醒着' }, { chord:'Am', lyric:'亲吻的温柔' }],
         [{ chord:'G', lyric:'可能' }, { chord:'F7', lyric:'在我左右　你才追求' }, { chord:'Em7', lyric:'' }, { chord:'Dm7', lyric:'孤独的自' }, { chord:'Gsus4', lyric:'由' }, { chord:'G', lyric:'' }],
       ]},
       { title: '副歌', lines: [
