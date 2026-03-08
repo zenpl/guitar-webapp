@@ -14,6 +14,7 @@ const CHORDS = {
   Dm:  { desc:'D 小调',                 frets:[-1,-1,0,2,3,1] },
   F:   { desc:'F 大调（横按1品）',       frets:[1,3,3,2,1,1], barre:1 },
   E7:  { desc:'E7',                     frets:[0,2,0,1,0,0] },
+  G7:  { desc:'G7',                     frets:[3,2,0,0,0,1] },
 
   // ── Barre ──
   Bm:  { desc:'B 小调（横按2品）',       frets:[-1,2,4,4,3,2], barre:2 },

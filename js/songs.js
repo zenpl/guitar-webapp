@@ -304,4 +304,36 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'lianfengchen',
+    title: '恋恋风尘',
+    artist: '老狼',
+    baseKey: 'E', playKey: 'C', capo: 4,
+    chords: ['C','G','Em','F','Am','G7'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'C', lyric:'那天黄昏 开始飘起了' }, { chord:'G', lyric:'白雪' }],
+        [{ chord:'Em', lyric:'忧伤开满山岗' }, { chord:'F', lyric:'等青春散场' }],
+        [{ chord:'C', lyric:'午夜的电影写满古老的' }, { chord:'G', lyric:'恋情' }],
+        [{ chord:'F', lyric:'在黑暗中为年轻' }, { chord:'C', lyric:'歌唱' }],
+        [{ chord:'C', lyric:'走吧 女孩 去看红色的' }, { chord:'G', lyric:'朝霞' }],
+        [{ chord:'Em', lyric:'带上我的恋歌' }, { chord:'F', lyric:'你迎风吟唱' }],
+        [{ chord:'C', lyric:'露水挂在发梢 结满透明的' }, { chord:'G', lyric:'惆怅' }],
+        [{ chord:'F', lyric:'是我一生最初的' }, { chord:'C', lyric:'迷惘' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'C', lyric:'当岁月和美丽' }, { chord:'F', lyric:'已成风尘中的叹息' }],
+        [{ chord:'E', lyric:'' }, { chord:'Am', lyric:'你感伤的眼里有旧时泪滴' }],
+        [{ chord:'C', lyric:'相信爱的年纪' }, { chord:'F', lyric:'没能唱给你的歌曲' }],
+        [{ chord:'Am', lyric:'' }, { chord:'G7', lyric:'让我一生常常追忆' }],
+        [{ chord:'C', lyric:'相信爱的年纪' }, { chord:'F', lyric:'没能唱给你的歌曲' }],
+        [{ chord:'Am', lyric:'' }, { chord:'G7', lyric:'让我一生常常追忆' }],
+      ]},
+      { title: '尾奏', lines: [
+        [{ chord:'Am', lyric:' ' }, { chord:'F', lyric:' ' }, { chord:'C', lyric:' ' }],
+        [{ chord:'Am', lyric:' ' }, { chord:'F', lyric:' ' }, { chord:'G7', lyric:' ' }, { chord:'C', lyric:' ' }],
+      ]},
+    ],
+  },
 ];
