@@ -796,4 +796,48 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'fujishan',
+    importVer: 2, locked: false,
+    title: '富士山下',
+    artist: '陈奕迅',
+    baseKey: 'F', playKey: 'C', capo: 5,
+    chords: ['Am','Em','Fmaj7','G','C','Dm7','D','Gadd9','Cmaj7'],
+    sections: [
+      { title: '主歌A', lines: [
+        [{ chord:'', lyric:'拦路雨偏似' }, { chord:'C', lyric:'雪' }, { chord:'', lyric:'花饮泣的你冻吗' }],
+        [{ chord:'', lyric:'这风褛我给' }, { chord:'Am', lyric:'你' }, { chord:'', lyric:'磨到有襟花' }, { chord:'Em', lyric:'' }],
+        [{ chord:'', lyric:'连掉了职也不' }, { chord:'Fmaj7', lyric:'怕' }, { chord:'', lyric:'怎么始终' }, { chord:'Em', lyric:'牵' }, { chord:'', lyric:'挂' }],
+        [{ chord:'', lyric:'苦心选中' }, { chord:'Dm7', lyric:'今' }, { chord:'', lyric:'天想车你回家' }, { chord:'G', lyric:'' }],
+        [{ chord:'', lyric:'原谅我不再' }, { chord:'C', lyric:'送' }, { chord:'', lyric:'花伤口应要结疤' }],
+        [{ chord:'', lyric:'花瓣铺满' }, { chord:'Am', lyric:'心' }, { chord:'', lyric:'里坟场才害怕' }, { chord:'Em', lyric:'' }],
+        [{ chord:'', lyric:'如若你非我' }, { chord:'Fmaj7', lyric:'不' }, { chord:'', lyric:'嫁彼此终必' }, { chord:'C', lyric:'火' }, { chord:'', lyric:'化' }],
+        [{ chord:'', lyric:'一生一世' }, { chord:'Dm7', lyric:'等' }, { chord:'', lyric:'一天' }, { chord:'G', lyric:'需' }, { chord:'', lyric:'要代价' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'', lyric:'谁都只得那' }, { chord:'Am', lyric:'双' }, { chord:'', lyric:'手靠拥抱亦难' }, { chord:'Em', lyric:'任' }, { chord:'', lyric:'你拥有' }],
+        [{ chord:'', lyric:'要拥有' }, { chord:'Fmaj7', lyric:'必' }, { chord:'', lyric:'先懂' }, { chord:'G', lyric:'失' }, { chord:'', lyric:'去怎接受' }, { chord:'C', lyric:'' }],
+        [{ chord:'', lyric:'曾沿着' }, { chord:'Am', lyric:'雪' }, { chord:'', lyric:'路浪游为何为' }, { chord:'D', lyric:'好' }, { chord:'', lyric:'事泪流' }],
+        [{ chord:'', lyric:'谁能凭' }, { chord:'Fmaj7', lyric:'爱' }, { chord:'', lyric:'意要富士山私有' }, { chord:'G', lyric:'' }],
+        [{ chord:'', lyric:'何不把' }, { chord:'Am', lyric:'悲' }, { chord:'', lyric:'哀感觉假设是来' }, { chord:'Em', lyric:'自' }, { chord:'', lyric:'你虚构' }],
+        [{ chord:'', lyric:'试管里' }, { chord:'Fmaj7', lyric:'找' }, { chord:'', lyric:'不到' }, { chord:'G', lyric:'它' }, { chord:'', lyric:'染污眼眸' }, { chord:'C', lyric:'' }],
+        [{ chord:'', lyric:'前尘硬' }, { chord:'Am', lyric:'化' }, { chord:'', lyric:'像石头随缘地抛下便逃走' }],
+        [{ chord:'', lyric:'我绝不' }, { chord:'Fmaj7', lyric:'罕' }, { chord:'', lyric:'有往街里绕过' }, { chord:'G', lyric:'一' }, { chord:'', lyric:'周我便化乌有' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '主歌B', lines: [
+        [{ chord:'', lyric:'情人节不要' }, { chord:'C', lyric:'说' }, { chord:'', lyric:'穿只敢抚你发端' }],
+        [{ chord:'', lyric:'这种姿态' }, { chord:'Am', lyric:'可' }, { chord:'', lyric:'会令你更心酸' }, { chord:'Em', lyric:'' }],
+        [{ chord:'', lyric:'留在汽车里' }, { chord:'Fmaj7', lyric:'取' }, { chord:'', lyric:'暖应该怎么' }, { chord:'Em', lyric:'规' }, { chord:'', lyric:'劝' }],
+        [{ chord:'', lyric:'怎么可以' }, { chord:'Dm7', lyric:'将' }, { chord:'', lyric:'手腕忍痛划损' }, { chord:'G', lyric:'' }],
+        [{ chord:'', lyric:'人活到几岁' }, { chord:'C', lyric:'算' }, { chord:'', lyric:'短失恋只有更短' }],
+        [{ chord:'', lyric:'归家需要几' }, { chord:'Am', lyric:'里' }, { chord:'', lyric:'路谁能预算' }, { chord:'Em', lyric:'' }],
+        [{ chord:'', lyric:'忘掉我跟你' }, { chord:'Fmaj7', lyric:'恩' }, { chord:'', lyric:'怨樱花开了几转' }, { chord:'C', lyric:'' }],
+        [{ chord:'', lyric:'东京之旅' }, { chord:'Dm7', lyric:'一' }, { chord:'', lyric:'早比' }, { chord:'G', lyric:'一' }, { chord:'', lyric:'世遥远' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '尾声', lines: [
+        [{ chord:'', lyric:'你还嫌' }, { chord:'Dm7', lyric:'不' }, { chord:'', lyric:'够我把这陈年' }, { chord:'G', lyric:'风' }, { chord:'', lyric:'褛送赠你解咒' }, { chord:'Cmaj7', lyric:'' }],
+      ]},
+    ],
+  },
 ];
