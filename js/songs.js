@@ -56,7 +56,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'anhq',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '安和桥',
     artist: '宋冬野',
     baseKey: 'G', playKey: 'G', capo: 0,
@@ -389,7 +389,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'hongsegjx',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '红色高跟鞋',
     artist: '蔡健雅',
     baseKey: 'D', playKey: 'C', capo: 2,
@@ -424,7 +424,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'tearsinheaven',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: 'Tears in Heaven',
     artist: 'Eric Clapton',
     baseKey: 'A', playKey: 'A', capo: 0,

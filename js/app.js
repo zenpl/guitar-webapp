@@ -156,30 +156,10 @@ function doTranspose(songId, delta) {
   refreshSong(song);
 }
 
-// ── Lock persistence (localStorage) ──
-const LOCK_KEY = 'guitar_locked_songs';
-
-function getLocked(songId) {
-  try {
-    const data = JSON.parse(localStorage.getItem(LOCK_KEY) || '{}');
-    return !!data[songId];
-  } catch { return false; }
-}
-
-function setLocked(songId, val) {
-  try {
-    const data = JSON.parse(localStorage.getItem(LOCK_KEY) || '{}');
-    if (val) data[songId] = true;
-    else delete data[songId];
-    localStorage.setItem(LOCK_KEY, JSON.stringify(data));
-  } catch {}
-}
-
 function toggleLock(songId) {
-  const song = SONGS.find(s => s.id === songId);
-  if (!song) return;
-  setLocked(songId, !getLocked(songId));
-  refreshSong(song);
+  // 锁定状态由 songs.js 的 locked 字段决定，UI 只做显示
+  // 实际锁定需要告知 AI 更新 songs.js 并 push
+  alert(`请告知 AI 锁定歌曲 "${songId}"`);
 }
 
 function toggleEasy(songId) {
