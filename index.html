@@ -51,6 +51,8 @@
     .trans-btn:active { background: #0f3460; }
     .trans-label { font-size: 13px; color: #888; min-width: 52px; text-align: center; }
     .no-chord-hint { font-size: 36px; margin: 12px 0 4px; }
+    .easy-btn { border-color: #166534; width: auto; padding: 0 12px; font-size: 13px; font-weight: 700; }
+    .easy-btn:active { background: #166534; }
 
     /* Chord bar */
     .chord-bar {
@@ -119,6 +121,7 @@
       <button class="trans-btn" onclick="transpose('nanshan',-1)">－</button>
       <span class="trans-label" id="trans-nanshan">原调</span>
       <button class="trans-btn" onclick="transpose('nanshan',+1)">＋</button>
+      <button class="trans-btn easy-btn" id="easy-nanshan" onclick="toggleEasyOrigin('nanshan')">易</button>
     </div>
   </div>
   <div class="chord-bar">
@@ -192,6 +195,7 @@
       <button class="trans-btn" onclick="transpose('anhq',-1)">－</button>
       <span class="trans-label" id="trans-anhq">原调</span>
       <button class="trans-btn" onclick="transpose('anhq',+1)">＋</button>
+      <button class="trans-btn easy-btn" id="easy-anhq" onclick="toggleEasyOrigin('anhq')">易</button>
     </div>
   </div>
   <div class="chord-bar">
@@ -343,6 +347,7 @@
       <button class="trans-btn" onclick="transpose('qqqg',-1)">－</button>
       <span class="trans-label" id="trans-qqqg">原调</span>
       <button class="trans-btn" onclick="transpose('qqqg',+1)">＋</button>
+      <button class="trans-btn easy-btn" id="easy-qqqg" onclick="toggleEasyOrigin('qqqg')">易</button>
     </div>
   </div>
   <div class="chord-bar">
@@ -547,9 +552,100 @@ function transpose(songId, delta) {
   if (metaEl) metaEl.textContent = `Key=${newBaseKey} · Play=${newPlayKey} · Capo=${newCapo}`;
 
   // Update label
+  updateTransLabel(songId);
+}
+
+// ─── Label & Difficulty ──────────────────────────────────────
+const songEasySemis = {}; // cache best semis per song
+
+function difficultyOf(songId, semis) {
+  const score = scoreSemis(songId, semis);
+  const easy  = songEasySemis[songId] !== undefined ? songEasySemis[songId] : findEasySemis(songId);
+  const easyScore = scoreSemis(songId, easy);
+  const originScore = scoreSemis(songId, 0);
+  if (score === easyScore) return { text: '最易', color: '#4ade80' };
+  if (score <= originScore) return { text: '易', color: '#86efac' };
+  return { text: '难', color: '#f87171' };
+}
+
+function updateTransLabel(songId) {
+  const semis = songTranspose[songId];
   const labelEl = document.getElementById('trans-' + songId);
   if (labelEl) labelEl.textContent = semis === 0 ? '原调' : (semis > 6 ? `−${12-semis}` : `+${semis}`);
+
+  const easyEl = document.getElementById('easy-' + songId);
+  if (easyEl) {
+    const diff = difficultyOf(songId, semis);
+    easyEl.textContent = diff.text;
+    easyEl.style.color = diff.color;
+    easyEl.style.borderColor = diff.color === '#f87171' ? '#7f1d1d' : '#166534';
+  }
 }
+
+function findEasySemis(songId) {
+  let best = 0, bestScore = Infinity;
+  for (let s = 0; s < 12; s++) {
+    const sc = scoreSemis(songId, s);
+    if (sc < bestScore) { bestScore = sc; best = s; }
+  }
+  songEasySemis[songId] = best;
+  return best;
+}
+
+function toggleEasyOrigin(songId) {
+  const cur = songTranspose[songId];
+  const easy = findEasySemis(songId);
+  if (cur !== easy) {
+    // go to easiest
+    const delta = (easy - cur + 12) % 12;
+    transpose(songId, delta);
+  } else {
+    // go back to origin
+    const delta = (0 - cur + 12) % 12;
+    transpose(songId, delta);
+  }
+}
+
+// ─── Easy Key ────────────────────────────────────────────────
+// 横按和弦列表（需要 barre 的和弦 root）
+const BARRE_CHORDS = new Set(['F','Bb','B','C#','D#','Eb','Ab','G#','A#','F#m','Bm','C#m','F#','Eb','Db']);
+
+function isBarre(chord) {
+  // 判断单个和弦是否横按
+  if (CHORDS[chord] && CHORDS[chord].barre) return true;
+  // 未在字典里的，看它是否是已知复杂调
+  return BARRE_CHORDS.has(chord);
+}
+
+function scoreSemis(songId, semis) {
+  // 收集这首歌所有原始和弦
+  const songEl = document.getElementById('song-' + songId);
+  const origChords = new Set();
+  songEl.querySelectorAll('[data-chord]').forEach(el => {
+    const orig = el.dataset.origChord || el.dataset.chord;
+    if (orig && orig.trim()) origChords.add(orig);
+  });
+
+  let barreCount = 0;
+  let halfSteps = 0;
+  origChords.forEach(orig => {
+    const shifted = transposeChord(orig, semis);
+    if (isBarre(shifted)) barreCount++;
+    // 半音数（离自然音越近越简单）
+    const root = chordRoot(shifted);
+    const idx = NOTES.indexOf(NOTE_ALIAS[root] || root);
+    if (idx !== -1 && (idx % 2 !== 0)) halfSteps++; // 黑键位置
+  });
+
+  return barreCount * 10 + halfSteps;
+}
+
+// easyKey kept for compat but toggleEasyOrigin handles the button now
+
+// Init labels on load
+document.addEventListener('DOMContentLoaded', () => {
+  Object.keys(SONG_CONFIG).forEach(id => updateTransLabel(id));
+});
 
 const CHORDS = {
   G:   { desc:'G 大调',            frets:[3,2,0,0,3,3] },
