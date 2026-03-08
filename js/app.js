@@ -86,14 +86,22 @@ function renderSong(song) {
     const linesHtml = sec.lines.map(line => {
       const segs = line.map(seg => {
         const tc = seg.chord ? transposeChord(seg.chord, s) : '';
-        // 空歌词：只显示一个小和弦标签，不撑空间
-        if (!seg.lyric || !seg.lyric.trim()) {
-          return tc ? `<span class="chord-inline" data-chord="${tc}">${tc}</span>` : '';
+        const hasChord = !!tc;
+        const hasLyric = !!(seg.lyric && seg.lyric.trim());
+        if (!hasLyric) {
+          // 空词：和弦标注 + 带下划线空格
+          if (!hasChord) return '';
+          const cSpan = `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`;
+          return `<span class="seg has-chord">${cSpan}<span class="w-empty"></span></span>`;
         }
-        const cSpan = tc
+        const cSpan = hasChord
           ? `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`
           : `<span class="c"> </span>`;
-        return `<span class="seg">${cSpan}<span class="w">${seg.lyric}</span></span>`;
+        // 只给第一个字加下划线，其余正常显示
+        const lyric = hasChord && seg.lyric.length > 0
+          ? `<span class="w-mark">${seg.lyric[0]}</span>${seg.lyric.slice(1)}`
+          : seg.lyric;
+        return `<span class="seg">${cSpan}<span class="w">${lyric}</span></span>`;
       }).join(' ');
       return `<div class="lyric-line">${segs}</div>`;
     }).join('');
