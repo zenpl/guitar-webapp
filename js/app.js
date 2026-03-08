@@ -156,10 +156,13 @@ function doTranspose(songId, delta) {
   refreshSong(song);
 }
 
+function getLocked(songId) {
+  const song = SONGS.find(s => s.id === songId);
+  return !!(song && song.locked);
+}
+
 function toggleLock(songId) {
-  // 锁定状态由 songs.js 的 locked 字段决定，UI 只做显示
-  // 实际锁定需要告知 AI 更新 songs.js 并 push
-  alert(`请告知 AI 锁定歌曲 "${songId}"`);
+  // 锁定状态由 songs.js 的 locked 字段管理，告知 AI 修改
 }
 
 function toggleEasy(songId) {
