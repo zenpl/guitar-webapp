@@ -370,4 +370,36 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'qiufeng',
+    title: '秋风',
+    artist: '四喜丸子',
+    baseKey: 'C', playKey: 'C', capo: 0,
+    chords: ['Am','F','C','G'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'Am', lyric:'我要怎么说' }, { chord:'F', lyric:'你才能在乎我' }],
+        [{ chord:'C', lyric:'这秋天的风' }, { chord:'G', lyric:'也把你带远了' }],
+        [{ chord:'Am', lyric:'指针一点点的过' }, { chord:'F', lyric:'我们没改变什么' }],
+        [{ chord:'C', lyric:'这份寂寞也希望你' }, { chord:'G', lyric:'真的懂我' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'Am', lyric:'要怎么说' }, { chord:'F', lyric:'你才能那样爱我' }],
+        [{ chord:'C', lyric:'给我快乐' }, { chord:'G', lyric:'烦忧全部离开我' }],
+        [{ chord:'Am', lyric:'你对我说' }, { chord:'F', lyric:'爱到底是什么' }],
+        [{ chord:'C', lyric:'是不是一阵秋风' }, { chord:'G', lyric:'吹进你的心窝' }],
+      ]},
+      { title: '桥段', lines: [
+        [{ chord:'Am', lyric:'我不难过' }, { chord:'F', lyric:'我的世界只有你一个' }],
+        [{ chord:'C', lyric:'如果你离开我' }, { chord:'G', lyric:'也要好好过' }],
+        [{ chord:'Am', lyric:'我不难过' }, { chord:'F', lyric:'我的世界只有你一个' }],
+        [{ chord:'C', lyric:'如果你离开我' }, { chord:'G', lyric:'也要好好过' }],
+      ]},
+      { title: '主歌（复）', lines: [
+        [{ chord:'Am', lyric:'我要怎么说' }, { chord:'F', lyric:'你才能在乎我' }],
+        [{ chord:'C', lyric:'这秋天的风' }, { chord:'G', lyric:'也把你带远了' }],
+      ]},
+    ],
+  },
 ];
