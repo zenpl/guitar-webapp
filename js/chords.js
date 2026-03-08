@@ -30,6 +30,8 @@ const CHORDS = {
   'E/B': { desc:'E/B（低音B）',          frets:[-1,2,2,1,0,0] },
   G7:    { desc:'G7',                    frets:[3,2,0,0,0,1] },
   'D/F#': { desc:'D/F#（低音F#）',       frets:[2,-1,0,2,3,2] },
+  'E/G#': { desc:'E/G#（低音G#）',       frets:[4,2,2,1,0,0] },
+  'A/E':  { desc:'A/E（低音E）',         frets:[0,0,2,2,2,0] },
   Gm:  { desc:'G 小调（横按3品）',       frets:[3,5,5,3,3,3], barre:3 },
 
   // ── Barre ──
