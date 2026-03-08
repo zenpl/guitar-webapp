@@ -534,4 +534,39 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'lixiangsanxun',
+    importVer: 2, locked: false,
+    title: '理想三旬',
+    artist: '陈鸿宇',
+    baseKey: 'Bb', playKey: 'C', capo: 3,
+    chords: ['C','G','Am','F','Em','Dm','G7'],
+    sections: [
+      { title: '主歌A', lines: [
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'雨后有车驶来' }, { chord:'G', lyric:'' }, { chord:'', lyric:'驶过暮色苍白' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'旧铁皮往南' }, { chord:'F', lyric:'开' }, { chord:'', lyric:'恋人已不在' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'收听浓烟下' }, { chord:'G', lyric:'的' }, { chord:'', lyric:'诗歌电' }, { chord:'Am', lyric:'台' }, { chord:'', lyric:'不动情的' }, { chord:'F', lyric:'咳' }, { chord:'', lyric:'嗽至少看起' }, { chord:'C', lyric:'来' }],
+      ]},
+      { title: '主歌B', lines: [
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'归途也还可爱' }, { chord:'G', lyric:'' }, { chord:'', lyric:'琴弦少了姿态' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'再不见那夜' }, { chord:'F', lyric:'里' }, { chord:'', lyric:'听歌的小孩' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'时光匆匆独' }, { chord:'G', lyric:'白' }, { chord:'', lyric:'将颠沛磨成卡带' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'已枯卷的情' }, { chord:'F', lyric:'怀' }, { chord:'', lyric:'踏碎成年' }, { chord:'C', lyric:'代' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'就老去吧' }, { chord:'G', lyric:'' }, { chord:'', lyric:'孤独别醒' }, { chord:'Am', lyric:'来' }, { chord:'', lyric:'你' }, { chord:'Em', lyric:'渴' }, { chord:'', lyric:'望的离开' }, { chord:'Dm', lyric:'' }, { chord:'', lyric:'只是' }, { chord:'F', lyric:'无' }, { chord:'', lyric:'处' }, { chord:'G7', lyric:'停' }, { chord:'', lyric:'摆' }],
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'就歌唱吧' }, { chord:'G', lyric:'' }, { chord:'', lyric:'眼睛眯起' }, { chord:'Am', lyric:'来' }, { chord:'', lyric:'而' }, { chord:'Em', lyric:'热' }, { chord:'', lyric:'泪的崩坏' }, { chord:'Dm', lyric:'' }, { chord:'', lyric:'只是没抵达' }, { chord:'G7', lyric:'的' }, { chord:'', lyric:'存' }, { chord:'C', lyric:'在' }],
+      ]},
+      { title: '主歌C', lines: [
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'青春又醉倒在' }, { chord:'G', lyric:'' }, { chord:'', lyric:'籍籍无名的怀' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'靠嬉笑来虚' }, { chord:'F', lyric:'度' }, { chord:'', lyric:'聚散得慷慨' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'辗转却去不' }, { chord:'G', lyric:'到' }, { chord:'', lyric:'对的站' }, { chord:'Am', lyric:'台' }, { chord:'', lyric:'如果漂泊是' }, { chord:'F', lyric:'成' }, { chord:'', lyric:'长必经的路牌' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '主歌D', lines: [
+        [{ chord:'C', lyric:'你' }, { chord:'', lyric:'迷醒岁月中' }, { chord:'G', lyric:'' }, { chord:'', lyric:'那贫瘠的未来' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'像遗憾季节' }, { chord:'F', lyric:'里' }, { chord:'', lyric:'未结果的爱' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'弄脏了每一页' }, { chord:'G', lyric:'诗' }, { chord:'', lyric:'吻最疼痛的告白' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'而风声吹到' }, { chord:'F', lyric:'这' }, { chord:'', lyric:'已不需要释怀' }, { chord:'C', lyric:'' }],
+      ]},
+      { title: '主歌E', lines: [
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'就甜蜜地忍耐' }, { chord:'G', lyric:'' }, { chord:'', lyric:'繁星润湿窗台' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'光影跳动着像' }, { chord:'F', lyric:'在' }, { chord:'', lyric:'困倦里说爱' }, { chord:'C', lyric:'' }],
+        [{ chord:'C', lyric:'' }, { chord:'', lyric:'再无谓的感慨' }, { chord:'G', lyric:'' }, { chord:'', lyric:'以为明白' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'梦倒塌的地' }, { chord:'F', lyric:'方' }, { chord:'', lyric:'今已爬满青苔' }, { chord:'C', lyric:'' }],
+      ]},
+    ],
+  },
 ];
