@@ -6,136 +6,80 @@
   <title>南山南 - 马頔</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: #1a1a2e;
       color: #e0e0e0;
-      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Heiti SC', 'Arial', sans-serif;
-      padding: 16px;
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Heiti SC', sans-serif;
+      padding: 16px 16px 48px;
     }
-
-    header {
-      text-align: center;
-      padding: 20px 0 24px;
-    }
-
-    header h1 {
-      font-size: 26px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    header h2 {
-      font-size: 14px;
-      color: #888;
-      margin-top: 4px;
-    }
+    header { text-align: center; padding: 20px 0 8px; }
+    header h1 { font-size: 24px; font-weight: 700; color: #fff; }
+    header h2 { font-size: 13px; color: #888; margin-top: 4px; }
+    header .meta { font-size: 11px; color: #555; margin-top: 6px; }
 
     .chord-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 28px;
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center; margin: 16px 0 24px;
     }
-
     .chord-pill {
-      background: #16213e;
-      border: 1px solid #0f3460;
-      border-radius: 10px;
-      padding: 6px 14px;
-      font-size: 15px;
-      font-weight: 600;
-      color: #e94560;
-      cursor: pointer;
-      transition: all 0.2s;
+      background: #16213e; border: 1px solid #0f3460;
+      border-radius: 8px; padding: 5px 14px;
+      font-size: 14px; font-weight: 600; color: #e94560; cursor: pointer;
     }
 
-    .chord-pill:active {
-      transform: scale(0.95);
-      background: #0f3460;
-    }
-
-    .lyrics-section {
-      max-width: 480px;
-      margin: 0 auto;
-    }
+    .lyrics-section { max-width: 500px; margin: 0 auto; }
 
     .section-title {
-      font-size: 12px;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin: 20px 0 10px;
+      font-size: 11px; color: #555;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin: 24px 0 10px;
     }
 
-    .line {
-      margin-bottom: 18px;
-    }
-
-    .chords-row {
-      display: flex;
-      gap: 0;
-      margin-bottom: 2px;
-      min-height: 22px;
-    }
-
-    .chord-marker {
-      font-size: 13px;
-      font-weight: 700;
-      color: #e94560;
-      cursor: pointer;
-      padding: 0 4px 0 0;
-      min-width: 36px;
-    }
-
-    .chord-marker:active { opacity: 0.7; }
-
-    .lyric-text {
-      font-size: 17px;
-      line-height: 1.6;
-      color: #ddd;
-    }
-
-    /* Modal overlay */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal.show { display: flex; }
-
-    .modal-card {
-      background: #16213e;
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      min-width: 200px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    }
-
-    .modal-card h3 {
-      font-size: 24px;
-      color: #e94560;
+    .block {
       margin-bottom: 16px;
     }
 
-    .modal-card p {
+    .chord-row {
+      font-family: 'Courier New', 'SF Mono', monospace;
       font-size: 13px;
-      color: #888;
-      margin-top: 12px;
+      font-weight: 700;
+      color: #e94560;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-    svg.chord-diagram {
-      display: block;
-      margin: 0 auto;
+    .chord-row span[data-chord] {
+      cursor: pointer;
+      margin-right: 12px;
     }
+    .chord-row span[data-chord]:last-child {
+      margin-right: 0;
+    }
+
+    .lyric-row {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #ddd;
+    }
+
+    /* Modal */
+    .modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.8); z-index: 100;
+      align-items: center; justify-content: center;
+    }
+    .modal.show { display: flex; }
+    .modal-card {
+      background: #16213e; border-radius: 16px;
+      padding: 20px 24px 24px; text-align: center;
+      min-width: 210px; box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    }
+    .modal-card h3 { font-size: 26px; color: #e94560; margin-bottom: 14px; }
+    .modal-card .desc { font-size: 12px; color: #888; margin-top: 10px; }
+    .modal-card .hint { font-size: 11px; color: #444; margin-top: 14px; }
   </style>
 </head>
 <body>
@@ -143,107 +87,111 @@
 <header>
   <h1>南山南</h1>
   <h2>马頔</h2>
+  <div class="meta">Key=Bb · Play=G · Capo=3</div>
 </header>
 
 <div class="chord-bar">
   <span class="chord-pill" data-chord="G">G</span>
-  <span class="chord-pill" data-chord="Em">Em</span>
-  <span class="chord-pill" data-chord="C">C</span>
   <span class="chord-pill" data-chord="D">D</span>
+  <span class="chord-pill" data-chord="Em">Em</span>
+  <span class="chord-pill" data-chord="Am">Am</span>
+  <span class="chord-pill" data-chord="C">C</span>
+  <span class="chord-pill" data-chord="Bm">Bm</span>
 </div>
 
 <div class="lyrics-section">
 
   <div class="section-title">主歌</div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="G">G</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="Em">Em</span>
-    </div>
-    <div class="lyric-text">你在南方的艳阳里 大雪纷飞</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
+    <div class="lyric-row">你在南方的艳阳里 大雪纷飞</div>
   </div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="C">C</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="D">D</span>
-    </div>
-    <div class="lyric-text">我在北方的寒夜里 四季如春</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">我在北方的寒夜里 四季如春</div>
   </div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="G">G</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="Em">Em</span>
-    </div>
-    <div class="lyric-text">如果天黑之前来得及</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="G">G</span> <span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
+    <div class="lyric-row">如果天黑之前来得及 我要忘了你的眼睛</div>
   </div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="C">C</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="D">D</span>
-    </div>
-    <div class="lyric-text">我要忘了你的眼睛</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">穷极一生 做不完 一场梦</div>
   </div>
 
   <div class="section-title">副歌</div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="G">G</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="Em">Em</span>
-    </div>
-    <div class="lyric-text">南山南 北秋悲 北海北 西城以西</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">她不再和谁谈论相逢的孤岛 因为心里早已荒无人烟</div>
   </div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="C">C</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="D">D</span>
-    </div>
-    <div class="lyric-text">她在东北角的东北角 痛哭流涕</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">他的心再也装不下一个家 做一个只对自己说谎的哑巴</div>
   </div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="G">G</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="Em">Em</span>
-    </div>
-    <div class="lyric-text">南山南 北秋悲 北海北 西城以西</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
+    <div class="lyric-row">他说你 任何为人称道的美丽 不及他第一次遇见你</div>
   </div>
 
-  <div class="line">
-    <div class="chords-row">
-      <span class="chord-marker" data-chord="C">C</span>
-      <span style="flex:1"></span>
-      <span class="chord-marker" data-chord="D">D</span>
-    </div>
-    <div class="lyric-text">她走了以后 我再没有遇见我</div>
+  <div class="block">
+    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">时光苟延残喘 无可奈何</div>
+  </div>
+
+  <div class="block">
+    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="G">G</span> <span data-chord="C">C</span> <span data-chord="D">D</span> <span data-chord="Bm">Bm</span> <span data-chord="Em">Em</span></div>
+    <div class="lyric-row">如果所有土地连在一起 走上一生只为拥抱你</div>
+  </div>
+
+  <div class="block">
+    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data="G">G</span></div>
+    <div class="lyric-row">喝醉了他的梦 晚安</div>
+  </div>
+
+  <div class="section-title">间奏</div>
+
+  <div class="block">
+    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">他听见有人唱着古老的歌 唱着今天还在远方发生的</div>
+  </div>
+
+  <div class="block">
+    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">像在她眼睛里看到的孤岛 没有悲伤但也没有花朵</div>
+  </div>
+
+  <div class="section-title">尾声</div>
+
+  <div class="block">
+    <div class="chord-row"><span data-chord="Am">Am</span> <span data-chord="D">D</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">大梦初醒荒唐了 一生</div>
+  </div>
+
+  <div class="block">
+    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="C">C</span></div>
+    <div class="lyric-row">南山南 北秋悲 南山有谷堆</div>
+  </div>
+
+  <div class="block">
+    <div class="chord-row"><span data-chord="G">G</span> <span data-chord="D">D</span> <span data-chord="Em">Em</span> <span data-chord="C">C</span> <span data-chord="G">G</span></div>
+    <div class="lyric-row">南风喃 北海北 北海有墓碑</div>
   </div>
 
 </div>
 
 <!-- Modal -->
 <div class="modal" id="modal">
-  <div class="modal-card" id="modal-card">
-    <h3 id="modal-name"></h3>
-    <div id="modal-svg"></div>
-    <p id="modal-desc"></p>
-    <p style="margin-top:16px;font-size:12px;color:#444;">点击外部关闭</p>
-  </div>
+  <div class="modal-card" id="modal-card"></div>
 </div>
 
 <script>
-// Event delegation — works without inline onclick
 document.addEventListener('click', function(e) {
   const chord = e.target.dataset.chord;
   if (chord) { showChord(chord); return; }
@@ -251,105 +199,71 @@ document.addEventListener('click', function(e) {
 });
 
 const chords = {
-  G: {
-    desc: 'G 大调',
-    frets: [3, 2, 0, 0, 3, 3], // 从低到高 E A D G B e
-    fingers: [2, 1, 0, 0, 3, 4],
-    barre: null
-  },
-  Em: {
-    desc: 'E 小调（开放）',
-    frets: [0, 2, 2, 0, 0, 0],
-    fingers: [0, 2, 3, 0, 0, 0],
-    barre: null
-  },
-  C: {
-    desc: 'C 大调',
-    frets: [-1, 3, 2, 0, 1, 0],
-    fingers: [0, 3, 2, 0, 1, 0],
-    barre: null
-  },
-  D: {
-    desc: 'D 大调',
-    frets: [-1, -1, 0, 2, 3, 2],
-    fingers: [0, 0, 0, 1, 3, 2],
-    barre: null
-  }
+  G:  { desc: 'G 大调',          frets: [3,2,0,0,3,3] },
+  D:  { desc: 'D 大调',          frets: [-1,-1,0,2,3,2] },
+  Em: { desc: 'E 小调（开放）',    frets: [0,2,2,0,0,0] },
+  Am: { desc: 'A 小调（开放）',    frets: [-1,0,2,2,1,0] },
+  C:  { desc: 'C 大调',          frets: [-1,3,2,0,1,0] },
+  Bm: { desc: 'B 小调（横按2品）', frets: [-1,2,4,4,3,2], barre: 2 }
 };
 
 function drawChord(name) {
   const c = chords[name];
-  const frets = c.frets; // [E, A, D, G, B, e]
-
-  const W = 180, H = 170;
-  const left = 36, top = 32;
-  const stringW = 22, fretH = 24;
-  const strings = 6, fretCount = 4;
-
-  // Only offset if NO open strings and min fret > 1
-  const hasOpen = frets.some(f => f === 0);
-  const active = frets.filter(f => f > 0);
+  const frets = c.frets;
+  const W=180, H=170, left=36, top=32, stringW=22, fretH=24, strings=6, fretCount=4;
+  const hasOpen = frets.some(f => f===0);
+  const active = frets.filter(f => f>0);
   const minFret = active.length ? Math.min(...active) : 1;
-  const offset = (!hasOpen && minFret > 1) ? minFret - 1 : 0;
-
-  let svg = `<svg class="chord-diagram" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">`;
-
-  // Nut or fret number label
-  if (offset === 0) {
-    svg += `<rect x="${left}" y="${top - 5}" width="${(strings-1)*stringW}" height="6" fill="#ccc" rx="2"/>`;
+  const offset = (!hasOpen && minFret>1) ? minFret-1 : 0;
+  let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block;margin:0 auto">`;
+  if (offset===0) {
+    svg += `<rect x="${left}" y="${top-5}" width="${(strings-1)*stringW}" height="6" fill="#ccc" rx="2"/>`;
   } else {
-    svg += `<text x="${left - 6}" y="${top + fretH * 0.7}" font-size="11" fill="#888" text-anchor="end">${offset + 1}fr</text>`;
+    svg += `<text x="${left-6}" y="${top+fretH*0.7}" font-size="11" fill="#888" text-anchor="end">${offset+1}fr</text>`;
   }
-
-  // Fret lines
-  for (let f = 0; f <= fretCount; f++) {
-    const y = top + f * fretH;
-    svg += `<line x1="${left}" y1="${y}" x2="${left + (strings-1)*stringW}" y2="${y}" stroke="#3a3a5a" stroke-width="1.2"/>`;
+  if (c.barre) {
+    const by = top+(c.barre-offset-0.5)*fretH;
+    svg += `<rect x="${left}" y="${by-9}" width="${(strings-1)*stringW}" height="18" fill="#c0384f" rx="9" opacity="0.7"/>`;
   }
-
-  // String lines
-  for (let s = 0; s < strings; s++) {
-    const x = left + s * stringW;
-    svg += `<line x1="${x}" y1="${top}" x2="${x}" y2="${top + fretCount * fretH}" stroke="#555" stroke-width="1.5"/>`;
+  for (let f=0; f<=fretCount; f++) {
+    const y=top+f*fretH;
+    svg += `<line x1="${left}" y1="${y}" x2="${left+(strings-1)*stringW}" y2="${y}" stroke="#3a3a5a" stroke-width="1.2"/>`;
   }
-
-  // String name labels (e A D G B e) at bottom
-  const labels = ['E','A','D','G','B','e'];
-  for (let s = 0; s < strings; s++) {
-    const x = left + s * stringW;
-    svg += `<text x="${x}" y="${top + fretCount * fretH + 16}" text-anchor="middle" font-size="10" fill="#555">${labels[s]}</text>`;
+  for (let s=0; s<strings; s++) {
+    const x=left+s*stringW;
+    svg += `<line x1="${x}" y1="${top}" x2="${x}" y2="${top+fretCount*fretH}" stroke="#555" stroke-width="1.5"/>`;
   }
-
-  // Markers (open, muted, pressed)
-  for (let s = 0; s < strings; s++) {
-    const x = left + s * stringW;
-    const f = frets[s];
-    if (f === -1) {
-      svg += `<text x="${x}" y="${top - 12}" text-anchor="middle" font-size="14" fill="#e94560">✕</text>`;
-    } else if (f === 0) {
-      svg += `<circle cx="${x}" cy="${top - 12}" r="5" fill="none" stroke="#aaa" stroke-width="1.8"/>`;
+  const labels=['E','A','D','G','B','e'];
+  for (let s=0; s<strings; s++) {
+    const x=left+s*stringW;
+    svg += `<text x="${x}" y="${top+fretCount*fretH+16}" text-anchor="middle" font-size="10" fill="#555">${labels[s]}</text>`;
+  }
+  for (let s=0; s<strings; s++) {
+    const x=left+s*stringW;
+    const f=frets[s];
+    if (f===-1) {
+      svg += `<text x="${x}" y="${top-12}" text-anchor="middle" font-size="14" fill="#e94560">✕</text>`;
+    } else if (f===0) {
+      svg += `<circle cx="${x}" cy="${top-12}" r="5" fill="none" stroke="#aaa" stroke-width="1.8"/>`;
     } else {
-      const fretPos = f - offset;
-      const cy = top + (fretPos - 0.5) * fretH;
+      const cy=top+(f-offset-0.5)*fretH;
       svg += `<circle cx="${x}" cy="${cy}" r="10" fill="#e94560"/>`;
     }
   }
-
   svg += `</svg>`;
   return svg;
 }
 
 function showChord(name) {
+  if (!chords[name]) return;
   const c = chords[name];
   document.getElementById('modal-card').innerHTML = `
-    <h3>${name}</h3>
-    <div>${drawChord(name)}</div>
-    <p>${c.desc}</p>
-    <p style="margin-top:16px;font-size:12px;color:#444;">点击外部关闭</p>
+    <h3>${name}</h3>${drawChord(name)}
+    <div class="desc">${c.desc}</div>
+    <div class="hint">点击外部关闭</div>
   `;
   document.getElementById('modal').classList.add('show');
 }
-
 function hideChord() {
   document.getElementById('modal').classList.remove('show');
 }
