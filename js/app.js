@@ -381,13 +381,14 @@ function setupEditMode() {
 
   document.getElementById('diff-fab').onclick = () => {
     if (!pendingEdits.length) return;
-    const lines = pendingEdits.map((e, i) =>
-      `[${i+1}] ${e.song} · ${e.section} · 行${e.line} · 第${e.seg}段\n` +
-      `    原: chord="${e.from.chord}" lyric="${e.from.lyric}"\n` +
-      `    改: chord="${e.to.chord}" lyric="${e.to.lyric}"`
-    );
-    const text = '=== 和弦歌词 diff ===\n' + lines.join('\n\n');
-    navigator.clipboard.writeText(text).then(() => {
+    // 导出受影响歌曲的完整 sections 数据
+    const changedSongs = [...new Set(pendingEdits.map(e => e.song))];
+    const out = changedSongs.map(title => {
+      const song = SONGS.find(s => s.title === title);
+      const sectionsJson = JSON.stringify(song.sections, null, 2);
+      return `=== ${title} (id: ${song.id}) sections ===\n${sectionsJson}`;
+    }).join('\n\n');
+    navigator.clipboard.writeText(out).then(() => {
       document.getElementById('diff-fab').textContent = '✅ 已复制';
       setTimeout(() => { document.getElementById('diff-fab').textContent = '📋 复制 diff'; }, 2000);
     });
