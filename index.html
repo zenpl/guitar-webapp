@@ -101,6 +101,48 @@
     .lock-btn:hover { border-color: #e94560; color: #e94560; }
     .lock-btn.locked { border-color: #4ade80; color: #4ade80; }
 
+    /* 编辑模式 */
+    .edit-btn {
+      background: none; border: 1px solid #333; border-radius: 6px;
+      color: #555; font-size: 13px; padding: 2px 8px; cursor: pointer;
+      margin-left: 8px; vertical-align: middle;
+    }
+    .edit-btn.active { border-color: #facc15; color: #facc15; }
+    .song.edit-mode .seg { cursor: pointer; outline: 1px dashed #333; border-radius: 2px; }
+    .song.edit-mode .seg:hover { outline-color: #facc15; background: rgba(250,204,21,0.07); }
+    .diff-fab {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      background: #facc15; color: #000; font-weight: 700;
+      border: none; border-radius: 12px; padding: 10px 20px;
+      font-size: 14px; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      display: none;
+    }
+    .diff-fab.show { display: block; }
+    /* 编辑弹窗 */
+    .edit-modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75); z-index: 300;
+      align-items: center; justify-content: center;
+    }
+    .edit-modal.show { display: flex; }
+    .edit-card {
+      background: #16213e; border-radius: 14px; padding: 20px 24px;
+      min-width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    }
+    .edit-card h4 { font-size: 13px; color: #888; margin-bottom: 12px; }
+    .edit-card label { display: block; font-size: 12px; color: #aaa; margin-bottom: 4px; }
+    .edit-card input {
+      width: 100%; background: #0f3460; border: 1px solid #333; border-radius: 6px;
+      color: #fff; font-size: 15px; padding: 6px 10px; margin-bottom: 12px; box-sizing: border-box;
+    }
+    .edit-card-btns { display: flex; gap: 8px; justify-content: flex-end; }
+    .edit-card-btns button {
+      border: none; border-radius: 6px; padding: 6px 16px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .btn-cancel { background: #1a1a2e; color: #888; }
+    .btn-apply  { background: #facc15; color: #000; }
+
     /* Modal */
     .modal {
       display: none; position: fixed; inset: 0;
@@ -125,10 +167,28 @@
 <div class="song-selector" id="song-selector"></div>
 <div id="songs-container"></div>
 
-<!-- Modal -->
+<!-- Chord Modal -->
 <div class="modal" id="modal">
   <div class="modal-card" id="modal-card"></div>
 </div>
+
+<!-- Edit Modal -->
+<div class="edit-modal" id="edit-modal">
+  <div class="edit-card">
+    <h4 id="edit-title">编辑 seg</h4>
+    <label>和弦</label>
+    <input id="edit-chord" placeholder="空 = 无和弦">
+    <label>歌词</label>
+    <input id="edit-lyric" placeholder="空 = 空拍">
+    <div class="edit-card-btns">
+      <button class="btn-cancel" id="edit-cancel">取消</button>
+      <button class="btn-apply"  id="edit-apply">应用</button>
+    </div>
+  </div>
+</div>
+
+<!-- Diff FAB -->
+<button class="diff-fab" id="diff-fab">📋 复制 diff</button>
 
 <script src="js/chords.js?v=3"></script>
 <script src="js/songs.js?v=3"></script>

@@ -82,26 +82,25 @@ function renderSong(song) {
     return `<span class="chord-pill" data-chord="${tc}">${tc}</span>`;
   }).join('');
 
-  const sections = song.sections.map(sec => {
-    const linesHtml = sec.lines.map(line => {
-      const segs = line.map(seg => {
+  const sections = song.sections.map((sec, si) => {
+    const linesHtml = sec.lines.map((line, li) => {
+      const segs = line.map((seg, gi) => {
         const tc = seg.chord ? transposeChord(seg.chord, s) : '';
         const hasChord = !!tc;
         const hasLyric = !!(seg.lyric && seg.lyric.trim());
+        const editAttrs = `data-song="${song.id}" data-si="${si}" data-li="${li}" data-gi="${gi}"`;
         if (!hasLyric) {
-          // 空词：和弦标注 + 带下划线空格
           if (!hasChord) return '';
           const cSpan = `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`;
-          return `<span class="seg has-chord">${cSpan}<span class="w-empty"></span></span>`;
+          return `<span class="seg has-chord" ${editAttrs}>${cSpan}<span class="w-empty"></span></span>`;
         }
         const cSpan = hasChord
           ? `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`
           : `<span class="c"> </span>`;
-        // 只给第一个字加下划线，其余正常显示
         const lyric = hasChord && seg.lyric.length > 0
           ? `<span class="w-mark">${seg.lyric[0]}</span>${seg.lyric.slice(1)}`
           : seg.lyric;
-        return `<span class="seg">${cSpan}<span class="w">${lyric}</span></span>`;
+        return `<span class="seg${hasChord?' has-chord':''}" ${editAttrs}>${cSpan}<span class="w">${lyric}</span></span>`;
       }).join(' ');
       return `<div class="lyric-line">${segs}</div>`;
     }).join('');
@@ -119,7 +118,7 @@ function renderSong(song) {
   return `
 <div class="song hidden" id="song-${song.id}">
   <div class="song-header">
-    <h2>${song.title}<span class="ver-badge">v${ver}</span><button class="lock-btn${locked ? ' locked' : ''}" onclick="toggleLock('${song.id}')">${locked ? '🔒' : '🔓'}</button></h2>
+    <h2>${song.title}<span class="ver-badge">v${ver}</span><button class="lock-btn${locked ? ' locked' : ''}" onclick="toggleLock('${song.id}')">${locked ? '🔒' : '🔓'}</button><button class="edit-btn" onclick="toggleEditMode('${song.id}', this)">✏️</button></h2>
     <div class="artist">${song.artist}</div>
     <div class="meta" id="meta-${song.id}">Key=${baseKey} · Play=${playKey} · Capo=${capo}</div>
     <div class="transpose-ctrl">
@@ -218,9 +217,101 @@ function hideChord() {
   document.getElementById('modal').classList.remove('show');
 }
 
+// ── Edit Mode ──
+const pendingEdits = [];
+
+function toggleEditMode(songId, btn) {
+  const songEl = document.getElementById('song-' + songId);
+  const active = songEl.classList.toggle('edit-mode');
+  btn.classList.toggle('active', active);
+  document.getElementById('diff-fab').classList.toggle('show', pendingEdits.length > 0);
+}
+
+function setupEditMode() {
+  // seg 点击 → 编辑表单（只在 edit-mode 时响应）
+  document.addEventListener('click', e => {
+    const seg = e.target.closest('.seg[data-song]');
+    if (!seg) return;
+    const songEl = seg.closest('.song');
+    if (!songEl || !songEl.classList.contains('edit-mode')) return;
+    e.stopPropagation();
+
+    const { song: songId, si, li, gi } = seg.dataset;
+    const song = SONGS.find(s => s.id === songId);
+    const origSeg = song.sections[si].lines[li][gi];
+
+    document.getElementById('edit-title').textContent =
+      `${song.title} · ${song.sections[si].title} · 行${+li+1} · 第${+gi+1}段`;
+    document.getElementById('edit-chord').value = origSeg.chord || '';
+    document.getElementById('edit-lyric').value = origSeg.lyric || '';
+
+    const modal = document.getElementById('edit-modal');
+    modal.classList.add('show');
+    modal._ctx = { songId, si: +si, li: +li, gi: +gi, orig: { chord: origSeg.chord, lyric: origSeg.lyric } };
+  });
+
+  document.getElementById('edit-cancel').onclick = () => {
+    document.getElementById('edit-modal').classList.remove('show');
+  };
+
+  document.getElementById('edit-apply').onclick = () => {
+    const modal = document.getElementById('edit-modal');
+    const { songId, si, li, gi, orig } = modal._ctx;
+    const newChord = document.getElementById('edit-chord').value.trim();
+    const newLyric = document.getElementById('edit-lyric').value;
+
+    if (newChord === (orig.chord || '') && newLyric === (orig.lyric || '')) {
+      modal.classList.remove('show');
+      return;
+    }
+
+    const song = SONGS.find(s => s.id === songId);
+    // 记录 diff
+    pendingEdits.push({
+      song: song.title,
+      section: song.sections[si].title,
+      line: li + 1,
+      seg: gi + 1,
+      from: { chord: orig.chord || '', lyric: orig.lyric || '' },
+      to:   { chord: newChord, lyric: newLyric }
+    });
+
+    // 应用到数据（临时预览）
+    song.sections[si].lines[li][gi] = { chord: newChord, lyric: newLyric };
+    refreshSong(song);
+
+    // 重新进入编辑模式（refreshSong 会重渲染）
+    setTimeout(() => {
+      const songEl = document.getElementById('song-' + songId);
+      songEl.classList.add('edit-mode');
+      songEl.querySelector('.edit-btn')?.classList.add('active');
+    }, 50);
+
+    document.getElementById('diff-fab').classList.add('show');
+    modal.classList.remove('show');
+  };
+
+  document.getElementById('diff-fab').onclick = () => {
+    if (!pendingEdits.length) return;
+    const lines = pendingEdits.map((e, i) =>
+      `[${i+1}] ${e.song} · ${e.section} · 行${e.line} · 第${e.seg}段\n` +
+      `    原: chord="${e.from.chord}" lyric="${e.from.lyric}"\n` +
+      `    改: chord="${e.to.chord}" lyric="${e.to.lyric}"`
+    );
+    const text = `=== 和弦歌词 diff ===\n` + lines.join('\n\n');
+    navigator.clipboard.writeText(text).then(() => {
+      document.getElementById('diff-fab').textContent = '✅ 已复制';
+      setTimeout(() => {
+        document.getElementById('diff-fab').textContent = '📋 复制 diff';
+      }, 2000);
+    });
+  };
+}
+
 // ── Boot ──
 document.addEventListener('DOMContentLoaded', () => {
   renderAll();
   setupSelector();
   setupModal();
+  setupEditMode();
 });
