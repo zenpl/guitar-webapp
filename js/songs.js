@@ -924,4 +924,45 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'tongnian',
+    importVer: 2, locked: false,
+    title: '童年',
+    artist: '罗大佑',
+    baseKey: 'G', playKey: 'G', capo: 0,
+    chords: ['G','Em','C','D','Bm','Am'],
+    sections: [
+      { title: '主歌A', lines: [
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'池塘边的' }, { chord:'Em', lyric:'榕' }, { chord:'', lyric:'树上知了在' }, { chord:'C', lyric:'声' }, { chord:'', lyric:'声叫着夏' }, { chord:'D', lyric:'天' }],
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'操场边的' }, { chord:'Em', lyric:'秋' }, { chord:'', lyric:'千上只有' }, { chord:'C', lyric:'蝴' }, { chord:'', lyric:'蝶停在上' }, { chord:'D', lyric:'面' }],
+        [{ chord:'Bm', lyric:'黑' }, { chord:'', lyric:'板上老师的' }, { chord:'Em', lyric:'粉' }, { chord:'', lyric:'笔还在拼命' }, { chord:'Am', lyric:'叽' }, { chord:'', lyric:'叽喳喳写个不' }, { chord:'D', lyric:'停' }],
+        [{ chord:'G', lyric:'等' }, { chord:'', lyric:'待着下课' }, { chord:'Em', lyric:'等' }, { chord:'', lyric:'待着放学' }, { chord:'C', lyric:'等' }, { chord:'', lyric:'待游戏的童' }, { chord:'G', lyric:'年' }],
+      ]},
+      { title: '主歌B', lines: [
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'福利社里面' }, { chord:'Em', lyric:'什' }, { chord:'', lyric:'么都有就是' }, { chord:'C', lyric:'口' }, { chord:'', lyric:'袋里没有半毛' }, { chord:'D', lyric:'钱' }],
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'诸葛四郎和' }, { chord:'Em', lyric:'魔' }, { chord:'', lyric:'鬼党到底' }, { chord:'C', lyric:'谁' }, { chord:'', lyric:'抢到那支宝' }, { chord:'D', lyric:'剑' }],
+        [{ chord:'Bm', lyric:'隔' }, { chord:'', lyric:'壁班的那个' }, { chord:'Em', lyric:'女' }, { chord:'', lyric:'孩怎么还没' }, { chord:'Am', lyric:'经' }, { chord:'', lyric:'过我的窗' }, { chord:'D', lyric:'前' }],
+        [{ chord:'G', lyric:'嘴' }, { chord:'', lyric:'里的零食' }, { chord:'Em', lyric:'手' }, { chord:'', lyric:'里的漫画' }, { chord:'C', lyric:'心' }, { chord:'', lyric:'里初恋的童' }, { chord:'G', lyric:'年' }],
+      ]},
+      { title: '主歌C', lines: [
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'总是要等到' }, { chord:'Em', lyric:'睡' }, { chord:'', lyric:'觉前才知道' }, { chord:'C', lyric:'功' }, { chord:'', lyric:'课只做了一点' }, { chord:'D', lyric:'点' }],
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'总是要等到' }, { chord:'Em', lyric:'考' }, { chord:'', lyric:'试以后才知道' }, { chord:'C', lyric:'该' }, { chord:'', lyric:'念的书都没有' }, { chord:'D', lyric:'念' }],
+        [{ chord:'Bm', lyric:'一' }, { chord:'', lyric:'寸光阴一寸' }, { chord:'Em', lyric:'金' }, { chord:'', lyric:'老师说过寸金' }, { chord:'Am', lyric:'难' }, { chord:'', lyric:'买寸光' }, { chord:'D', lyric:'阴' }],
+        [{ chord:'G', lyric:'一' }, { chord:'', lyric:'天又一天' }, { chord:'Em', lyric:'一' }, { chord:'', lyric:'年又一年' }, { chord:'C', lyric:'迷' }, { chord:'', lyric:'迷糊糊的童' }, { chord:'G', lyric:'年' }],
+      ]},
+      { title: '主歌D', lines: [
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'没有人知道' }, { chord:'Em', lyric:'为' }, { chord:'', lyric:'什么太阳总' }, { chord:'C', lyric:'下' }, { chord:'', lyric:'到山的那一' }, { chord:'D', lyric:'边' }],
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'没有人能够' }, { chord:'Em', lyric:'告' }, { chord:'', lyric:'诉我山里面' }, { chord:'C', lyric:'有' }, { chord:'', lyric:'没有住着神' }, { chord:'D', lyric:'仙' }],
+        [{ chord:'Bm', lyric:'多' }, { chord:'', lyric:'少的日子里总是' }, { chord:'Em', lyric:'一' }, { chord:'', lyric:'个人' }, { chord:'C', lyric:'面' }, { chord:'', lyric:'对着天空发' }, { chord:'D', lyric:'呆' }],
+        [{ chord:'G', lyric:'就' }, { chord:'', lyric:'这么好奇' }, { chord:'Em', lyric:'就' }, { chord:'', lyric:'这么幻想' }, { chord:'C', lyric:'这' }, { chord:'', lyric:'么孤单的童' }, { chord:'G', lyric:'年' }],
+      ]},
+      { title: '主歌E', lines: [
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'阳光下蜻蜓' }, { chord:'Em', lyric:'飞' }, { chord:'', lyric:'过来一片片' }, { chord:'C', lyric:'绿' }, { chord:'', lyric:'油油的稻' }, { chord:'D', lyric:'田' }],
+        [{ chord:'G', lyric:'' }, { chord:'', lyric:'水彩蜡笔和' }, { chord:'Em', lyric:'万' }, { chord:'', lyric:'花筒画不出' }, { chord:'C', lyric:'天' }, { chord:'', lyric:'边那一条彩' }, { chord:'D', lyric:'虹' }],
+        [{ chord:'Bm', lyric:'什' }, { chord:'', lyric:'么时候才能像' }, { chord:'Em', lyric:'高' }, { chord:'', lyric:'年级的同学有张' }, { chord:'C', lyric:'成' }, { chord:'', lyric:'熟与长大的' }, { chord:'D', lyric:'脸' }],
+        [{ chord:'G', lyric:'盼' }, { chord:'', lyric:'望着假期' }, { chord:'Em', lyric:'盼' }, { chord:'', lyric:'望着明天' }, { chord:'C', lyric:'盼' }, { chord:'', lyric:'望长大的童' }, { chord:'G', lyric:'年' }],
+      ]},
+    ],
+  },
 ];
