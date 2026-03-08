@@ -569,4 +569,26 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'kongbaige',
+    importVer: 2, locked: false,
+    title: '空白格',
+    artist: '蔡健雅',
+    baseKey: 'E', playKey: 'C', capo: 5,
+    chords: ['G','Gadd9','C','Cmaj7','D','Bm7','Em7','D/F#','Em'],
+    sections: [
+      { title: '主歌', lines: [
+        [{ chord:'Gadd9', lyric:'其' }, { chord:'', lyric:'实很简单' }, { chord:'Cmaj7', lyric:'其' }, { chord:'', lyric:'实很自然' }, { chord:'', lyric:'两个人的爱由两' }],
+        [{ chord:'G', lyric:'人' }, { chord:'', lyric:'分担' }, { chord:'Cmaj7', lyric:'其' }, { chord:'', lyric:'实并不难' }, { chord:'Bm7', lyric:'是' }, { chord:'', lyric:'你太悲观' }, { chord:'C', lyric:'隔' }, { chord:'', lyric:'着一道墙不跟谁分' }, { chord:'D', lyric:'担' }],
+        [{ chord:'', lyric:'不想让你为难' }, { chord:'D/F#', lyric:'你' }, { chord:'', lyric:'不需要再给我个' }, { chord:'Em7', lyric:'答' }, { chord:'', lyric:'案' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'C', lyric:'我' }, { chord:'', lyric:'想你是爱我的' }, { chord:'D', lyric:'我' }, { chord:'', lyric:'猜你也舍不得' }, { chord:'Gadd9', lyric:'但' }, { chord:'', lyric:'是怎么说' }, { chord:'D/F#', lyric:'' }],
+        [{ chord:'Em7', lyric:'总' }, { chord:'', lyric:'觉得我们之间留了太多' }, { chord:'C', lyric:'空' }, { chord:'', lyric:'白格' }],
+        [{ chord:'D', lyric:'也' }, { chord:'', lyric:'许你不是我的' }, { chord:'Gadd9', lyric:'爱' }, { chord:'', lyric:'你却又该' }, { chord:'D/F#', lyric:'割' }, { chord:'', lyric:'舍' }],
+        [{ chord:'Em7', lyric:'分' }, { chord:'', lyric:'开或许是选择但它' }, { chord:'C', lyric:'也' }, { chord:'', lyric:'可能是我们的缘' }, { chord:'D', lyric:'分' }],
+      ]},
+    ],
+  },
 ];
