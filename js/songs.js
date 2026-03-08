@@ -868,4 +868,33 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'wanghouyusheng',
+    importVer: 2, locked: false,
+    title: '往后余生',
+    artist: '马良',
+    baseKey: 'C#', playKey: 'C', capo: 1,
+    chords: ['F','G','Am','Cmaj7','Em','C','Dm'],
+    sections: [
+      { title: '主歌A', lines: [
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'在没风的' }, { chord:'G', lyric:'地' }, { chord:'', lyric:'方找太阳' }, { chord:'Cmaj7', lyric:'' }],
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'在你冷的' }, { chord:'G', lyric:'地' }, { chord:'', lyric:'方做暖阳' }, { chord:'Am', lyric:'' }],
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'人事纷纷' }, { chord:'G', lyric:'' }, { chord:'Em', lyric:'你' }, { chord:'', lyric:'总太天真' }, { chord:'Am', lyric:'' }],
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'往后的余生' }, { chord:'G', lyric:'' }, { chord:'', lyric:'我只要' }, { chord:'C', lyric:'你' }],
+      ]},
+      { title: '副歌', lines: [
+        [{ chord:'', lyric:'往后余' }, { chord:'F', lyric:'生' }, { chord:'G', lyric:'' }, { chord:'', lyric:'风雪是' }, { chord:'Em', lyric:'' }, { chord:'', lyric:'你' }, { chord:'Em', lyric:'' }],
+        [{ chord:'', lyric:'平淡是' }, { chord:'F', lyric:'你' }, { chord:'G', lyric:'' }, { chord:'', lyric:'清贫也是' }, { chord:'Am', lyric:'你' }, { chord:'Am', lyric:'' }],
+        [{ chord:'', lyric:'荣华是' }, { chord:'F', lyric:'你' }, { chord:'G', lyric:'' }, { chord:'', lyric:'心底温柔是' }, { chord:'Em', lyric:'' }, { chord:'', lyric:'你' }, { chord:'Am', lyric:'' }],
+        [{ chord:'', lyric:'目光所' }, { chord:'Dm', lyric:'至' }, { chord:'G', lyric:'也' }, { chord:'', lyric:'是' }, { chord:'C', lyric:'你' }],
+      ]},
+      { title: '主歌B', lines: [
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'想带你去' }, { chord:'G', lyric:'看' }, { chord:'', lyric:'晴空万' }, { chord:'C', lyric:'里' }],
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'想大声告' }, { chord:'G', lyric:'诉' }, { chord:'', lyric:'你我为你着迷' }, { chord:'C', lyric:'' }],
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'往事匆匆' }, { chord:'G', lyric:'' }, { chord:'Em', lyric:'你' }, { chord:'', lyric:'总是会感' }, { chord:'Am', lyric:'' }, { chord:'', lyric:'动' }],
+        [{ chord:'F', lyric:'' }, { chord:'', lyric:'往后的余生' }, { chord:'G', lyric:'' }, { chord:'', lyric:'我只要' }, { chord:'C', lyric:'你' }],
+      ]},
+    ],
+  },
 ];
