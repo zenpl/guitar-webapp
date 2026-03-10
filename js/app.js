@@ -179,6 +179,7 @@ function toggleLock(songId) {
   refreshSong(song);
   document.getElementById('diff-fab').classList.add('show');
   document.getElementById('send-fab').classList.add('show');
+
 }
 
 function toggleEasy(songId) {
@@ -236,7 +237,8 @@ function hideChord() {
 }
 
 // ── Edit Mode ──
-const pendingEdits = [];
+const pendingEdits = []; // 只用于 lock 操作
+const dirtyLines = new Map(); // songId:si:li → 被改过的行
 let pickedChord = null;
 let editModeSongId = null; // 当前编辑中的歌曲 id
 
@@ -268,12 +270,9 @@ function hideMoveBar() {
 }
 
 function recordAndRefresh(song, si, li) {
-  // 简化：记录整行变化（diff 粒度按行）
-  const title = `${song.sections[si].title} 行${li+1}`;
-  pendingEdits.push({ song: song.title, section: title, line: li+1, seg: 0,
-    from: { chord: '(多处)', lyric: '(多处)' },
-    to:   { chord: '(见预览)', lyric: '(见预览)' }
-  });
+  // 用 Map 去重：同一行多次修改只保留最新状态
+  const key = `${song.id}:${si}:${li}`;
+  dirtyLines.set(key, { songId: song.id, si, li });
   refreshSong(song);
 }
 
@@ -408,28 +407,31 @@ function setupEditMode() {
   };
 
   function buildDiffText() {
-    if (!pendingEdits.length) return '';
-    const lines = pendingEdits.map((e, i) => {
-      if (e.type === 'lock') return `[${i+1}] LOCK ${e.songId} locked=${e.locked}`;
-      return `[${i+1}] ${e.song} · ${e.section} · 行${e.line} · 第${e.seg}段\n` +
-        `    原: c=${JSON.stringify(e.from.chord)} l=${JSON.stringify(e.from.lyric)}\n` +
-        `    改: c=${JSON.stringify(e.to.chord)} l=${JSON.stringify(e.to.lyric)}`;
+    if (!pendingEdits.length && !dirtyLines.size) return '';
+    const parts = [];
+
+    // Lock 操作
+    pendingEdits.forEach(e => {
+      if (e.type === 'lock') parts.push(`LOCK ${e.songId} locked=${e.locked}`);
     });
-    const changedIds = [...new Set(pendingEdits.filter(e => e.type !== 'lock').map(e => {
-      const s = SONGS.find(s => s.title === e.song); return s ? s.id : null;
-    }).filter(Boolean))];
-    const sectionsOut = changedIds.map(id => {
-      const song = SONGS.find(s => s.id === id);
-      const secs = song.sections.map(sec => {
-        const ls = sec.lines.map(line => {
-          const segs = line.map(s => `{c:${JSON.stringify(s.chord)},l:${JSON.stringify(s.lyric)}}`).join(',');
-          return `  [${segs}]`;
-        }).join(',\n');
-        return `{title:${JSON.stringify(sec.title)},lines:[\n${ls}]}`;
-      }).join(',\n');
-      return `=== SECTIONS ${song.title} (${id}) ===\n[${secs}]`;
+
+    // 改过的行：直接输出当前行数据，紧凑格式
+    const byId = new Map();
+    dirtyLines.forEach(({ songId, si, li }) => {
+      if (!byId.has(songId)) byId.set(songId, []);
+      byId.get(songId).push({ si, li });
     });
-    return ['=== DIFF ===', ...lines, ...sectionsOut].join('\n\n');
+    byId.forEach((rows, songId) => {
+      const song = SONGS.find(s => s.id === songId);
+      const rowLines = rows.map(({ si, li }) => {
+        const line = song.sections[si].lines[li];
+        const segs = line.map(s => `{c:${JSON.stringify(s.chord)},l:${JSON.stringify(s.lyric)}}`).join(',');
+        return `${song.title} · ${song.sections[si].title} · 行${li+1}: [${segs}]`;
+      });
+      parts.push(...rowLines);
+    });
+
+    return parts.join('\n');
   }
 
   document.getElementById('diff-fab').onclick = () => {
@@ -456,6 +458,7 @@ function setupEditMode() {
       if (res.ok) {
         btn.textContent = '✅ 已发送';
         pendingEdits.length = 0;
+        dirtyLines.clear();
         document.getElementById('diff-fab').classList.remove('show');
         document.getElementById('send-fab').classList.remove('show');
       } else { btn.textContent = '❌ 失败'; }
