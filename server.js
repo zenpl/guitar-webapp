@@ -37,7 +37,15 @@ const server = http.createServer((req, res) => {
         // 立即返回，后台异步执行
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end('{"ok":true}');
-        exec(`/opt/homebrew/bin/openclaw agent --agent zeta --message '📋 曲谱diff:\n${safe}' --deliver`, {
+        // 按 3000 字符分段，避免超出 Telegram 限制
+        const MAX = 3000;
+        const chunks = [];
+        for (let i = 0; i < diff.length; i += MAX) chunks.push(diff.slice(i, i + MAX));
+        const safeChunks = chunks.map(c => c.replace(/'/g, "'\\''"));
+        const cmd = safeChunks.map((c, i) =>
+          `/opt/homebrew/bin/openclaw agent --agent zeta --message '📋 曲谱diff [${i+1}/${safeChunks.length}]:\n${c}' --deliver`
+        ).join(' && ');
+        exec(cmd, {
           env: { ...process.env }
         }, (err) => { if (err) console.error('agent err:', err.message); });
       } catch (e) {
