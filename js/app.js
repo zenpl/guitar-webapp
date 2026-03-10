@@ -454,6 +454,12 @@ function setupEditMode() {
 
 // ── Boot ──
 document.addEventListener('DOMContentLoaded', () => {
+  // Telegram Mini App 初始化
+  if (window.Telegram?.WebApp) {
+    const twa = window.Telegram.WebApp;
+    twa.ready();
+    twa.expand(); // 全屏展开
+  }
   renderAll();
   setupSelector();
   setupEditMode(); // 必须在 setupModal 前，stopImmediatePropagation 才生效
