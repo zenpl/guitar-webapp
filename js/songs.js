@@ -246,7 +246,7 @@ const SONGS = [
         [{ chord:'G', lyric:'漂' }, { chord:'', lyric:'亮的小孩' }, { chord:'Em', lyric:'今' }, { chord:'', lyric:'天有没有哭' }, { chord:'G', lyric:'' }, { chord:'Bm', lyric:'' }],
         [{ chord:'', lyric:'是否' }, { chord:'Em', lyric:'弄' }, { chord:'', lyric:'脏了美' }, { chord:'A/C#', lyric:'丽' }, { chord:'', lyric:'的衣服却' }, { chord:'D', lyric:'找' }, { chord:'', lyric:'不到别人' }, { chord:'G', lyric:'倾' }, { chord:'', lyric:'诉' }],
         [{ chord:'G', lyric:'聪' }, { chord:'', lyric:'明的小孩' }, { chord:'Em', lyric:'今' }, { chord:'', lyric:'天有没有哭' }, { chord:'G', lyric:'' }, { chord:'Bm', lyric:'' }],
-        [{ chord:'', lyric:'是否' }, { chord:'Em', lyric:'遗' }, { chord:'', lyric:'失了心爱的' }, { chord:'A/C#', lyric:'礼' }, { chord:'', lyric:'物在' }, { chord:'D', lyric:'风' }, { chord:'', lyric:'中寻找从' }, { chord:'Bm', lyric:'清' }, { chord:'', lyric:'晨到日' }, { chord:'Em', lyric:'暮' }, { chord:'E7', lyric:'' }],
+        [{ chord:'', lyric:'是否' }, { chord:'Em', lyric:'遗' }, { chord:'', lyric:'失了心爱的' }, { chord:'A/C#', lyric:'礼' }, { chord:'', lyric:'物在' }, { chord:'', lyric:'风' }, { chord:'', lyric:'中' }, { chord:'D', lyric:'寻' }, { chord:'', lyric:'找从' }, { chord:'Bm', lyric:'清' }, { chord:'', lyric:'晨' }, { chord:'Em', lyric:'到日' }, { chord:'E7', lyric:'暮' }, { chord:'', lyric:'' }],
       ]},
       { title: '副歌', lines: [
         [{ chord:'Am7', lyric:'我' }, { chord:'', lyric:'亲爱的小孩' }, { chord:'D7', lyric:'为' }, { chord:'', lyric:'什么你不让我看清楚' }, { chord:'G', lyric:'' }, { chord:'Cmaj7', lyric:'' }],
