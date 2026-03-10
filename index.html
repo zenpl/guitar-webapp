@@ -131,7 +131,12 @@
     }
     .move-bar button:disabled { opacity: 0.3; }
     .move-bar button:hover:not(:disabled) { border-color: #facc15; }
-    #move-bar-chord { color: #facc15; font-weight: 700; font-size: 16px; min-width: 40px; text-align: center; }
+    #move-bar-chord {
+      color: #facc15; font-weight: 700; font-size: 16px;
+      width: 72px; text-align: center; background: #0f3460;
+      border: 1px solid #facc15; border-radius: 6px; padding: 4px 6px;
+      outline: none;
+    }
     #move-done { font-size: 16px; color: #4ade80; border-color: #166534; }
 
     .diff-fab {
@@ -215,7 +220,7 @@
 <!-- Move Bar -->
 <div class="move-bar" id="move-bar">
   <button id="move-left">◀</button>
-  <span id="move-bar-chord"></span>
+  <input id="move-bar-chord" type="text" autocomplete="off" autocorrect="off" spellcheck="false">
   <button id="move-right">▶</button>
   <button id="move-done">✓</button>
 </div>
@@ -224,8 +229,8 @@
 <button class="diff-fab" id="diff-fab">📋 复制 diff</button>
 <button class="diff-fab send-fab" id="send-fab">📤 发给AI</button>
 
-<script src="js/chords.js?v=6"></script>
-<script src="js/songs.js?v=6"></script>
-<script src="js/app.js?v=6"></script>
+<script src="js/chords.js?v=7"></script>
+<script src="js/songs.js?v=7"></script>
+<script src="js/app.js?v=7"></script>
 </body>
 </html>

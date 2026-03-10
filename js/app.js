@@ -258,12 +258,13 @@ function clearPickHighlight() {
 
 function showMoveBar(ctx) {
   const bar = document.getElementById('move-bar');
-  const song = SONGS.find(s => s.id === ctx.songId);
-  const line = song.sections[ctx.si].lines[ctx.li];
-  bar.querySelector('#move-bar-chord').textContent = ctx.chord;
-  bar.querySelector('#move-left').disabled  = false; // 行首也可左移（插入空位）
-  bar.querySelector('#move-right').disabled = false; // 行尾也可右移（插入空位）
+  const input = document.getElementById('move-bar-chord');
+  input.value = ctx.chord;
+  bar.querySelector('#move-left').disabled  = false;
+  bar.querySelector('#move-right').disabled = false;
   bar.classList.add('show');
+  // 聚焦方便直接改
+  setTimeout(() => input.focus(), 50);
 }
 function hideMoveBar() {
   document.getElementById('move-bar').classList.remove('show');
@@ -364,6 +365,16 @@ function setupEditMode() {
       return;
     }
 
+    // 无和弦 seg 点击 → 选中并准备添加和弦
+    if (seg && !cSpan) {
+      clearPickHighlight();
+      seg.classList.add('picked');
+      const { song: songId, si, li, gi } = seg.dataset;
+      pickedChord = { songId, si: +si, li: +li, gi: +gi, chord: '' };
+      showMoveBar(pickedChord);
+      return;
+    }
+
     if (cSpan && cSpan.dataset.chord && seg) {
       clearPickHighlight();
       seg.classList.add('picked');
@@ -397,7 +408,34 @@ function setupEditMode() {
   // 移动栏按钮
   document.getElementById('move-left').onclick  = () => doMove(-1);
   document.getElementById('move-right').onclick = () => doMove(+1);
-  document.getElementById('move-done').onclick  = () => { pickedChord = null; clearPickHighlight(); };
+
+  // 确认：应用 input 里的和弦值（可能被修改了）
+  function applyChordEdit() {
+    if (!pickedChord) return;
+    const newChord = document.getElementById('move-bar-chord').value.trim();
+    if (newChord !== pickedChord.chord) {
+      const { songId, si, li, gi } = pickedChord;
+      const song = SONGS.find(s => s.id === songId);
+      song.sections[si].lines[li][gi].chord = newChord;
+      pickedChord = { ...pickedChord, chord: newChord };
+      recordAndRefresh(song, si, li);
+      setTimeout(() => {
+        const songEl = document.getElementById('song-' + songId);
+        songEl.classList.add('edit-mode');
+        songEl.querySelector('.edit-btn')?.classList.add('active');
+        document.getElementById('diff-fab').classList.add('show');
+        document.getElementById('send-fab').classList.add('show');
+      }, 50);
+    }
+    pickedChord = null;
+    clearPickHighlight();
+  }
+
+  document.getElementById('move-done').onclick = applyChordEdit;
+  document.getElementById('move-bar-chord').addEventListener('keydown', e => {
+    if (e.key === 'Enter') applyChordEdit();
+    if (e.key === 'Escape') { pickedChord = null; clearPickHighlight(); }
+  });
 
   document.getElementById('edit-cancel').onclick = () => {
     document.getElementById('edit-modal').classList.remove('show');
