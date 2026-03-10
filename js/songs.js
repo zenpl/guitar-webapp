@@ -249,9 +249,9 @@ const SONGS = [
         [{ chord:'', lyric:'是否' }, { chord:'Em', lyric:'遗' }, { chord:'', lyric:'失了心爱的' }, { chord:'A/C#', lyric:'礼' }, { chord:'', lyric:'物在' }, { chord:'', lyric:'风' }, { chord:'', lyric:'中' }, { chord:'D', lyric:'寻' }, { chord:'', lyric:'找从' }, { chord:'Bm', lyric:'清' }, { chord:'', lyric:'晨' }, { chord:'Em', lyric:'到日' }, { chord:'E7', lyric:'暮' }, { chord:'', lyric:'' }],
       ]},
       { title: '副歌', lines: [
-        [{ chord:'', lyric:'我' }, { chord:'', lyric:'亲爱的小孩' }, { chord:'D7', lyric:'为' }, { chord:'', lyric:'什么你不让我看清楚' }, { chord:'G', lyric:'' }, { chord:'Cmaj7', lyric:'' }],
-        [{ chord:'Am7', lyric:'是' }, { chord:'', lyric:'否让风吹熄了蜡烛' }, { chord:'B7', lyric:'在' }, { chord:'', lyric:'黑暗中独自漫步' }, { chord:'Em', lyric:'' }, { chord:'E7', lyric:'' }],
-        [{ chord:'Am7', lyric:'亲' }, { chord:'', lyric:'爱的小孩快快擦干你的泪珠' }, { chord:'D7', lyric:'' }, { chord:'G', lyric:'我' }, { chord:'', lyric:'愿意陪伴你' }, { chord:'Cmaj7', lyric:'' }],
+        [{ chord:'', lyric:'我' }, { chord:'', lyric:'亲爱的小孩' }, { chord:'D7', lyric:'为' }, { chord:'', lyric:'什么' }, { chord:'G', lyric:'你不让我看清' }, { chord:'Cmaj7', lyric:'楚' }, { chord:'', lyric:'' }, { chord:'', lyric:'' }],
+        [{ chord:'Am7', lyric:'是' }, { chord:'', lyric:'否让风吹熄了' }, { chord:'B7', lyric:'蜡烛' }, { chord:'', lyric:'在' }, { chord:'Em', lyric:'黑暗中' }, { chord:'', lyric:'独自漫' }, { chord:'E7', lyric:'步' }, { chord:'', lyric:'' }, { chord:'', lyric:'' }],
+        [{ chord:'Am7', lyric:'亲' }, { chord:'', lyric:'爱的小孩快快' }, { chord:'D7', lyric:'擦干你的泪珠' }, { chord:'', lyric:'' }, { chord:'', lyric:'我' }, { chord:'', lyric:'愿意陪伴' }, { chord:'Cmaj7', lyric:'你' }, { chord:'', lyric:'' }],
         [{ chord:'Am', lyric:'走' }, { chord:'', lyric:'上回家的路' }, { chord:'B7', lyric:'' }],
       ]},
     ],
