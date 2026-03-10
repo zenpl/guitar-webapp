@@ -241,15 +241,15 @@ const SONGS = [
     chords: ['G','Em','Bm','A/C#','D','Am7','D7','Cmaj7','B7','E7'],
     sections: [
       { title: '主歌', lines: [
-        [{ chord:'G', lyric:'小' }, { chord:'', lyric:'小的小孩' }, { chord:'Em', lyric:'今' }, { chord:'', lyric:'天有没有哭' }, { chord:'G', lyric:'' }, { chord:'Bm', lyric:'' }],
+        [{ chord:'G', lyric:'小' }, { chord:'', lyric:'小的小' }, { chord:'Em', lyric:'孩' }, { chord:'G', lyric:'今' }, { chord:'', lyric:'天有没有' }, { chord:'Bm', lyric:'哭' }, { chord:'', lyric:'' }, { chord:'', lyric:'' }],
         [{ chord:'', lyric:'是否' }, { chord:'Em', lyric:'朋' }, { chord:'', lyric:'友都已经' }, { chord:'A/C#', lyric:'离' }, { chord:'', lyric:'去留下了' }, { chord:'D', lyric:'带' }, { chord:'', lyric:'不走的孤' }, { chord:'G', lyric:'独' }],
-        [{ chord:'G', lyric:'漂' }, { chord:'', lyric:'亮的小孩' }, { chord:'Em', lyric:'今' }, { chord:'', lyric:'天有没有哭' }, { chord:'G', lyric:'' }, { chord:'Bm', lyric:'' }],
+        [{ chord:'G', lyric:'漂' }, { chord:'', lyric:'亮的小' }, { chord:'Em', lyric:'孩' }, { chord:'G', lyric:'今' }, { chord:'', lyric:'天有没有' }, { chord:'Bm', lyric:'哭' }, { chord:'', lyric:'' }, { chord:'', lyric:'' }],
         [{ chord:'', lyric:'是否' }, { chord:'Em', lyric:'弄' }, { chord:'', lyric:'脏了美' }, { chord:'A/C#', lyric:'丽' }, { chord:'', lyric:'的衣服却' }, { chord:'D', lyric:'找' }, { chord:'', lyric:'不到别人' }, { chord:'G', lyric:'倾' }, { chord:'', lyric:'诉' }],
-        [{ chord:'G', lyric:'聪' }, { chord:'', lyric:'明的小孩' }, { chord:'Em', lyric:'今' }, { chord:'', lyric:'天有没有哭' }, { chord:'G', lyric:'' }, { chord:'Bm', lyric:'' }],
+        [{ chord:'G', lyric:'聪' }, { chord:'', lyric:'明的小' }, { chord:'Em', lyric:'孩' }, { chord:'G', lyric:'今' }, { chord:'', lyric:'天有没有' }, { chord:'Bm', lyric:'哭' }, { chord:'', lyric:'' }, { chord:'', lyric:'' }],
         [{ chord:'', lyric:'是否' }, { chord:'Em', lyric:'遗' }, { chord:'', lyric:'失了心爱的' }, { chord:'A/C#', lyric:'礼' }, { chord:'', lyric:'物在' }, { chord:'', lyric:'风' }, { chord:'', lyric:'中' }, { chord:'D', lyric:'寻' }, { chord:'', lyric:'找从' }, { chord:'Bm', lyric:'清' }, { chord:'', lyric:'晨' }, { chord:'Em', lyric:'到日' }, { chord:'E7', lyric:'暮' }, { chord:'', lyric:'' }],
       ]},
       { title: '副歌', lines: [
-        [{ chord:'Am7', lyric:'我' }, { chord:'', lyric:'亲爱的小孩' }, { chord:'D7', lyric:'为' }, { chord:'', lyric:'什么你不让我看清楚' }, { chord:'G', lyric:'' }, { chord:'Cmaj7', lyric:'' }],
+        [{ chord:'', lyric:'我' }, { chord:'', lyric:'亲爱的小孩' }, { chord:'D7', lyric:'为' }, { chord:'', lyric:'什么你不让我看清楚' }, { chord:'G', lyric:'' }, { chord:'Cmaj7', lyric:'' }],
         [{ chord:'Am7', lyric:'是' }, { chord:'', lyric:'否让风吹熄了蜡烛' }, { chord:'B7', lyric:'在' }, { chord:'', lyric:'黑暗中独自漫步' }, { chord:'Em', lyric:'' }, { chord:'E7', lyric:'' }],
         [{ chord:'Am7', lyric:'亲' }, { chord:'', lyric:'爱的小孩快快擦干你的泪珠' }, { chord:'D7', lyric:'' }, { chord:'G', lyric:'我' }, { chord:'', lyric:'愿意陪伴你' }, { chord:'Cmaj7', lyric:'' }],
         [{ chord:'Am', lyric:'走' }, { chord:'', lyric:'上回家的路' }, { chord:'B7', lyric:'' }],
