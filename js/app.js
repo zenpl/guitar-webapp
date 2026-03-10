@@ -97,18 +97,10 @@ function renderSong(song) {
         const cSpan = hasChord
           ? `<span class="c" data-chord="${tc}" data-orig="${seg.chord}">${tc}</span>`
           : `<span class="c"> </span>`;
-        const isEditMode = editModeSongId === song.id;
-        let lyric;
-        if (isEditMode && seg.lyric) {
-          lyric = [...seg.lyric].map((ch, ci) => {
-            const cls = (hasChord && ci === 0) ? 'w-mark wc' : 'wc';
-            return `<span class="${cls}" data-ci="${ci}">${ch}</span>`;
-          }).join('');
-        } else {
-          lyric = hasChord && seg.lyric.length > 0
-            ? `<span class="w-mark">${seg.lyric[0]}</span>${seg.lyric.slice(1)}`
-            : seg.lyric;
-        }
+        // 字符展开只在 picked 时进行，避免大量 DOM 节点拖慢编辑模式
+        const lyric = hasChord && seg.lyric.length > 0
+          ? `<span class="w-mark">${seg.lyric[0]}</span>${seg.lyric.slice(1)}`
+          : seg.lyric;
         return `<span class="seg${hasChord?' has-chord':''}" ${editAttrs}>${cSpan}<span class="w">${lyric}</span></span>`;
       }).join(' ');
       return `<div class="lyric-line">${segs}</div>`;
@@ -355,7 +347,11 @@ function doMoveToChar(ci) {
 }
 
 function setupEditMode() {
-  document.addEventListener('click', e => {
+  let _lastEditTs = 0;
+  const editHandler = e => {
+    const now = Date.now();
+    if (now - _lastEditTs < 300) return; // 去重 touch+click 双触发
+    _lastEditTs = now;
     const cSpan = e.target.closest('.c[data-chord]');
     const seg   = e.target.closest('.seg[data-song]');
     const songEl = seg ? seg.closest('.song') : null;
@@ -374,6 +370,18 @@ function setupEditMode() {
       seg.classList.add('picked');
       const { song: songId, si, li, gi } = seg.dataset;
       pickedChord = { songId, si: +si, li: +li, gi: +gi, chord: cSpan.dataset.chord };
+      // 展开当前 seg 的歌词为字符级 span（只展开 picked 的那一个）
+      const wSpan = seg.querySelector('.w');
+      if (wSpan) {
+        const song = SONGS.find(s => s.id === songId);
+        const lyric = song?.sections[+si]?.lines[+li]?.[+gi]?.lyric || '';
+        if (lyric.length > 1) {
+          wSpan.innerHTML = [...lyric].map((ch, ci) => {
+            const cls = ci === 0 ? 'w-mark wc' : 'wc';
+            return `<span class="${cls}" data-ci="${ci}">${ch}</span>`;
+          }).join('');
+        }
+      }
       showMoveBar(pickedChord);
       return;
     }
@@ -381,7 +389,11 @@ function setupEditMode() {
     // 点其他 seg 或空处 → 取消
     pickedChord = null;
     clearPickHighlight();
-  });
+  };
+
+  // 移动端用 touchend（无300ms延迟），桌面用 click
+  document.addEventListener('touchend', editHandler);
+  document.addEventListener('click',    editHandler);
 
   // 移动栏按钮
   document.getElementById('move-left').onclick  = () => doMove(-1);
