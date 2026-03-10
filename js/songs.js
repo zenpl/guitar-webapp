@@ -234,7 +234,7 @@ const SONGS = [
   // ──────────────────────────────────────────
   {
     id: 'qinaioxiaohai',
-    importVer: 2, locked: false,
+    importVer: 2, locked: true,
     title: '亲爱的小孩',
     artist: '苏芮',
     baseKey: 'Ab', playKey: 'G', capo: 1,
