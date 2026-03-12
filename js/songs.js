@@ -965,4 +965,85 @@ const SONGS = [
       ]},
     ],
   },
+  // ──────────────────────────────────────────
+  {
+    id: 'shanghen',
+    importVer: 1,
+    title: '伤痕',
+    artist: '林忆莲',
+    baseKey: 'C', playKey: 'F', capo: 5,
+    chords: ['C','Am7','F','G','Em','Gsus4','Fmaj7','C/E','Dm7','G/B','Esus4','E','Gm','C7/E','F/G'],
+    sections: [
+      { title: '主歌A', lines: [
+        [
+          { chord:'C', lyric:'夜已深' },
+          { chord:'Am7', lyric:'还有什么人' },
+          { chord:'F', lyric:'让你这样' },
+          { chord:'G', lyric:'醒著数伤痕' },
+        ],
+        [
+          { chord:'Em', lyric:'为何临睡前' },
+          { chord:'Am7', lyric:'会想要留一盏灯' },
+          { chord:'F', lyric:'你若不肯说' },
+          { chord:'Gsus4', lyric:'我就不问' },
+        ],
+        [
+          { chord:'C', lyric:'只是你现在' },
+          { chord:'Am7', lyric:'不得不承认' },
+          { chord:'F', lyric:'爱情有时候' },
+          { chord:'G', lyric:'是一种沉沦' },
+        ],
+        [
+          { chord:'Em', lyric:'让人失望的' },
+          { chord:'Am7', lyric:'虽然是恋情本身' },
+          { chord:'F', lyric:'但是不要只是' },
+          { chord:'G', lyric:'因为你是女人' },
+        ],
+      ]},
+      { title: '前副歌', lines: [
+        [
+          { chord:'Am7', lyric:'若爱得深' },
+          { chord:'Em', lyric:'会不能平衡' },
+          { chord:'Am7', lyric:'为情困' },
+          { chord:'Em', lyric:'磨折了灵魂' },
+        ],
+        [
+          { chord:'Fmaj7', lyric:'该爱就爱' },
+          { chord:'C/E', lyric:'该恨的就恨' },
+          { chord:'Dm7', lyric:'要为自己' },
+          { chord:'Gsus4', lyric:'保留几分' },
+        ],
+      ]},
+      { title: '副歌', lines: [
+        [
+          { chord:'C', lyric:'女人独有的天真' },
+          { chord:'G/B', lyric:'和温柔的天分' },
+          { chord:'Am7', lyric:'要留给' },
+          { chord:'Em', lyric:'真爱你的人' },
+        ],
+        [
+          { chord:'F', lyric:'不管未来多苦多难' },
+          { chord:'F/G', lyric:'' },
+          { chord:'C', lyric:'有他陪你' },
+          { chord:'G', lyric:'完成' },
+        ],
+        [
+          { chord:'C', lyric:'虽然爱是种责任' },
+          { chord:'Esus4', lyric:'' },
+          { chord:'E', lyric:'' },
+          { chord:'Am7', lyric:'给要给得完整' },
+          { chord:'Gm', lyric:'' },
+          { chord:'C7/E', lyric:'有时爱美在' },
+          { chord:'', lyric:'无法永恒' },
+        ],
+        [
+          { chord:'Fmaj7', lyric:'爱有多销魂' },
+          { chord:'C/E', lyric:'就有多伤人' },
+          { chord:'Dm7', lyric:'你若勇敢爱了' },
+          { chord:'F/G', lyric:'' },
+          { chord:'G', lyric:'就要勇敢分' },
+        ],
+      ]},
+    ],
+  },
 ];
